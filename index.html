@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- ========== METADATA & FONTS ========== -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Farah Ibrar – Data Scientist</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/a2e0f1f390.js" crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" rel="stylesheet">
+
+  <!-- ========== STYLES ========== -->
   <style>
     :root {
       --bg: #0d1117;
@@ -30,6 +33,7 @@
       transition: background 0.3s, color 0.3s;
     }
 
+    /* ========== NAVBAR ========== */
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -52,6 +56,7 @@
       cursor: pointer;
     }
 
+    /* ========== HERO SECTION ========== */
     .hero {
       text-align: center;
       padding: 2.5rem 1rem 2rem;
@@ -79,6 +84,7 @@
       color: #888;
     }
 
+    /* ========== SECTIONS ========== */
     .section {
       padding: 1.5rem 1rem;
       max-width: 900px;
@@ -95,6 +101,7 @@
       margin-bottom: 1.2rem;
     }
 
+    /* ========== SKILLS SECTION ========== */
     .skills-grid {
       display: flex;
       flex-wrap: wrap;
@@ -114,9 +121,118 @@
       transform: scale(1.1);
       background: rgba(255,255,255,0.05);
     }
+
+    /* ========== CONTACT BAR ========== */
+    .contact-bar {
+      background: var(--card);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 1.5rem 2rem;
+      margin-top: 2rem;
+    }
+    .contact-links h3 {
+      margin-bottom: 0.5rem;
+    }
+    .contact-links a {
+      display: inline-block;
+      margin: 0.3rem 0.8rem 0.3rem 0;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      transition: transform 0.2s;
+    }
+    .contact-links a:hover {
+      transform: scale(1.15);
+    }
+    .contact-bar button {
+      background: var(--accent);
+      color: white;
+      padding: 0.6rem 1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .contact-bar button:hover {
+      transform: rotate(1deg) scale(1.05);
+    }
+
+    /* ========== MODAL ========== */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .modal-content {
+      background: radial-gradient(circle at top left, #1d2633, #0d1117);
+      padding: 2rem;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      position: relative;
+      animation: fadeIn 0.4s ease-out;
+      color: #fff;
+    }
+    .modal-content input, .modal-content textarea {
+      width: 100%;
+      margin: 0.5rem 0;
+      padding: 0.6rem;
+      border-radius: 6px;
+      border: 1px solid #444;
+      background: #1c1f26;
+      color: #fff;
+    }
+    .modal-content button {
+      background: var(--button);
+      color: white;
+      border: none;
+      padding: 0.6rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .modal-content button:hover {
+      transform: rotate(1deg) scale(1.05);
+    }
+    .close {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      font-size: 1.5rem;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* ========== FOOTER ========== */
+    .footer {
+      text-align: center;
+      font-size: 0.85rem;
+      padding: 1rem;
+      background: var(--bg);
+      border-top: 1px solid #333;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: scale(0.9);}
+      to {opacity: 1; transform: scale(1);}
+    }
+    @keyframes fadeInSlide {
+      from {opacity: 0; transform: translateY(-10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
   </style>
 </head>
 <body>
+
+  <!-- ========== NAVBAR ========== -->
   <div class="navbar">
     <h1>Farah Ibrar</h1>
     <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
@@ -124,6 +240,7 @@
     </button>
   </div>
 
+  <!-- ========== HERO SECTION ========== -->
   <section class="hero">
     <img src="profile.jpg" alt="Farah Ibrar">
     <h2>Farah Ibrar</h2>
@@ -131,6 +248,7 @@
     <p>Evidence. Insight. Impact.</p>
   </section>
 
+  <!-- ========== ABOUT ME ========== -->
   <section class="section">
     <h3>About Me</h3>
     <div class="subsection"><strong>Who I Am</strong>
@@ -144,6 +262,7 @@
     </div>
   </section>
 
+  <!-- ========== SKILLS SECTION ========== -->
   <section class="section">
     <h3>Skills & Tools</h3>
     <div class="skills-grid">
@@ -158,91 +277,49 @@
       <div>Seaborn</div><div>Scikit-learn</div><div>spaCy</div><div>PyCharm</div><div>IBM SPSS</div><div>Anaconda</div><div>Canva</div>
     </div>
   </section>
+
+  <!-- Part 2 (Contact section + Modal + Footer + Script)  -->
+  <!-- ========== LET'S COLLABORATE ========== -->
   <section class="section">
     <h3>Let’s Collaborate</h3>
     <p>Have a project in mind, a challenge to solve, or an idea to explore? I’m always open to connecting with professionals who share a passion for data and impact. Let’s build something meaningful together.</p>
   </section>
 
-  <section class="section" style="padding-top: 0;">
-    <div style="background: var(--card); border-radius: 8px; padding: 1.5rem;">
-      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-        <div>
-          <h3 style="margin-bottom: 0.5rem;">Get In Touch</h3>
-          <a href="mailto:farah11ibrar@gmail.com"><i class="fas fa-envelope"></i> Email</a> |
-          <a href="https://www.linkedin.com/in/farahibrar/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a> |
-          <a href="https://github.com/FarahIbrar" target="_blank"><i class="fab fa-github"></i> GitHub</a> |
-          <a href="https://public.tableau.com/app/profile/farah.ibrar" target="_blank"><i class="fas fa-chart-bar"></i> Tableau</a>
-        </div>
-        <button onclick="document.getElementById('contactModal').style.display='flex'" style="margin-top: 1rem;">Contact Me</button>
-      </div>
+  <!-- ========== CONTACT SECTION ========== -->
+  <section class="section contact-bar">
+    <div class="contact-links">
+      <h3>Get In Touch</h3>
+      <a href="mailto:farah11ibrar@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+      <a href="https://www.linkedin.com/in/farahibrar/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="https://github.com/FarahIbrar" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+      <a href="https://public.tableau.com/app/profile/farah.ibrar" target="_blank"><i class="fas fa-chart-bar"></i> Tableau</a>
     </div>
+    <button onclick="document.getElementById('contactModal').style.display='flex'">Contact Me</button>
   </section>
 
+  <!-- ========== CONTACT FORM MODAL ========== -->
   <div class="modal" id="contactModal">
-    <div class="modal-content" style="background: radial-gradient(circle at top left, #1d2633, #0d1117); color: #fff;">
+    <div class="modal-content">
       <span class="close" onclick="document.getElementById('contactModal').style.display='none'">&times;</span>
       <h3 style="animation: fadeInSlide 0.8s ease-out;">Let's Work Together</h3>
-      <p style="margin-top: -0.5rem; font-size: 0.95rem; animation: fadeInSlide 1.2s ease-out;">I'm always open to discussing new projects, job opportunities, or partnerships. Feel free to reach out using the form below or through my social channels.</p>
-      <form action="https://formspree.io/f/your-form-id" method="POST">
+      <p style="margin-top: -0.5rem; font-size: 0.95rem; animation: fadeInSlide 1.2s ease-out;">
+        I'm always open to discussing new projects, job opportunities, or partnerships. Feel free to reach out using the form below or through my social channels.
+      </p>
+      <form action="https://formspree.io/f/xnndrwgw" method="POST">
         <input type="text" name="name" placeholder="Your Name" required>
         <input type="email" name="_replyto" placeholder="Your Email Address" required>
         <textarea name="message" rows="5" placeholder="Tell me about your project or job opportunity..." required></textarea>
-        <button type="submit" style="background: var(--button); color: white; border: none; padding: 0.6rem 1rem; margin-top: 0.5rem;">Send Message →</button>
+        <button type="submit">Send Message →</button>
       </form>
     </div>
   </div>
 
+  <!-- ========== FOOTER ========== -->
   <div class="footer">
     © 2025 Farah Ibrar | All rights reserved.
   </div>
 
-  <style>
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.7);
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-    .modal-content {
-      padding: 2rem;
-      border-radius: 10px;
-      width: 90%;
-      max-width: 500px;
-      position: relative;
-      animation: fadeIn 0.4s ease-out;
-    }
-    .modal-content input, .modal-content textarea {
-      width: 100%;
-      margin: 0.5rem 0;
-      padding: 0.6rem;
-      border-radius: 6px;
-      border: 1px solid #444;
-      background: #1c1f26;
-      color: #fff;
-    }
-    .close {
-      position: absolute;
-      top: 12px;
-      right: 16px;
-      font-size: 1.5rem;
-      color: white;
-      cursor: pointer;
-    }
-    @keyframes fadeIn {
-      from {opacity: 0; transform: scale(0.9);}
-      to {opacity: 1; transform: scale(1);}
-    }
-    @keyframes fadeInSlide {
-      from {opacity: 0; transform: translateY(-10px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-  </style>
-
+  <!-- ========== SCRIPT ========== -->
   <script>
     function toggleTheme() {
       document.body.classList.toggle('light');
@@ -256,5 +333,6 @@
       }
     }
   </script>
+
 </body>
 </html>
