@@ -36,16 +36,17 @@
       background: var(--card);
       position: sticky;
       top: 0;
+      z-index: 10;
     }
     .navbar h1 {
       margin: 0;
       color: var(--accent);
     }
     .theme-toggle {
-      font-size: 1.3rem;
       background: none;
-      color: var(--accent);
       border: none;
+      font-size: 1.4rem;
+      color: var(--accent);
       cursor: pointer;
     }
 
@@ -65,13 +66,9 @@
       font-size: 2rem;
       margin: 0.5rem 0;
     }
-    .hero p {
-      font-size: 1.1rem;
-      font-weight: 500;
-    }
 
     .section {
-      padding: 2.5rem 1rem;
+      padding: 2rem 1rem;
       max-width: 900px;
       margin: auto;
     }
@@ -82,8 +79,9 @@
       border-bottom: 2px solid var(--accent);
       display: inline-block;
     }
+
     .subsection {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
     }
 
     .skills-grid {
@@ -97,33 +95,102 @@
       background: var(--card);
       padding: 0.5rem 0.8rem;
       border-radius: 6px;
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       color: var(--fg);
+      text-align: center;
     }
 
-    .collab {
-      text-align: center;
-      background: var(--card);
-      padding: 2rem;
-      border-radius: 10px;
+    .collab-section {
+      max-width: 900px;
+      margin: auto;
+      padding: 2rem 1rem;
     }
-
-    .contact {
-      background: var(--card);
-      padding: 1.5rem 1rem;
-      text-align: center;
-      margin: 2rem 0 0;
-    }
-    .contact a {
-      display: inline-block;
-      margin: 0.5rem 1rem;
+    .collab-section h3 {
       color: var(--accent);
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-bar {
+      background: var(--card);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 1.5rem 2rem;
+      margin-top: 2rem;
+    }
+    .contact-links a {
+      color: var(--accent);
+      margin: 0.5rem 1rem;
       text-decoration: none;
       font-weight: 500;
+      font-size: 1rem;
       transition: transform 0.2s;
     }
-    .contact a:hover {
-      transform: scale(1.1);
+    .contact-links a:hover {
+      transform: scale(1.15);
+    }
+    .contact-bar button {
+      background: var(--accent);
+      color: white;
+      padding: 0.6rem 1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .contact-bar button:hover {
+      transform: rotate(1deg) scale(1.05);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .modal-content {
+      background: var(--card);
+      padding: 2rem;
+      border-radius: 8px;
+      max-width: 400px;
+      width: 90%;
+    }
+    .modal-content h3 {
+      margin-top: 0;
+    }
+    .modal-content input, .modal-content textarea {
+      width: 100%;
+      padding: 0.6rem;
+      margin: 0.5rem 0 1rem;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    .modal-content button {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 0.6rem 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: transform 0.2s;
+    }
+    .modal-content button:hover {
+      transform: rotate(1deg) scale(1.05);
+    }
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 1.8rem;
+      color: white;
+      cursor: pointer;
     }
 
     .footer {
@@ -133,24 +200,13 @@
       background: var(--bg);
       border-top: 1px solid #333;
     }
-    .footer a {
-      color: var(--accent);
-      margin: 0 0.3rem;
-      font-size: 1rem;
-    }
-
-    @media (min-width: 768px) {
-      .hero {
-        padding: 4rem 2rem;
-      }
-    }
   </style>
 </head>
 <body>
   <div class="navbar">
     <h1>Farah Ibrar</h1>
-    <button class="theme-toggle" onclick="document.body.classList.toggle('light')">
-      <span id="theme-icon">🌙</span>
+    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+      <i id="theme-icon" class="fas fa-moon"></i>
     </button>
   </div>
 
@@ -162,56 +218,77 @@
 
   <section class="section">
     <h3>About Me</h3>
-    <div class="subsection">
-      <strong>Who I Am</strong>
+    <div class="subsection"><strong>Who I Am</strong>
       <p>I’m Farah Ibrar, a data scientist with a background in Biomedical Sciences and Immunology. My journey began in academic research, but my curiosity led me to data-driven problem-solving.</p>
     </div>
-    <div class="subsection">
-      <strong>What I Do</strong>
+    <div class="subsection"><strong>What I Do</strong>
       <p>I specialize in machine learning, NLP, predictive modelling, and campaign analytics. I enjoy building interactive dashboards with Tableau and Python to turn complex data into clear stories.</p>
     </div>
-    <div class="subsection">
-      <strong>How I Work</strong>
-      <p>I approach every problem with attention to detail, a strategic mindset, and a collaborative spirit. Whether it's segmenting customers or evaluating performance, I’m focused on creating real-world impact with data.</p>
+    <div class="subsection"><strong>How I Work</strong>
+      <p>I approach every problem with attention to detail, a strategic mindset, and a collaborative spirit. Whether it’s segmenting customers or evaluating performance, I’m focused on creating real-world impact with data.</p>
     </div>
   </section>
 
   <section class="section">
     <h3>Skills & Tools</h3>
     <div class="skills-grid">
-      <i class="devicon-python-plain"></i><i class="devicon-pandas-original"></i><i class="devicon-numpy-original"></i>
-      <i class="devicon-tensorflow-original"></i><i class="devicon-pytorch-original"></i><i class="devicon-jupyter-plain"></i>
-      <i class="devicon-mysql-plain"></i><i class="devicon-postgresql-plain"></i><i class="devicon-sqlite-plain"></i>
-      <i class="devicon-r-original"></i><i class="devicon-tableau-original"></i><i class="devicon-git-plain"></i>
-      <i class="devicon-github-original"></i><i class="devicon-docker-plain"></i><i class="devicon-azure-plain"></i>
-      <i class="devicon-amazonwebservices-original"></i><i class="devicon-html5-plain"></i><i class="devicon-css3-plain"></i>
-      <i class="devicon-javascript-plain"></i><i class="devicon-nodejs-plain"></i><i class="devicon-bootstrap-plain"></i>
-      <i class="devicon-figma-plain"></i><div>Seaborn</div><div>Scikit-learn</div><div>spaCy</div><div>PyCharm</div><div>IBM SPSS</div><div>Anaconda</div><div>Canva</div>
+      <i class="devicon-python-plain colored"></i><i class="devicon-pandas-original colored"></i><i class="devicon-numpy-original colored"></i>
+      <i class="devicon-tensorflow-original colored"></i><i class="devicon-pytorch-original colored"></i><i class="devicon-jupyter-plain colored"></i>
+      <i class="devicon-mysql-plain colored"></i><i class="devicon-postgresql-plain colored"></i><i class="devicon-sqlite-plain colored"></i>
+      <i class="devicon-r-original colored"></i><i class="devicon-tableau-original colored"></i><i class="devicon-git-plain colored"></i>
+      <i class="devicon-github-original colored"></i><i class="devicon-docker-plain colored"></i><i class="devicon-azure-plain colored"></i>
+      <i class="devicon-amazonwebservices-original colored"></i><i class="devicon-html5-plain colored"></i><i class="devicon-css3-plain colored"></i>
+      <i class="devicon-javascript-plain colored"></i><i class="devicon-nodejs-plain colored"></i><i class="devicon-bootstrap-plain colored"></i>
+      <i class="devicon-figma-plain colored"></i>
+      <div>Seaborn</div><div>Scikit-learn</div><div>spaCy</div><div>PyCharm</div><div>IBM SPSS</div><div>Anaconda</div><div>Canva</div>
     </div>
   </section>
 
-  <section class="section collab">
+  <section class="collab-section">
     <h3>Let’s Collaborate</h3>
     <p>Have a project in mind, a challenge to solve, or an idea to explore? I’m always open to connecting with professionals who share a passion for data and impact. Let’s build something meaningful together.</p>
   </section>
 
-  <section class="contact">
-    <h3>Contact</h3>
-    <a href="mailto:farah11ibrar@gmail.com"><i class="fas fa-envelope"></i> Email</a>
-    <a href="https://www.linkedin.com/in/farahibrar/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-    <a href="https://github.com/FarahIbrar" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-    <a href="https://public.tableau.com/app/profile/farah.ibrar" target="_blank"><i class="fas fa-chart-bar"></i> Tableau</a>
+  <section class="contact-bar">
+    <div class="contact-links">
+      <h3>Get In Touch</h3>
+      <a href="mailto:farah11ibrar@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+      <a href="https://www.linkedin.com/in/farahibrar/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="https://github.com/FarahIbrar" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+      <a href="https://public.tableau.com/app/profile/farah.ibrar" target="_blank"><i class="fas fa-chart-bar"></i> Tableau</a>
+    </div>
+    <button onclick="document.getElementById('contactModal').style.display='flex'">Contact Me</button>
   </section>
+
+  <div class="modal" id="contactModal">
+    <div class="modal-content">
+      <span class="close" onclick="document.getElementById('contactModal').style.display='none'">&times;</span>
+      <h3>Send a Message</h3>
+      <form action="https://formspree.io/f/xnndrwgw" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="_replyto" placeholder="Your Email Address" required>
+        <textarea name="message" rows="5" placeholder="Tell me about your project or job opportunity..." required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </div>
 
   <div class="footer">
     © 2025 Farah Ibrar | All rights reserved.
   </div>
 
   <script>
-    const icon = document.getElementById('theme-icon');
-    document.querySelector('.theme-toggle').addEventListener('click', () => {
-      icon.textContent = document.body.classList.contains('light') ? '🌙' : '☀️';
-    });
+    function toggleTheme() {
+      document.body.classList.toggle('light');
+      const icon = document.getElementById('theme-icon');
+      icon.className = document.body.classList.contains('light') ? 'fas fa-sun' : 'fas fa-moon';
+    }
+
+    window.onclick = function(e) {
+      if (e.target === document.getElementById('contactModal')) {
+        document.getElementById('contactModal').style.display = "none";
+      }
+    }
   </script>
 </body>
 </html>
