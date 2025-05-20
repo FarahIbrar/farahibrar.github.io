@@ -6,6 +6,7 @@
   <title>Farah Ibrar – Data Scientist</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/a2e0f1f390.js" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" rel="stylesheet">
   <style>
     :root {
       --bg: #0d1117;
@@ -26,6 +27,7 @@
       font-family: 'Inter', sans-serif;
       transition: background 0.3s, color 0.3s;
     }
+
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -39,14 +41,14 @@
       margin: 0;
       color: var(--accent);
     }
-    .toggle-theme {
-      background: var(--accent);
+    .theme-toggle {
+      font-size: 1.3rem;
+      background: none;
+      color: var(--accent);
       border: none;
-      padding: 0.5rem 1rem;
-      color: white;
-      border-radius: 4px;
       cursor: pointer;
     }
+
     .hero {
       text-align: center;
       padding: 3rem 1rem;
@@ -66,8 +68,8 @@
     .hero p {
       font-size: 1.1rem;
       font-weight: 500;
-      color: var(--fg);
     }
+
     .section {
       padding: 2.5rem 1rem;
       max-width: 900px;
@@ -83,6 +85,7 @@
     .subsection {
       margin-bottom: 1.5rem;
     }
+
     .skills-grid {
       display: flex;
       flex-wrap: wrap;
@@ -90,17 +93,26 @@
       justify-content: center;
       margin-top: 1rem;
     }
-    .skills-grid div {
+    .skills-grid i, .skills-grid div {
       background: var(--card);
-      padding: 0.5rem 1rem;
+      padding: 0.5rem 0.8rem;
       border-radius: 6px;
-      font-size: 0.9rem;
+      font-size: 1.3rem;
+      color: var(--fg);
     }
+
+    .collab {
+      text-align: center;
+      background: var(--card);
+      padding: 2rem;
+      border-radius: 10px;
+    }
+
     .contact {
       background: var(--card);
-      border-radius: 10px;
+      padding: 1.5rem 1rem;
       text-align: center;
-      padding: 2rem;
+      margin: 2rem 0 0;
     }
     .contact a {
       display: inline-block;
@@ -108,11 +120,16 @@
       color: var(--accent);
       text-decoration: none;
       font-weight: 500;
+      transition: transform 0.2s;
     }
+    .contact a:hover {
+      transform: scale(1.1);
+    }
+
     .footer {
       text-align: center;
       font-size: 0.85rem;
-      padding: 1.5rem;
+      padding: 1rem;
       background: var(--bg);
       border-top: 1px solid #333;
     }
@@ -121,6 +138,7 @@
       margin: 0 0.3rem;
       font-size: 1rem;
     }
+
     @media (min-width: 768px) {
       .hero {
         padding: 4rem 2rem;
@@ -131,7 +149,9 @@
 <body>
   <div class="navbar">
     <h1>Farah Ibrar</h1>
-    <button class="toggle-theme" onclick="document.body.classList.toggle('light')">Toggle Theme</button>
+    <button class="theme-toggle" onclick="document.body.classList.toggle('light')">
+      <span id="theme-icon">🌙</span>
+    </button>
   </div>
 
   <section class="hero">
@@ -144,30 +164,38 @@
     <h3>About Me</h3>
     <div class="subsection">
       <strong>Who I Am</strong>
-      <p>I’m Farah Ibrar, a data scientist with a background in Biomedical Sciences and Immunology. My passion lies in transforming data into strategies that drive decisions.</p>
+      <p>I’m Farah Ibrar, a data scientist with a background in Biomedical Sciences and Immunology. My journey began in academic research, but my curiosity led me to data-driven problem-solving.</p>
     </div>
     <div class="subsection">
       <strong>What I Do</strong>
-      <p>I work with machine learning, NLP, and predictive analytics to uncover insights from complex datasets. I design dashboards and visualisations that simplify the story behind the numbers.</p>
+      <p>I specialize in machine learning, NLP, predictive modelling, and campaign analytics. I enjoy building interactive dashboards with Tableau and Python to turn complex data into clear stories.</p>
     </div>
     <div class="subsection">
       <strong>How I Work</strong>
-      <p>I combine scientific precision with commercial awareness. I enjoy digging deep into data, building models that matter, and collaborating on real-world challenges.</p>
+      <p>I approach every problem with attention to detail, a strategic mindset, and a collaborative spirit. Whether it's segmenting customers or evaluating performance, I’m focused on creating real-world impact with data.</p>
     </div>
   </section>
 
   <section class="section">
     <h3>Skills & Tools</h3>
     <div class="skills-grid">
-      <div>Python</div><div>Pandas</div><div>NumPy</div><div>Matplotlib</div><div>Seaborn</div><div>Scikit-learn</div>
-      <div>TensorFlow</div><div>PyTorch</div><div>spaCy</div><div>Jupyter</div><div>PyCharm</div><div>R</div>
-      <div>MySQL</div><div>PostgreSQL</div><div>SQLite</div><div>Tableau</div><div>IBM SPSS</div><div>VS Code</div>
-      <div>Anaconda</div><div>Git</div><div>GitHub</div><div>Docker</div><div>AWS</div><div>Azure</div>
-      <div>HTML</div><div>CSS</div><div>JavaScript</div><div>Node.js</div><div>Bootstrap</div><div>Figma</div><div>Canva</div>
+      <i class="devicon-python-plain"></i><i class="devicon-pandas-original"></i><i class="devicon-numpy-original"></i>
+      <i class="devicon-tensorflow-original"></i><i class="devicon-pytorch-original"></i><i class="devicon-jupyter-plain"></i>
+      <i class="devicon-mysql-plain"></i><i class="devicon-postgresql-plain"></i><i class="devicon-sqlite-plain"></i>
+      <i class="devicon-r-original"></i><i class="devicon-tableau-original"></i><i class="devicon-git-plain"></i>
+      <i class="devicon-github-original"></i><i class="devicon-docker-plain"></i><i class="devicon-azure-plain"></i>
+      <i class="devicon-amazonwebservices-original"></i><i class="devicon-html5-plain"></i><i class="devicon-css3-plain"></i>
+      <i class="devicon-javascript-plain"></i><i class="devicon-nodejs-plain"></i><i class="devicon-bootstrap-plain"></i>
+      <i class="devicon-figma-plain"></i><div>Seaborn</div><div>Scikit-learn</div><div>spaCy</div><div>PyCharm</div><div>IBM SPSS</div><div>Anaconda</div><div>Canva</div>
     </div>
   </section>
 
-  <section class="section contact">
+  <section class="section collab">
+    <h3>Let’s Collaborate</h3>
+    <p>Have a project in mind, a challenge to solve, or an idea to explore? I’m always open to connecting with professionals who share a passion for data and impact. Let’s build something meaningful together.</p>
+  </section>
+
+  <section class="contact">
     <h3>Contact</h3>
     <a href="mailto:farah11ibrar@gmail.com"><i class="fas fa-envelope"></i> Email</a>
     <a href="https://www.linkedin.com/in/farahibrar/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
@@ -176,10 +204,14 @@
   </section>
 
   <div class="footer">
-    © 2025 Farah Ibrar |
-    <a href="https://github.com/FarahIbrar" target="_blank"><i class="fab fa-github"></i></a>
-    <a href="https://www.linkedin.com/in/farahibrar/" target="_blank"><i class="fab fa-linkedin"></i></a>
-    <a href="mailto:farah11ibrar@gmail.com"><i class="fas fa-envelope"></i></a>
+    © 2025 Farah Ibrar | All rights reserved.
   </div>
+
+  <script>
+    const icon = document.getElementById('theme-icon');
+    document.querySelector('.theme-toggle').addEventListener('click', () => {
+      icon.textContent = document.body.classList.contains('light') ? '🌙' : '☀️';
+    });
+  </script>
 </body>
 </html>
