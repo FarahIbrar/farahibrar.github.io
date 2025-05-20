@@ -109,18 +109,36 @@
       justify-content: center;
       margin-top: 1rem;
     }
-    .skills-grid i, .skills-grid div {
+    
+    .skills-grid i,
+    .skills-grid div,
+    .skills-grid img {
       background: var(--card);
       padding: 0.5rem 0.8rem;
       border-radius: 6px;
       font-size: 1.3rem;
       color: var(--fg);
       transition: transform 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .skills-grid i:hover, .skills-grid div:hover {
+    
+    /* Image-specific tweaks */
+    .skills-grid img {
+      width: 1.3rem;
+      height: 1.3rem;
+      object-fit: contain;
+    }
+    
+    /* Hover effect for all */
+    .skills-grid i:hover,
+    .skills-grid div:hover,
+    .skills-grid img:hover {
       transform: scale(1.1);
-      background: rgba(255,255,255,0.05);
+      background: rgba(255, 255, 255, 0.05);
     }
+
 
     /* ========== CONTACT BAR ========== */
     .contact-bar {
@@ -263,20 +281,44 @@
   </section>
 
   <!-- ========== SKILLS SECTION ========== -->
-  <section class="section">
-    <h3>Skills & Tools</h3>
-    <div class="skills-grid">
-      <i class="devicon-python-plain colored"></i><i class="devicon-pandas-original colored"></i><i class="devicon-numpy-original colored"></i>
-      <i class="devicon-tensorflow-original colored"></i><i class="devicon-pytorch-original colored"></i><i class="devicon-jupyter-plain colored"></i>
-      <i class="devicon-mysql-plain colored"></i><i class="devicon-postgresql-plain colored"></i><i class="devicon-sqlite-plain colored"></i>
-      <i class="devicon-r-original colored"></i><i class="devicon-tableau-original colored"></i><i class="devicon-git-plain colored"></i>
-      <i class="devicon-github-original colored"></i><i class="devicon-docker-plain colored"></i><i class="devicon-azure-plain colored"></i>
-      <i class="devicon-amazonwebservices-original colored"></i><i class="devicon-html5-plain colored"></i><i class="devicon-css3-plain colored"></i>
-      <i class="devicon-javascript-plain colored"></i><i class="devicon-nodejs-plain colored"></i><i class="devicon-bootstrap-plain colored"></i>
-      <i class="devicon-figma-plain colored"></i>
-      <div>Seaborn</div><div>Scikit-learn</div><div>spaCy</div><div>PyCharm</div><div>IBM SPSS</div><div>Anaconda</div><div>Canva</div>
-    </div>
-  </section>
+<section class="section">
+  <h3>Skills & Tools</h3>
+  <div class="skills-grid">
+    <!-- Devicon-supported icons -->
+    <i class="devicon-python-plain colored skill-icon"></i>
+    <i class="devicon-pandas-original colored skill-icon"></i>
+    <i class="devicon-numpy-original colored skill-icon"></i>
+    <i class="devicon-tensorflow-original colored skill-icon"></i>
+    <i class="devicon-pytorch-original colored skill-icon"></i>
+    <i class="devicon-jupyter-plain colored skill-icon"></i>
+    <i class="devicon-mysql-plain colored skill-icon"></i>
+    <i class="devicon-postgresql-plain colored skill-icon"></i>
+    <i class="devicon-sqlite-plain colored skill-icon"></i>
+    <i class="devicon-r-original colored skill-icon"></i>
+    <i class="devicon-tableau-original colored skill-icon"></i>
+    <i class="devicon-git-plain colored skill-icon"></i>
+    <i class="devicon-github-original colored skill-icon"></i>
+    <i class="devicon-docker-plain colored skill-icon"></i>
+    <i class="devicon-azure-plain colored skill-icon"></i>
+    <i class="devicon-amazonwebservices-original colored skill-icon"></i>
+    <i class="devicon-html5-plain colored skill-icon"></i>
+    <i class="devicon-css3-plain colored skill-icon"></i>
+    <i class="devicon-javascript-plain colored skill-icon"></i>
+    <i class="devicon-nodejs-plain colored skill-icon"></i>
+    <i class="devicon-bootstrap-plain colored skill-icon"></i>
+    <i class="devicon-figma-plain colored skill-icon"></i>
+
+    <!-- Custom icons via SimpleIcons -->
+    <img src="https://cdn.simpleicons.org/seaborn" alt="Seaborn" class="skill-icon" title="Seaborn">
+    <img src="https://cdn.simpleicons.org/scikitlearn" alt="Scikit-learn" class="skill-icon" title="Scikit-learn">
+    <img src="https://cdn.simpleicons.org/spacy" alt="spaCy" class="skill-icon" title="spaCy">
+    <img src="https://cdn.simpleicons.org/pycharm" alt="PyCharm" class="skill-icon" title="PyCharm">
+    <img src="https://cdn.simpleicons.org/ibm" alt="IBM SPSS" class="skill-icon" title="IBM SPSS">
+    <img src="https://cdn.simpleicons.org/anaconda" alt="Anaconda" class="skill-icon" title="Anaconda">
+    <img src="https://cdn.simpleicons.org/canva" alt="Canva" class="skill-icon" title="Canva">
+  </div>
+</section>
+
 
   <!-- Part 2 (Contact section + Modal + Footer + Script)  -->
   <!-- ========== LET'S COLLABORATE ========== -->
