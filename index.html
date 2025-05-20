@@ -105,7 +105,7 @@
     .skills-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.8rem;
+      gap: 1rem;
       justify-content: center;
       margin-top: 1rem;
     }
@@ -114,20 +114,22 @@
     .skills-grid div,
     .skills-grid img {
       background: var(--card);
-      padding: 0.5rem 0.8rem;
-      border-radius: 6px;
-      font-size: 1.3rem;
+      padding: 0.8rem;
+      border-radius: 10px;
+      font-size: 2rem;
       color: var(--fg);
-      transition: transform 0.2s;
+      transition: transform 0.25s;
       display: flex;
       align-items: center;
       justify-content: center;
+      width: 3.2rem;
+      height: 3.2rem;
     }
     
     /* Image-specific tweaks */
     .skills-grid img {
-      width: 1.3rem;
-      height: 1.3rem;
+      width: 2rem;
+      height: 2rem;
       object-fit: contain;
     }
     
@@ -135,8 +137,8 @@
     .skills-grid i:hover,
     .skills-grid div:hover,
     .skills-grid img:hover {
-      transform: scale(1.1);
-      background: rgba(255, 255, 255, 0.05);
+      transform: scale(1.25);
+      background: rgba(255, 255, 255, 0.07);
     }
 
 
@@ -279,46 +281,61 @@
       <p>I approach every problem with attention to detail, a strategic mindset, and a collaborative spirit. Whether it’s segmenting customers or evaluating performance, I’m focused on creating real-world impact with data.</p>
     </div>
   </section>
-
+  
   <!-- ========== SKILLS SECTION ========== -->
-<section class="section">
-  <h3>Skills & Tools</h3>
-  <div class="skills-grid">
-    <!-- Devicon-supported icons -->
+  <section class="section">
+    <h3>Skills & Tools</h3>
+    <div class="skills-grid">
+    <!-- Core Python/Data stack -->
     <i class="devicon-python-plain colored skill-icon"></i>
+    <img src="https://cdn.simpleicons.org/seaborn" alt="Seaborn" class="skill-icon" title="Seaborn">
+    <img src="https://cdn.simpleicons.org/scikitlearn" alt="Scikit-learn" class="skill-icon" title="Scikit-learn">
+    <i class="devicon-tensorflow-original colored skill-icon"></i>
     <i class="devicon-pandas-original colored skill-icon"></i>
     <i class="devicon-numpy-original colored skill-icon"></i>
-    <i class="devicon-tensorflow-original colored skill-icon"></i>
+    <img src="https://cdn.simpleicons.org/matplotlib" alt="Matplotlib" class="skill-icon" title="Matplotlib">
+    <i class="devicon-docker-plain colored skill-icon"></i>
     <i class="devicon-pytorch-original colored skill-icon"></i>
+    <img src="https://cdn.simpleicons.org/scipy" alt="SciPy" class="skill-icon" title="SciPy">
+    <img src="https://cdn.simpleicons.org/pycharm" alt="PyCharm" class="skill-icon" title="PyCharm">
+    <img src="https://cdn.simpleicons.org/spacy" alt="spaCy" class="skill-icon" title="spaCy">
     <i class="devicon-jupyter-plain colored skill-icon"></i>
+
+    <!-- Databases -->
     <i class="devicon-mysql-plain colored skill-icon"></i>
     <i class="devicon-postgresql-plain colored skill-icon"></i>
     <i class="devicon-sqlite-plain colored skill-icon"></i>
+
+    <!-- Statistical tools -->
     <i class="devicon-r-original colored skill-icon"></i>
-    <i class="devicon-tableau-original colored skill-icon"></i>
+    <img src="https://cdn.simpleicons.org/tableau" alt="Tableau" class="skill-icon" title="Tableau">
+    <i class="devicon-spss-original colored skill-icon" title="IBM SPSS"></i>
+
+    <!-- IDEs & Platforms -->
+    <img src="https://cdn.simpleicons.org/visualstudiocode" alt="VSCode" class="skill-icon" title="VS Code">
+    <img src="https://cdn.simpleicons.org/anaconda" alt="Anaconda" class="skill-icon" title="Anaconda">
+
+    <!-- Version control -->
     <i class="devicon-git-plain colored skill-icon"></i>
     <i class="devicon-github-original colored skill-icon"></i>
-    <i class="devicon-docker-plain colored skill-icon"></i>
-    <i class="devicon-azure-plain colored skill-icon"></i>
+    <img src="https://cdn.simpleicons.org/githubpages" alt="GitHub Pages" class="skill-icon" title="GitHub Pages">
+
+    <!-- Cloud -->
     <i class="devicon-amazonwebservices-original colored skill-icon"></i>
+    <i class="devicon-azure-plain colored skill-icon"></i>
+
+    <!-- Web -->
     <i class="devicon-html5-plain colored skill-icon"></i>
     <i class="devicon-css3-plain colored skill-icon"></i>
     <i class="devicon-javascript-plain colored skill-icon"></i>
     <i class="devicon-nodejs-plain colored skill-icon"></i>
     <i class="devicon-bootstrap-plain colored skill-icon"></i>
-    <i class="devicon-figma-plain colored skill-icon"></i>
 
-    <!-- Custom icons via SimpleIcons -->
-    <img src="https://cdn.simpleicons.org/seaborn" alt="Seaborn" class="skill-icon" title="Seaborn">
-    <img src="https://cdn.simpleicons.org/scikitlearn" alt="Scikit-learn" class="skill-icon" title="Scikit-learn">
-    <img src="https://cdn.simpleicons.org/spacy" alt="spaCy" class="skill-icon" title="spaCy">
-    <img src="https://cdn.simpleicons.org/pycharm" alt="PyCharm" class="skill-icon" title="PyCharm">
-    <img src="https://cdn.simpleicons.org/ibm" alt="IBM SPSS" class="skill-icon" title="IBM SPSS">
-    <img src="https://cdn.simpleicons.org/anaconda" alt="Anaconda" class="skill-icon" title="Anaconda">
+    <!-- Design -->
+    <i class="devicon-figma-plain colored skill-icon"></i>
     <img src="https://cdn.simpleicons.org/canva" alt="Canva" class="skill-icon" title="Canva">
   </div>
 </section>
-
 
   <!-- Part 2 (Contact section + Modal + Footer + Script)  -->
   <!-- ========== LET'S COLLABORATE ========== -->
