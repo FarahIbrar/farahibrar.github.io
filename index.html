@@ -224,6 +224,16 @@
   margin-top: 2rem;
 }
 
+.contact-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 .contact-links {
   display: flex;
   flex-direction: column;
@@ -481,15 +491,15 @@
   <button onclick="document.getElementById('contactModal').style.display='flex'">Contact Me</button>
 </section-->
 
-<section class="padded-section">
-  <div class="contact-bar">
+<section class="contact-bar">
+  <div class="contact-inner">
     <div class="contact-links">
       <h3 class="section-heading">Get In Touch</h3>
       <div class="contact-icons">
-        <a href="mailto:farah11ibrar@gmail.com"><i class="fas fa-envelope"></i></a>
-        <a href="https://www.linkedin.com/in/farahibrar/" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/FarahIbrar" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://public.tableau.com/app/profile/farah.ibrar" target="_blank"><i class="fas fa-chart-bar"></i></a>
+        <a href="mailto:farah11ibrar@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/farahibrar/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/FarahIbrar" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://public.tableau.com/app/profile/farah.ibrar" target="_blank" title="Tableau"><i class="fas fa-chart-bar"></i></a>
       </div>
     </div>
     <button onclick="document.getElementById('contactModal').style.display='flex'">Contact Me</button>
