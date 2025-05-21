@@ -574,10 +574,11 @@
 
     if (response.ok) {
       form.innerHTML = `
+       document.querySelector(".modal-content").innerHTML = `
         <div style="text-align: center; font-size: 1.2rem;">
-          ✅ Message Sent Successfully!
-        </div>
-      `;
+         ✅ Message sent
+       </div>
+       `;
       setTimeout(() => {
         document.getElementById('contactModal').style.display = 'none';
         location.reload(); // optional: reload to restore the modal form
