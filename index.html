@@ -295,7 +295,7 @@
 }
 
 .contact-icons {
-  margin-top: 0.3rem;
+  margin-top: 0.5rem;
   display: flex;
   flex-wrap: wrap;
   gap: 1.2rem;
@@ -303,12 +303,17 @@
 
 .contact-icons a {
   color: var(--accent);
-  font-size: 1.4rem;
+  font-size: 1rem;
+  text-decoration: none;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
   transition: transform 0.2s, color 0.2s;
 }
 
 .contact-icons a:hover {
-  transform: scale(1.3);
+  transform: scale(1.1);
   color: white;
 }
 
@@ -325,6 +330,7 @@
 .contact-bar button:hover {
   transform: rotate(1deg) scale(1.05);
 }
+
 
 
 
@@ -535,14 +541,15 @@
   <div class="contact-links">
     <h3 class="section-heading">Get In Touch</h3>
     <div class="contact-icons">
-      <a href="mailto:farah11ibrar@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-      <a href="https://www.linkedin.com/in/farahibrar/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-      <a href="https://github.com/FarahIbrar" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-      <a href="https://public.tableau.com/app/profile/farah.ibrar" target="_blank" title="Tableau"><i class="fas fa-chart-bar"></i></a>
+      <a href="mailto:farah11ibrar@gmail.com" title="Email"><i class="fas fa-envelope"></i> Email</a>
+      <a href="https://www.linkedin.com/in/farahibrar/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="https://github.com/FarahIbrar" target="_blank" title="GitHub"><i class="fab fa-github"></i> GitHub</a>
+      <a href="https://public.tableau.com/app/profile/farah.ibrar" target="_blank" title="Tableau"><i class="fas fa-chart-bar"></i> Tableau</a>
     </div>
   </div>
   <button onclick="document.getElementById('contactModal').style.display='flex'">Contact Me</button>
 </section>
+
 
 
 
