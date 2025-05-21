@@ -202,8 +202,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 2.79rem;
-      height: 2.79rem;
+      width: 2.80rem;
+      height: 2.80rem;
       object-fit: contain;
     }
     
@@ -213,7 +213,7 @@
       background: rgba(255, 255, 255, 0.07);
     }
 
-    /* ========== CONTACT BAR ==========*/
+    /* ========== CONTACT BAR ==========
     .contact-bar {
       background: var(--card);
       display: flex;
@@ -266,7 +266,57 @@
     }
     .contact-bar button:hover {
       transform: rotate(1deg) scale(1.05);
-    }
+    }*/
+
+  /* ========== CONTACT BAR ========== */
+.contact-bar-wrapper {
+  background: var(--card);
+  margin-top: 2rem;
+  padding: 1.5rem 2rem;
+}
+
+.contact-bar {
+  max-width: 1350px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.contact-links h3 {
+  margin-bottom: 0.5rem;
+  color: var(--accent);
+  font-size: 1.4rem;
+  border-bottom: 2px solid var(--accent);
+  display: inline-block;
+}
+
+.contact-links a {
+  display: inline-block;
+  margin: 0.3rem 0.8rem 0.3rem 0;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+  transition: transform 0.2s;
+}
+.contact-links a:hover {
+  transform: scale(1.15);
+}
+
+.contact-bar button {
+  background: var(--accent);
+  color: white;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.contact-bar button:hover {
+  transform: rotate(1deg) scale(1.05);
+}
+
 
     /* ========== MODAL ========== */
     .modal {
@@ -462,17 +512,20 @@
   <!--section class="padded-section">
     <div class="contact-links">
       <h3>Get In Touch</h3-->
-  <section class="section contact-bar-wrapper">
-  <div class="contact-bar">
-    <div class="contact-links">
-      <h3 class="section-heading">Get In Touch</h3>
-      <a href="mailto:farah11ibrar@gmail.com"><i class="fas fa-envelope"></i> Email</a>
-      <a href="https://www.linkedin.com/in/farahibrar/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-      <a href="https://github.com/FarahIbrar" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-      <a href="https://public.tableau.com/app/profile/farah.ibrar" target="_blank"><i class="fas fa-chart-bar"></i> Tableau</a>
-    </div>
+  <!-- section class="section contact-bar-wrapper" -->
+  <div class="contact-bar-wrapper">
+    <div class="contact-bar">
+      <div class="contact-links">
+        <h3 class="section-heading">Get In Touch</h3>
+        <a href="mailto:farah11ibrar@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+        <a href="https://www.linkedin.com/in/farahibrar/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/FarahIbrar" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        <a href="https://public.tableau.com/app/profile/farah.ibrar" target="_blank"><i class="fas fa-chart-bar"></i> Tableau</a>
+      </div>
     <button onclick="document.getElementById('contactModal').style.display='flex'">Contact Me</button>
-  </section>
+    </div>
+  </div>
+  <!--</section>-->
 
   <!-- ========== CONTACT FORM MODAL ========== -->
   <div class="modal" id="contactModal">
