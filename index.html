@@ -101,7 +101,7 @@
       margin-bottom: 1.2rem;
     }
 
-    /* ========== SKILLS SECTION ========== */
+    /* SKILLS SECTION */
     .skills-grid {
       display: flex;
       flex-wrap: wrap;
@@ -110,36 +110,25 @@
       margin-top: 1rem;
     }
     
-    .skills-grid i,
-    .skills-grid div,
     .skills-grid img {
       background: var(--card);
       padding: 0.6rem;
       border-radius: 8px;
-      font-size: 1.75rem;
-      color: var(--fg);
       transition: transform 0.25s;
       display: flex;
       align-items: center;
       justify-content: center;
       width: 2.75rem;
       height: 2.75rem;
-    }
-    
-    /* Image-specific tweaks */
-    .skills-grid img {
-      width: 1.75rem;
-      height: 1.75rem;
       object-fit: contain;
     }
     
-    /* Hover effect for all */
-    .skills-grid i:hover,
-    .skills-grid div:hover,
+    /* Hover effect */
     .skills-grid img:hover {
       transform: scale(1.25);
       background: rgba(255, 255, 255, 0.07);
     }
+
 
 
     /* ========== CONTACT BAR ========== */
@@ -285,14 +274,40 @@
   <!-- ========== SKILLS SECTION ========== -->
   <section class="section">
   <h3>Skills & Tools</h3>
-  <a href="https://go-skill-icons.vercel.app/" target="_blank" rel="noopener noreferrer">
-    <img 
-      src="https://go-skill-icons.vercel.app/api/icons?i=python,seaborn,sklearn,tensorflow,pandas,numpy,matplotlib,docker,pytorch,scipy,pycharm,jupyter,mysql,postgresql,sqlite,r,tableau,vscode,anaconda,git,github,aws,azure,html,css,js,nodejs,bootstrap,figma,canva" 
-      alt="Skills and tools" 
-      class="skill-icons"
-    />
-  </a>
+  <div class="skills-grid">
+    <img src="https://go-skill-icons.vercel.app/api/icons?i=python" title="Python" />
+    <img src="https://go-skill-icons.vercel.app/api/icons?i=seaborn" title="Seaborn" />
+    <img src="https://go-skill-icons.vercel.app/api/icons?i=sklearn" title="Scikit-learn" />
+    <img src="https://go-skill-icons.vercel.app/api/icons?i=tensorflow" title="TensorFlow" />
+    <img src="https://go-skill-icons.vercel.app/api/icons?i=pandas" title="Pandas" />
+    <img src="https://go-skill-icons.vercel.app/api/icons?i=numpy" title="NumPy" />
+    <img src="https://go-skill-icons.vercel.app/api/icons?i=matplotlib" title="Matplotlib" />
+    <img src="https://go-skill-icons.vercel.app/api/icons?i=docker" title="Docker" />
+    <img src="https://go-skill-icons.vercel.app/api/icons?i=pytorch" title="PyTorch" />
+    <img src="https://go-skill-icons.vercel.app/api/icons?i=scipy" title="SciPy" />
+    <img src="https://go-skill-icons.vercel.app/api/icons?i=pycharm" title="PyCharm" />
+    <img src="https://go-skill-icons.vercel.app/api/icons?i=jupyter" title="Jupyter" />
+    <img src="https://go-skill-icons.vercel.app/api/icons?i=mysql" title="MySQL" />
+    <img src="https://go-skill-icons.vercel.app/api/icons?i=postgresql" title="PostgreSQL" />
+    <img src="https://go-skill-icons.vercel.app/api/icons?i=sqlite" title="SQLite" />
+    <img src="https://go-skill-icons.vercel.app/api/icons?i=r" title="R" />
+    <img src="https://go-skill-icons.vercel.app/api/icons?i=tableau" title="Tableau" />
+    <img src="https://go-skill-icons.vercel.app/api/icons?i=vscode" title="VS Code" />
+    <img src="https://go-skill-icons.vercel.app/api/icons?i=anaconda" title="Anaconda" />
+    <img src="https://go-skill-icons.vercel.app/api/icons?i=git" title="Git" />
+    <img src="https://go-skill-icons.vercel.app/api/icons?i=github" title="GitHub" />
+    <img src="https://go-skill-icons.vercel.app/api/icons?i=aws" title="AWS" />
+    <img src="https://go-skill-icons.vercel.app/api/icons?i=azure" title="Azure" />
+    <img src="https://go-skill-icons.vercel.app/api/icons?i=html" title="HTML" />
+    <img src="https://go-skill-icons.vercel.app/api/icons?i=css" title="CSS" />
+    <img src="https://go-skill-icons.vercel.app/api/icons?i=js" title="JavaScript" />
+    <img src="https://go-skill-icons.vercel.app/api/icons?i=nodejs" title="Node.js" />
+    <img src="https://go-skill-icons.vercel.app/api/icons?i=bootstrap" title="Bootstrap" />
+    <img src="https://go-skill-icons.vercel.app/api/icons?i=figma" title="Figma" />
+    <img src="https://go-skill-icons.vercel.app/api/icons?i=canva" title="Canva" />
+  </div>
 </section>
+
 
   <!-- Part 2 (Contact section + Modal + Footer + Script)  -->
   <!-- ========== LET'S COLLABORATE ========== -->
