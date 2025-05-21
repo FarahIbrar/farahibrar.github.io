@@ -306,13 +306,15 @@
 </head>
 <body>
 
-  <!-- ========== NAVBAR ========== -->
+  <!-- ========== NAVBAR working on this ========== -->
+  <body>
   <div class="navbar">
     <h1>Farah Ibrar</h1>
     <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
       <i id="theme-icon" class="fas fa-moon"></i>
     </button>
   </div>
+
 
   <!-- ========== HERO SECTION ========== -->
   <section class="hero">
@@ -322,7 +324,7 @@
     <p>Evidence. Insight. Impact.</p>
   </section>
 
-  <!-- ========== ABOUT ME - working on this ========== -->
+  <!-- ========== ABOUT ME ========== -->
   <section class="section two-column padded-section">
   <div class="about-left">
     <h3>About Me</h3>
@@ -451,6 +453,36 @@
       }
     }
   </script>
+
+  
+  <!-- ========== SCRIPT for the icon ========== -->
+  <script>
+  // Toggle theme and store preference
+  function toggleTheme() {
+    const body = document.body;
+    const icon = document.getElementById('theme-icon');
+    const isLight = body.classList.toggle('light');
+
+    // Save preference
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+
+    // Switch icon
+    icon.classList = isLight ? 'fas fa-sun' : 'fas fa-moon';
+  }
+
+  // Load saved preference
+  window.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+      document.body.classList.add('light');
+      const icon = document.getElementById('theme-icon');
+      if (icon) icon.classList = 'fas fa-sun';
+    }
+  });
+</script>
+</body>
+</html>
+
 
 </body>
 </html>
