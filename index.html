@@ -234,6 +234,17 @@
   flex-wrap: wrap;
 }
 
+.contact-icons i {
+  font-size: 1.3rem;
+  color: var(--accent);
+  transition: transform 0.2s;
+}
+
+.contact-icons a:hover i {
+  transform: scale(1.25);
+  color: white;
+}
+
 .contact-links {
   display: flex;
   flex-direction: column;
@@ -505,6 +516,7 @@
     <button onclick="document.getElementById('contactModal').style.display='flex'">Contact Me</button>
   </div>
 </section>
+
 
 
   <!-- ========== CONTACT FORM MODAL ========== -->
