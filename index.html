@@ -102,12 +102,19 @@
     }
     
     /* ========== TWO COLUMN LAYOUT ========== */
+.padded-section {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* Two-column layout */
 .two-column {
   display: flex;
   gap: 2rem;
   justify-content: space-between;
   align-items: flex-start;
-  max-width: 1100px;
+  max-width: 1200px;
+  margin: auto;
 }
 
 .about-left {
@@ -116,7 +123,7 @@
 
 .repo-right {
   flex: 1.2;
-  max-height: 320px;
+  max-height: 540px;
   overflow-y: auto;
   background: var(--card);
   padding: 1rem;
@@ -128,25 +135,27 @@
   margin-top: 0;
   color: var(--accent);
   font-size: 1.2rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
 }
 
-.repo-list a {
-  display: block;
-  margin-bottom: 0.75rem;
-  color: var(--accent);
-  text-decoration: none;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 0.5rem 0.75rem;
-  border-radius: 8px;
-  transition: background 0.2s;
+/* Repo card styles */
+.repo-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.repo-list a:hover {
-  background: rgba(255, 255, 255, 0.1);
+.repo-cards img {
+  width: 100%;
+  border-radius: 10px;
+  transition: transform 0.2s;
 }
 
-/* Mobile stack */
+.repo-cards img:hover {
+  transform: scale(1.03);
+}
+
+/* Stack on mobile */
 @media (max-width: 768px) {
   .two-column {
     flex-direction: column;
@@ -313,8 +322,8 @@
     <p>Evidence. Insight. Impact.</p>
   </section>
 
-  <!-- ========== ABOUT ME ========== -->
-  <section class="section two-column">
+  <!-- ========== ABOUT ME - working on this ========== -->
+  <section class="section two-column padded-section">
   <div class="about-left">
     <h3>About Me</h3>
     <div class="subsection"><strong>Who I Am</strong>
@@ -330,11 +339,23 @@
 
   <div class="repo-right">
     <h4>My Repositories</h4>
-    <div id="repo-list" class="repo-list">
-      <p>Loading...</p>
+    <div class="repo-cards">
+      <a href="https://github.com/FarahIbrar/me-in-a-nutshell" target="_blank">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=me-in-a-nutshell&theme=tokyonight" />
+      </a>
+      <a href="https://github.com/FarahIbrar/KPMG-Job-Simulation" target="_blank">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=KPMG-Job-Simulation&theme=tokyonight" />
+      </a>
+      <a href="https://github.com/FarahIbrar/Programming-in-Python" target="_blank">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=Programming-in-Python&theme=tokyonight" />
+      </a>
+      <a href="https://github.com/FarahIbrar/FarahIbrar" target="_blank">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=FarahIbrar&theme=tokyonight" />
+      </a>
     </div>
   </div>
 </section>
+
 
   
   <!-- SKILLS SECTION -->
