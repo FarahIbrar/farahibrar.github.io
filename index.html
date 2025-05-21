@@ -83,23 +83,63 @@
       font-size: 0.95rem;
       color: #888;
     }
+    
 
-    /* ========== SECTIONS ========== */
-    .section {
-      padding: 1.5rem 1rem;
-      max-width: 900px;
-      margin: auto;
-    }
-    .section h3 {
-      color: var(--accent);
-      font-size: 1.4rem;
-      margin-bottom: 1rem;
-      border-bottom: 2px solid var(--accent);
-      display: inline-block;
-    }
-    .subsection {
-      margin-bottom: 1.2rem;
-    }
+    /* ========== TWO COLUMN LAYOUT ========== */
+.two-column {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1100px;
+}
+
+.about-left {
+  flex: 2;
+}
+
+.repo-right {
+  flex: 1.2;
+  max-height: 320px;
+  overflow-y: auto;
+  background: var(--card);
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+}
+
+.repo-right h4 {
+  margin-top: 0;
+  color: var(--accent);
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+}
+
+.repo-list a {
+  display: block;
+  margin-bottom: 0.75rem;
+  color: var(--accent);
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.repo-list a:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile stack */
+@media (max-width: 768px) {
+  .two-column {
+    flex-direction: column;
+  }
+  .repo-right {
+    max-height: none;
+  }
+}
+
 
     /* SKILLS SECTION */
     .skills-grid {
@@ -258,7 +298,8 @@
   </section>
 
   <!-- ========== ABOUT ME ========== -->
-  <section class="section">
+  <section class="section two-column">
+  <div class="about-left">
     <h3>About Me</h3>
     <div class="subsection"><strong>Who I Am</strong>
       <p>I’m Farah Ibrar, a data scientist with a background in Biomedical Sciences and Immunology. My journey began in academic research, but my curiosity led me to data-driven problem-solving.</p>
@@ -269,9 +310,18 @@
     <div class="subsection"><strong>How I Work</strong>
       <p>I approach every problem with attention to detail, a strategic mindset, and a collaborative spirit. Whether it’s segmenting customers or evaluating performance, I’m focused on creating real-world impact with data.</p>
     </div>
-  </section>
+  </div>
+
+  <div class="repo-right">
+    <h4>My Repositories</h4>
+    <div id="repo-list" class="repo-list">
+      <p>Loading...</p>
+    </div>
+  </div>
+</section>
+
   
-  <!-- ========== SKILLS SECTION ========== -->
+  <!-- SKILLS SECTION -->
   <section class="section">
   <h3>Skills & Tools</h3>
   <div class="skills-grid">
@@ -364,6 +414,28 @@
       }
     }
   </script>
+
+   <!-- ========== SCRIPT for Repo ========== -->
+  <script>
+  async function loadRepos() {
+    const username = 'FarahIbrar';
+    const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated`);
+    const data = await response.json();
+    const repoList = document.getElementById('repo-list');
+
+    repoList.innerHTML = ''; // Clear loading text
+    data.slice(0, 4).forEach(repo => {
+      const link = document.createElement('a');
+      link.href = repo.html_url;
+      link.target = '_blank';
+      link.textContent = repo.name;
+      repoList.appendChild(link);
+    });
+  }
+
+  loadRepos();
+</script>
+
 
 </body>
 </html>
