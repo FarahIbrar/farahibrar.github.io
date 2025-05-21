@@ -9,37 +9,48 @@
   <script src="https://kit.fontawesome.com/a2e0f1f390.js" crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" rel="stylesheet">
 
-  <!-- ========== STYLES ========== -->
-  <style>
-    :root {
-      --bg: #0d1117;
-      --fg: #c9d1d9;
-      --accent: #58a6ff;
-      --card: #161b22;
-      --button: linear-gradient(to right, #4e9af1, #705df2);
-    }
-    body.light {
-      --bg: #ffffff;
-      --fg: #1f1f1f;
-      --accent: #007acc;
-      --card: #f2f2f2;
-      --button: linear-gradient(to right, #007acc, #005ca9);
-    }
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--fg);
-      font-family: 'Inter', sans-serif;
-      transition: background 0.3s, color 0.3s;
-    }
-  /* ========== added this now ========== */
-    .section {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
-  text-align: left;
-}
+<!-- ========== STYLES ========== -->
+<style>
+  :root {
+    --bg: #0d1117;
+    --fg: #c9d1d9;
+    --accent: #58a6ff;
+    --card: #161b22;
+    --button: linear-gradient(to right, #4e9af1, #705df2);
+  }
 
+  body.light {
+    --bg: #ffffff;
+    --fg: #1f1f1f;
+    --accent: #007acc;
+    --card: #f2f2f2;
+    --button: linear-gradient(to right, #007acc, #005ca9);
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Inter', sans-serif;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  /* ========== GENERAL SECTIONS ========== */
+  .section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    text-align: left;
+  }
+
+  .section-heading {
+    color: var(--accent);
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--accent);
+    display: inline-block;
+  }
+</style>
 
     /* ========== NAVBAR ========== */
     .navbar {
@@ -392,9 +403,12 @@
 </section>
   
   <!-- skills section -->
-  <!--section class="section" -->
+  <!--section class="section"
   <section class="padded-section">
   <h3>Skills & Tools</h3>
+  <div class="skills-grid" -->
+  <section class="padded-section">
+  <h3 class="section-heading">Skills & Tools</h3>
   <div class="skills-grid">
     <img src="https://go-skill-icons.vercel.app/api/icons?i=python" title="Python" />
     <img src="https://go-skill-icons.vercel.app/api/icons?i=seaborn" title="Seaborn" />
@@ -433,16 +447,22 @@
   <!-- Part 2 (Contact section + Modal + Footer + Script)  -->
   <!-- ========== LET'S COLLABORATE ========== -->
   <!--section class="section"-->
-  <section class="padded-section">
+  <!--section class="padded-section">
     <h3>Let’s Collaborate</h3>
+  <section class="padded-section"-->
+  <h3 class="section-heading">Let’s Collaborate</h3>
     <p>Have a project in mind, a challenge to solve, or an idea to explore? I am always open to connecting with professionals who share a passion for data and impact. Let’s build something meaningful together. Feel free to get in touch. I am always open to new opportunities and meaningful conversations.</p>
   </section>
 
   <!-- ========== CONTACT SECTION ========== -->
   <!--section class="section contact-bar"-->
-  <section class="padded-section">
+  <!--section class="padded-section">
     <div class="contact-links">
-      <h3>Get In Touch</h3>
+      <h3>Get In Touch</h3-->
+  <section class="padded-section">
+  <div class="contact-bar">
+    <div class="contact-links">
+      <h3 class="section-heading">Get In Touch</h3>
       <a href="mailto:farah11ibrar@gmail.com"><i class="fas fa-envelope"></i> Email</a>
       <a href="https://www.linkedin.com/in/farahibrar/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
       <a href="https://github.com/FarahIbrar" target="_blank"><i class="fab fa-github"></i> GitHub</a>
