@@ -502,10 +502,12 @@
         I'm always open to discussing new projects, job opportunities, or partnerships. Feel free to reach out using the form below or through my social channels.
       </p>
 
-      <form id="contactForm" action="https://submit-form.com/s1eLtaukd" method="POST">
+      <form action="https://submit-form.com/s1eLtaukd" method="POST">
         <input type="text" name="name" placeholder="Your Name" required>
         <input type="email" name="email" placeholder="Your Email Address" required>
         <textarea name="message" rows="5" placeholder="Tell me about your project or job opportunity..." required></textarea>
+        <!-- Optional: Add redirect back to your site after submission -->
+        <input type="hidden" name="_redirect" value="https://yourdomain.com/thank-you.html">
         <button type="submit">Send Message →</button>
       </form>
     </div>
@@ -561,13 +563,14 @@
 <!-- ========== SCRIPT for the messages ========== --> 
 <script>
   const form = document.querySelector("#contactModal form");
+  const modalContent = document.querySelector(".modal-content");
+  const originalContent = modalContent.innerHTML;
 
   form.addEventListener("submit", async function (e) {
     e.preventDefault();
-    
+
     const formData = new FormData(form);
 
-    // Send the form data using fetch
     await fetch(form.action, {
       method: "POST",
       body: formData,
@@ -576,20 +579,20 @@
       }
     });
 
-    // Replace entire modal content with the success message
-    const modalContent = document.querySelector(".modal-content");
     modalContent.innerHTML = `
       <div style="text-align: center; font-size: 1.2rem; padding: 2rem;">
         ✅ Message sent
       </div>
     `;
 
-    // Close modal after 3 seconds
+    // Close modal after 3 seconds and reset form
     setTimeout(() => {
       document.getElementById("contactModal").style.display = "none";
+      modalContent.innerHTML = originalContent; // Reset form content
     }, 3000);
   });
 </script>
+
 
 
 </body>
