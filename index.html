@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- metadata and fonts -->
+  <!-- metadata and fonts>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Farah Ibrar – Data Scientist</title>
@@ -14,6 +14,26 @@
   referrerpolicy="no-referrer"
   >
   <link href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" rel="stylesheet">
+
+  <!-- Metadata and fonts -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Farah Ibrar – Data Scientist</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome (solid + icons) -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  integrity="sha512-HFs1w2zYOuj7KZTI4XqKdO3xftKbYBLjPB+gJ8mr9ly91/q8k89YHz+oNugwVj4MVnGGeFF3fbm5qRhdphLJ9w=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+
+<!-- Devicon -->
+<link href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" rel="stylesheet" />
 
 
 <!-- styles -->
@@ -58,7 +78,7 @@
     display: inline-block;
   }
 
-/* ========== NAVBAR ========== */
+/* ========== NAVBAR ========== /
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -80,19 +100,53 @@
   border: none;
   cursor: pointer;
   /*padding: 0.4rem;*/
-  color: var(--accent);
+  /*color: var(--accent);
 }
 
 .theme-toggle i {
   font-size: 1.4rem;
   padding: 0.3rem;
   /*pointer-events: none;*/
-}
+/*}
 
 .theme-toggle:hover {
   background-color: rgba(255, 255, 255, 0.05);
   border-radius: 6px;
+}*/
+
+  .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: var(--card);
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
+
+.navbar h1 {
+  margin: 0;
+  color: var(--accent);
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--accent);
+}
+
+.theme-toggle i {
+  font-size: 1.5rem;
+  padding: 0.4rem;
+}
+
+.theme-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
 
     /* ========== HERO SECTION ========== */
     .hero {
@@ -421,6 +475,8 @@
 <div class="repo-right">
     <h4>My Repositories</h4>
     <div class="repo-cards">
+      <a href="https://github.com/FarahIbrar/me-in-a-nutshell" target="_blank">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=me-in-a-nutshell&theme=tokyonight" />
       <a href="https://github.com/FarahIbrar/KPMG-Job-Simulation" target="_blank">
         <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=KPMG-Job-Simulation&theme=tokyonight" />
       </a>
@@ -551,30 +607,29 @@
 
   
   <!-- ========== SCRIPT for the icon ========== -->
-  <script>
-  // Toggle theme and store preference
+<script>
   function toggleTheme() {
     const body = document.body;
     const icon = document.getElementById('theme-icon');
     const isLight = body.classList.toggle('light');
 
-    // Save preference
     localStorage.setItem('theme', isLight ? 'light' : 'dark');
-
-    // Switch icon
-    icon.classList = isLight ? 'fas fa-sun' : 'fas fa-moon';
+    icon.className = isLight ? 'fas fa-sun' : 'fas fa-moon';
   }
 
-  // Load saved preference
   window.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('theme');
+    const icon = document.getElementById('theme-icon');
+
     if (savedTheme === 'light') {
       document.body.classList.add('light');
-      const icon = document.getElementById('theme-icon');
-      if (icon) icon.classList = 'fas fa-sun';
+      if (icon) icon.className = 'fas fa-sun';
+    } else {
+      if (icon) icon.className = 'fas fa-moon';
     }
   });
 </script>
+
 
 <!-- ========== SCRIPT for the messages ========== --> 
 <script>
