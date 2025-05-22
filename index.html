@@ -81,14 +81,14 @@
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0.4rem;
+  /*padding: 0.4rem;*/
   color: var(--accent);
 }
 
 .theme-toggle i {
   font-size: 1.4rem;
   padding: 0.3rem;
-  pointer-events: none;
+  /*pointer-events: none;*/
 }
 
 .theme-toggle:hover {
@@ -389,10 +389,11 @@
   <div class="navbar">
     <h1>Farah Ibrar</h1>
     <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
-      <i id="theme-icon" class="fas fa-moon"></i>
+      <i id="theme-icon" class="fa-solid fa-moon"></i>
     </button>
   </div>
 
+    <p><i class="fas fa-check-circle"></i> Font Awesome test</p>
 
   <!-- ========== HERO SECTION ========== -->
   <section class="hero">
@@ -567,7 +568,7 @@
     localStorage.setItem('theme', isLight ? 'light' : 'dark');
 
     // Switch icon
-    icon.classList = isLight ? 'fas fa-sun' : 'fas fa-moon';
+    icon.classList = isLight ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
   }
 
   // Load saved preference
@@ -576,7 +577,7 @@
     if (savedTheme === 'light') {
       document.body.classList.add('light');
       const icon = document.getElementById('theme-icon');
-      if (icon) icon.classList = 'fas fa-sun';
+      if (icon) icon.classList = 'fa-solid fa-sun';
     }
   });
 </script>
