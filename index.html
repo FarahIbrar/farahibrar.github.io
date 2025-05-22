@@ -23,7 +23,7 @@
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-<!-- Font Awesome (solid + icons) -->
+<!-- Font Awesome 6.5.0 -->
 <link
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -55,7 +55,7 @@
   }
 
   body {
-    margin: 0;
+    /*margin: 0;*/
     background: var(--bg);
     color: var(--fg);
     font-family: 'Inter', sans-serif;
@@ -138,13 +138,13 @@
 }
 
 .theme-toggle i {
-  font-size: 1.5rem;
-  padding: 0.4rem;
+  font-size: 1.4rem;
+  padding: 0.3rem;
 }
 
 .theme-toggle:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
 }
   
   #theme-icon::before {
@@ -626,16 +626,12 @@
   window.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('theme');
     const icon = document.getElementById('theme-icon');
-
     if (savedTheme === 'light') {
       document.body.classList.add('light');
-      if (icon) icon.className = 'fas fa-sun';
-    } else {
-      if (icon) icon.className = 'fas fa-moon';
+      icon.className = 'fas fa-sun';
     }
   });
 </script>
-
 
 <!-- ========== SCRIPT for the messages ========== --> 
 <script>
