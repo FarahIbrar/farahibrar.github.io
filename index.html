@@ -6,15 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Farah Ibrar – Data Scientist</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <!--script src="https://kit.fontawesome.com/a2e0f1f390.js" crossorigin="anonymous"></script-->
-  <!-- Font Awesome (RELIABLE ALL ICONS) -->
-  <link
+ <link
   rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-  integrity="sha512-dymDYZ7W2Sl5z8vCvbjWFa3yRUfN2Y0iOcbAKDFt2U0v1EkcdARsFLdyR7ZG9WxNWeZ/tCnlc4Sgj4ebmC6iEg=="
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  integrity="sha512-7FUsnVJXB+Y1iFW0tIpb9mndXo6N8Asq09vhU+tQ0htWSoXQOVeYY1RgJViq9X62rNObGeDbDS8YLOQIg9X1Jg=="
   crossorigin="anonymous"
   referrerpolicy="no-referrer"
-    />
+/>
   <link href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" rel="stylesheet">
 
 
@@ -389,11 +387,9 @@
   <div class="navbar">
     <h1>Farah Ibrar</h1>
     <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
-      <i id="theme-icon" class="fa-solid fa-moon"></i>
+      <i id="theme-icon" class="fas fa-moon"></i>
     </button>
   </div>
-
-    <p><i class="fas fa-check-circle"></i> Font Awesome test</p>
 
   <!-- ========== HERO SECTION ========== -->
   <section class="hero">
@@ -568,7 +564,7 @@
     localStorage.setItem('theme', isLight ? 'light' : 'dark');
 
     // Switch icon
-    icon.classList = isLight ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+    icon.classList = isLight ? 'fas fa-sun' : 'fas fa-moon';
   }
 
   // Load saved preference
@@ -577,7 +573,7 @@
     if (savedTheme === 'light') {
       document.body.classList.add('light');
       const icon = document.getElementById('theme-icon');
-      if (icon) icon.classList = 'fa-solid fa-sun';
+      if (icon) icon.classList = 'fas fa-sun';
     }
   });
 </script>
