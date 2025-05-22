@@ -590,23 +590,7 @@
     © 2025 Farah Ibrar | All rights reserved.
   </div>
 
-  <!-- ========== SCRIPT ========== -->
-  <!--script>
-    function toggleTheme() {
-      document.body.classList.toggle('light');
-      const icon = document.getElementById('theme-icon');
-      icon.className = document.body.classList.contains('light') ? 'fas fa-sun' : 'fas fa-moon';
-    }
-
-    window.onclick = function(e) {
-      if (e.target === document.getElementById('contactModal')) {
-        document.getElementById('contactModal').style.display = "none";
-      }
-    }
-  </script-->
-
-  
-  <!-- ========== SCRIPT for the icon ========== -->
+  <!-- ========== SCRIPT for the icon, the one almost worked ========== >
 <script>
   function toggleTheme() {
     const body = document.body;
@@ -625,7 +609,35 @@
       icon.className = 'fas fa-sun';
     }
   });
+  </script-->
+
+  <script>
+  function toggleTheme() {
+    const body = document.body;
+    const icon = document.getElementById('theme-icon');
+    const isLight = body.classList.toggle('light');
+
+    // Save the preference
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+
+    // Fix: toggle correct icon for the mode you're switching TO
+    icon.classList = isLight ? 'fas fa-moon' : 'fas fa-sun';
+  }
+
+  // Load saved preference
+  window.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme');
+    const icon = document.getElementById('theme-icon');
+
+    if (savedTheme === 'light') {
+      document.body.classList.add('light');
+      if (icon) icon.classList = 'fas fa-moon'; // Light mode, show moon to switch back to dark
+    } else {
+      if (icon) icon.classList = 'fas fa-sun'; // Dark mode, show sun to switch to light
+    }
+  });
 </script>
+
 
 <!-- ========== SCRIPT for the messages ========== --> 
 <script>
