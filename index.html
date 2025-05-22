@@ -560,7 +560,7 @@
   });
 </script>
 
-<!-- ========== SCRIPT for the messages ========== --> 
+<!-- ========== SCRIPT for the messages ========== > 
 <script>
   const form = document.querySelector("#contactModal form");
   const modalContent = document.querySelector(".modal-content");
@@ -591,8 +591,48 @@
       modalContent.innerHTML = originalContent; // Reset form content
     }, 3000);
   });
-</script>
+</script-->
 
+<script>
+  const form = document.querySelector("#contactModal form");
+  const modalContent = document.querySelector(".modal-content");
+  const originalContent = modalContent.innerHTML;
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: formData
+      });
+
+      if (response.ok) {
+        modalContent.innerHTML = `
+          <div style="text-align: center; font-size: 1.2rem; padding: 2rem;">
+            ✅ Message sent
+          </div>
+        `;
+      } else {
+        throw new Error("Submission failed");
+      }
+
+    } catch (error) {
+      modalContent.innerHTML = `
+        <div style="text-align: center; font-size: 1.2rem; padding: 2rem; color: red;">
+          ❌ Failed to send message. Please try again.
+        </div>
+      `;
+    }
+
+    setTimeout(() => {
+      document.getElementById("contactModal").style.display = "none";
+      modalContent.innerHTML = originalContent;
+    }, 3000);
+  });
+</script>
 
 
 </body>
