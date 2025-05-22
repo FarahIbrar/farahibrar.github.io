@@ -387,7 +387,7 @@
   <div class="navbar">
     <h1>Farah Ibrar</h1>
     <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
-      <i id="theme-icon" class="fa-solid fa-moon"></i>
+      <i id="theme-icon" class="fas fa-moon"></i>
     </button>
   </div>
 
@@ -564,7 +564,7 @@
     localStorage.setItem('theme', isLight ? 'light' : 'dark');
 
     // Switch icon
-    icon.classList = isLight ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+    icon.classList = isLight ? 'fas fa-sun' : 'fas fa-moon';
   }
 
   // Load saved preference
@@ -573,7 +573,7 @@
     if (savedTheme === 'light') {
       document.body.classList.add('light');
       const icon = document.getElementById('theme-icon');
-      if (icon) icon.classList = 'fa-solid fa-sun';
+      if (icon) icon.classList = 'fas fa-sun';
     }
   });
 </script>
