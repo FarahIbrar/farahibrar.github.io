@@ -502,13 +502,12 @@
         I'm always open to discussing new projects, job opportunities, or partnerships. Feel free to reach out using the form below or through my social channels.
       </p>
 
-      <form id="contactForm" action="https://submit-form.com/s1eLtaukd" method="POST">
-  <input type="text" name="name" placeholder="Your Name" required>
-  <input type="email" name="email" placeholder="Your Email Address" required>
-  <textarea name="message" rows="5" placeholder="Tell me about your project or job opportunity..." required></textarea>
-  <button type="submit">Send Message →</button>
-</form>
-
+      <form action="https://submit-form.com/s1eLtaukd" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email Address" required>
+        <textarea name="message" placeholder="Tell me about your project or job opportunity..." rows="5" required></textarea>
+        <button type="submit">Send Message →</button>
+      </form>
     </div>
   </div>
 
@@ -559,7 +558,7 @@
   });
 </script>
 
-<!-- ========== SCRIPT for the messages ========== > 
+<!-- ========== SCRIPT for the messages ========== --> 
 <script>
   const form = document.querySelector("#contactModal form");
   const modalContent = document.querySelector(".modal-content");
@@ -590,48 +589,8 @@
       modalContent.innerHTML = originalContent; // Reset form content
     }, 3000);
   });
-</script-->
-
-<script>
-  const form = document.querySelector("#contactModal form");
-  const modalContent = document.querySelector(".modal-content");
-  const originalContent = modalContent.innerHTML;
-
-  form.addEventListener("submit", async function (e) {
-    e.preventDefault();
-
-    const formData = new FormData(form);
-
-    try {
-      const response = await fetch("https://submit-form.com/s1eLtaukd", {
-        method: "POST",
-        body: formData
-      });
-
-      if (!response.ok) {
-        throw new Error("Formspark rejected the submission");
-      }
-
-      modalContent.innerHTML = `
-        <div style="text-align: center; font-size: 1.2rem; padding: 2rem;">
-          ✅ Message sent successfully!
-        </div>
-      `;
-    } catch (error) {
-      modalContent.innerHTML = `
-        <div style="text-align: center; font-size: 1.2rem; padding: 2rem; color: red;">
-          ❌ Failed to send message. Please try again.
-        </div>
-      `;
-    }
-
-    // Close and reset modal after 3 seconds
-    setTimeout(() => {
-      document.getElementById("contactModal").style.display = "none";
-      modalContent.innerHTML = originalContent;
-    }, 3000);
-  });
 </script>
+
 
 
 
