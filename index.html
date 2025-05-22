@@ -140,14 +140,6 @@
   background-color: rgba(255, 255, 255, 0.05);
   border-radius: 6px;
 }
-  
-  #theme-icon::before {
-  content: "\f186"; /* fa-moon unicode */
-  font-family: "Font Awesome 6 Free";
-  font-weight: 900;
-  color: var(--accent);
-}
-
 
 
     /* ========== HERO SECTION ========== */
@@ -611,32 +603,33 @@
   });
   </script-->
 
-  <script>
+<script>
   function toggleTheme() {
     const body = document.body;
     const icon = document.getElementById('theme-icon');
-    const isLight = body.classList.toggle('light');
+    const isNowLight = body.classList.toggle('light');
 
     // Save the preference
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    localStorage.setItem('theme', isNowLight ? 'light' : 'dark');
 
-    // Fix: toggle correct icon for the mode you're switching TO
-    icon.classList = isLight ? 'fas fa-moon' : 'fas fa-sun';
+    // Set the icon to represent the *opposite* theme for toggling
+    icon.classList = isNowLight ? 'fas fa-moon' : 'fas fa-sun';
   }
 
-  // Load saved preference
+  // Set icon on load
   window.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('theme');
     const icon = document.getElementById('theme-icon');
 
     if (savedTheme === 'light') {
       document.body.classList.add('light');
-      if (icon) icon.classList = 'fas fa-moon'; // Light mode, show moon to switch back to dark
+      if (icon) icon.classList = 'fas fa-moon'; // light mode → show moon to toggle to dark
     } else {
-      if (icon) icon.classList = 'fas fa-sun'; // Dark mode, show sun to switch to light
+      if (icon) icon.classList = 'fas fa-sun'; // dark mode → show sun to toggle to light
     }
   });
 </script>
+
 
 
 <!-- ========== SCRIPT for the messages ========== --> 
