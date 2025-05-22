@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Farah Ibrar – Data Scientist</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
- <link
+<link
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
   integrity="sha512-7FUsnVJXB+Y1iFW0tIpb9mndXo6N8Asq09vhU+tQ0htWSoXQOVeYY1RgJViq9X62rNObGeDbDS8YLOQIg9X1Jg=="
@@ -387,7 +387,7 @@
   <div class="navbar">
     <h1>Farah Ibrar</h1>
     <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
-      <i id="theme-icon" class="fas fa-moon"></i>
+      <i id="theme-icon" class="fa-solid fa-moon"></i>
     </button>
   </div>
 
@@ -564,7 +564,7 @@
     localStorage.setItem('theme', isLight ? 'light' : 'dark');
 
     // Switch icon
-    icon.classList = isLight ? 'fas fa-sun' : 'fas fa-moon';
+    icon.classList = isLight ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
   }
 
   // Load saved preference
@@ -573,7 +573,7 @@
     if (savedTheme === 'light') {
       document.body.classList.add('light');
       const icon = document.getElementById('theme-icon');
-      if (icon) icon.classList = 'fas fa-sun';
+      if (icon) icon.classList = 'fa-solid fa-sun';
     }
   });
 </script>
