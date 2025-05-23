@@ -1,20 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- metadata and fonts>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Farah Ibrar – Data Scientist</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-  integrity="sha512-dO3Gav+Ejk8lxIUy+FcUPlMz7VJ6N1gLqzWa1QaZwL+b1bPq8QFSbg3on2Zx3kT+kWx6KaZsYvDcYdLwEXdR4g=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-  >
-  <link href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" rel="stylesheet">
-
+  
   <!-- Metadata and fonts -->
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -28,6 +15,9 @@
 
 <!-- Devicon -->
 <link href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" rel="stylesheet" />
+<!-- for background animation -->
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js"></script>
+
 
 
 <!-- styles -->
@@ -72,42 +62,7 @@
     display: inline-block;
   }
 
-/* ========== NAVBAR ========== /
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background: var(--card);
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-.navbar h1 {
-  margin: 0;
-  color: var(--accent);
-}
-
-.theme-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  /*padding: 0.4rem;*/
-  /*color: var(--accent);
-}
-
-.theme-toggle i {
-  font-size: 1.4rem;
-  padding: 0.3rem;
-  /*pointer-events: none;*/
-/*}
-
-.theme-toggle:hover {
-  background-color: rgba(255, 255, 255, 0.05);
-  border-radius: 6px;
-}*/
-
+/* ========== NAVBAR ========== */
   .navbar {
   display: flex;
   justify-content: space-between;
@@ -169,6 +124,31 @@
       font-size: 0.95rem;
       color: #888;
     }
+
+  /* New addition for styling background effects */
+  .hero {
+  text-align: center;
+  padding: 2.5rem 1rem 2rem;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+.hero #tsparticles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+.hero img,
+.hero h2,
+.hero h3,
+.hero p {
+  position: relative;
+  z-index: 1;
+}
+
     
     /* SECTIONS */
     .section {
@@ -186,7 +166,8 @@
     .subsection {
       margin-bottom: 1.2rem;
     }
-    
+
+  
 /* two-column layout */
   .padded-section {
     max-width: 1350px;
@@ -429,6 +410,11 @@
 </head>
 <body>
 
+
+
+
+
+  
   <!-- HTML part starts here -->
   <!-- ========== NAVBAR working ========== -->
   <body>
@@ -441,11 +427,13 @@
 
   <!-- ========== HERO SECTION ========== -->
   <section class="hero">
+    <div id="tsparticles"></div> <!-- Background effect -->
     <img src="profile.jpg" alt="Farah Ibrar">
     <h2>Farah Ibrar</h2>
     <h3>Data Scientist</h3>
     <p>Evidence. Insight. Impact.</p>
   </section>
+
 
   <!-- about me -->
   <section class="section two-column padded-section">
@@ -688,6 +676,45 @@
     }, 3000);
   });
 </script>
+
+    
+<!-- ========== SCRIPT for the background effects ========== --> 
+    <script>
+  tsParticles.load("tsparticles", {
+    fullScreen: { enable: false },
+    background: { color: "#0d0d0d" }, // match your theme
+    particles: {
+      number: { value: 50 },
+      color: { value: "#5fa8f8" }, // match your accent color
+      shape: { type: "line" },
+      opacity: { value: 0.5 },
+      size: { value: 1 },
+      move: {
+        enable: true,
+        speed: 1,
+        attract: { enable: false }
+      },
+      line_linked: {
+        enable: true,
+        distance: 120,
+        color: "#5fa8f8",
+        opacity: 0.4,
+        width: 1
+      }
+    },
+    interactivity: {
+      events: {
+        onhover: { enable: true, mode: "repulse" },
+        onclick: { enable: false }
+      },
+      modes: {
+        repulse: { distance: 100 }
+      }
+    },
+    detectRetina: true
+  });
+</script>
+
 
 </body>
 </html>
