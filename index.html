@@ -279,50 +279,54 @@
 }*/
 
 
-.project-split {
+.repo-split {
   display: flex;
   height: 100vh;
+  width: 100%;
   scroll-snap-align: start;
 }
 
-.project-text {
+.repo-left {
   flex: 1;
-  background-color: var(--bg); /* dark */
+  background-color: #0d1117; /* darker shade */
   color: var(--accent);
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 2rem;
-  text-align: center;
 }
 
-.project-text h2 {
+.repo-left-inner {
+  max-width: 80%;
+  text-align: left;
+}
+
+.repo-left h2 {
   font-size: 2rem;
-  line-height: 1.2;
-  color: var(--accent);
+  line-height: 1.3;
   margin-bottom: 1rem;
 }
 
-.project-text p {
+.repo-left p {
   color: var(--fg);
   font-size: 1rem;
 }
 
-.project-showcase {
+.repo-right-panel {
   flex: 1;
-  background-color: var(--card); /* lighter blue/dark */
+  background-color: #161b22; /* slightly lighter blue/dark */
+  padding: 2rem;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 2rem;
-  overflow-y: auto;
 }
 
-.project-showcase h4 {
+.repo-right-panel h4 {
+  margin-top: 0;
   color: var(--accent);
-  margin-bottom: 1rem;
   font-size: 1.2rem;
+  margin-bottom: 1rem;
 }
 
 .repo-cards {
@@ -341,32 +345,36 @@
   transform: scale(1.03);
 }
 
-/* Scrollbar styles */
-.project-showcase::-webkit-scrollbar {
+/* Scrollbar styling */
+.repo-right-panel::-webkit-scrollbar {
   width: 8px;
 }
-
-.project-showcase::-webkit-scrollbar-thumb {
+.repo-right-panel::-webkit-scrollbar-thumb {
   background-color: #888;
   border-radius: 6px;
 }
-
-.project-showcase::-webkit-scrollbar-track {
+.repo-right-panel::-webkit-scrollbar-track {
   background: transparent;
 }
 
-/* Responsive: stack on mobile */
+/* Mobile responsiveness */
 @media (max-width: 768px) {
-  .project-split {
+  .repo-split {
     flex-direction: column;
   }
 
-  .project-text,
-  .project-showcase {
+  .repo-left,
+  .repo-right-panel {
     flex: none;
     height: 50vh;
+    width: 100%;
+  }
+
+  .repo-left-inner {
+    text-align: center;
   }
 }
+
 
 
 
@@ -638,13 +646,15 @@
 
 
   <!-- ✅ REPOSITORIES PAGE (Full screen, split layout) -->
-<section class="scroll-page project-split">
-  <div class="project-text">
-    <h2>Projects I've<br><strong>Worked On</strong></h2>
-    <p>Explore real-world solutions I have built.</p>
+<section class="scroll-page repo-split">
+  <div class="repo-left">
+    <div class="repo-left-inner">
+      <h2>Projects I've<br><strong>Worked On</strong></h2>
+      <p>Explore real-world solutions I have built.</p>
+    </div>
   </div>
 
-  <div class="project-showcase">
+  <div class="repo-right-panel">
     <h4>My Repositories</h4>
     <div class="repo-cards">
       <a href="https://github.com/FarahIbrar/KPMG-Job-Simulation" target="_blank">
