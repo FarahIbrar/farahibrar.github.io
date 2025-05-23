@@ -679,22 +679,23 @@
 
     
 <!-- ========== SCRIPT for the background effects ========== --> 
-    <script>
+<script>
   tsParticles.load("tsparticles", {
     fullScreen: { enable: false },
-    background: { color: "#0d0d0d" }, // match your theme
+    background: { color: "#0d0d0d" }, // Adjust to your hero section's background
     particles: {
-      number: { value: 50 },
-      color: { value: "#5fa8f8" }, // match your accent color
-      shape: { type: "line" },
+      number: { value: 60 },
+      color: { value: "#5fa8f8" }, // Accent color
+      shape: { type: "circle" },
       opacity: { value: 0.5 },
-      size: { value: 1 },
+      size: { value: 2 },
       move: {
         enable: true,
         speed: 1,
-        attract: { enable: false }
+        direction: "none",
+        outModes: "bounce"
       },
-      line_linked: {
+      links: {
         enable: true,
         distance: 120,
         color: "#5fa8f8",
@@ -704,16 +705,20 @@
     },
     interactivity: {
       events: {
-        onhover: { enable: true, mode: "repulse" },
-        onclick: { enable: false }
+        onHover: { enable: true, mode: "repulse" },
+        resize: true
       },
       modes: {
-        repulse: { distance: 100 }
+        repulse: {
+          distance: 100,
+          duration: 0.4
+        }
       }
     },
     detectRetina: true
   });
 </script>
+
 
 
 </body>
