@@ -140,6 +140,7 @@
   width: 100%;
   height: 100%;
   z-index: 0;
+  pointer-events: none;
 }
 .hero img,
 .hero h2,
@@ -680,42 +681,44 @@
     
 <!-- ========== SCRIPT for the background effects ========== --> 
 <script>
-  tsParticles.load("tsparticles", {
-    fullScreen: { enable: false },
-    background: { color: "#0d0d0d" }, // Adjust to your hero section's background
-    particles: {
-      number: { value: 60 },
-      color: { value: "#5fa8f8" }, // Accent color
-      shape: { type: "circle" },
-      opacity: { value: 0.5 },
-      size: { value: 2 },
-      move: {
-        enable: true,
-        speed: 1,
-        direction: "none",
-        outModes: "bounce"
-      },
-      links: {
-        enable: true,
-        distance: 120,
-        color: "#5fa8f8",
-        opacity: 0.4,
-        width: 1
-      }
-    },
-    interactivity: {
-      events: {
-        onHover: { enable: true, mode: "repulse" },
-        resize: true
-      },
-      modes: {
-        repulse: {
-          distance: 100,
-          duration: 0.4
+  window.addEventListener("DOMContentLoaded", () => {
+    tsParticles.load("tsparticles", {
+      fullScreen: { enable: false },
+      background: { color: "#0d0d0d" },
+      particles: {
+        number: { value: 60 },
+        color: { value: "#5fa8f8" },
+        shape: { type: "circle" },
+        opacity: { value: 0.5 },
+        size: { value: 2 },
+        move: {
+          enable: true,
+          speed: 1,
+          direction: "none",
+          outModes: "bounce"
+        },
+        links: {
+          enable: true,
+          distance: 120,
+          color: "#5fa8f8",
+          opacity: 0.4,
+          width: 1
         }
-      }
-    },
-    detectRetina: true
+      },
+      interactivity: {
+        events: {
+          onHover: { enable: true, mode: "repulse" },
+          resize: true
+        },
+        modes: {
+          repulse: {
+            distance: 100,
+            duration: 0.4
+          }
+        }
+      },
+      detectRetina: true
+    });
   });
 </script>
 
