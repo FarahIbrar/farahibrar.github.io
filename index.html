@@ -46,6 +46,43 @@
     transition: background 0.3s, color 0.3s;
   }
 
+/*NEW ONE*/
+  html, body {
+    height: 100%;
+    margin: 0;
+    scroll-behavior: smooth;
+    overflow: hidden;
+  }
+
+  .page-container {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+  }
+
+  .scroll-page {
+    height: 100vh;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .scroll-down-arrow {
+    position: absolute;
+    bottom: 20px;
+    font-size: 1.5rem;
+    color: var(--accent);
+    animation: bounce 1.5s infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
+
   /* ========== GENERAL SECTIONS ========== */
   .section {
     max-width: 900px;
@@ -422,17 +459,22 @@
   </div>
 
   <!-- ========== HERO SECTION ========== -->
-  <section class="hero">
+  <div class="page-container">
+  <section class="hero scroll-page">
+  <!--section class="hero"-->
     <img src="profile.jpg" alt="Farah Ibrar">
     <h2>Farah Ibrar</h2>
     <h3>Data Scientist</h3>
     <p>Evidence. Insight. Impact.</p>
+  </div>
   </section>
 
 
   <!-- about me -->
-  <section class="section two-column padded-section">
-  <div class="about-left">
+  <section class="section two-column padded-section scroll-page">
+    <div class="about-left">
+  <!--section class="section two-column padded-section"-->
+  <!--div class="about-left"-->
     <h3>About Me</h3>
     <div class="subsection"><strong>Who I Am</strong>
       <p>I’m Farah Ibrar, a data scientist with a background in Biomedical Sciences and Immunology. My journey began in academic research, but my curiosity led me to data-driven problem-solving.</p>
@@ -446,7 +488,10 @@
     <div class="subsection"><strong>How I Work</strong>
       <p>With an academic background in different field, I bring a unique interdisciplinary perspective to data science. My transition from research to analytics has equipped me with robust problem-solving skills, attention to detail, a strategic mindset, and a passion for deriving insight from evidence. </p>
     </div>
+    </div>
+    <section>
   </div>
+    
 
 <!-- repository section -->
 <div class="repo-right">
