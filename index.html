@@ -278,22 +278,22 @@
   }
 }*/
 
-.repo-section-fixed {
+
+.repo-section-split {
   display: flex;
   height: 100vh;
   scroll-snap-align: start;
 }
 
-.repo-left-fixed,
-.repo-right-fixed {
+.repo-left-split,
+.repo-right-split {
   flex: 1;
   height: 100%;
   box-sizing: border-box;
   padding: 2rem;
 }
 
-/* LEFT SIDE - text content */
-.repo-left-fixed {
+.repo-left-split {
   background-color: #1b1f3b;
   color: var(--accent);
   display: flex;
@@ -302,30 +302,41 @@
   align-items: flex-start;
 }
 
-.repo-left-fixed h2 {
+.repo-left-split h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
   color: var(--accent);
 }
 
-.repo-left-fixed p {
+.repo-left-split p {
   font-size: 1rem;
   color: var(--fg);
 }
 
-/* RIGHT SIDE - repo cards */
-.repo-right-fixed {
+/* ✅ Right: only center the container, don't stretch cards full height */
+.repo-right-split {
   background-color: #0d1117;
-  overflow-y: auto;
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
-.repo-right-fixed h4 {
+.repo-card-wrapper {
+  width: 90%;
+  max-width: 450px;
+  max-height: 80%;
+  overflow-y: auto;
+  background-color: var(--card);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.25);
+}
+
+.repo-card-wrapper h4 {
   color: var(--accent);
   font-size: 1.2rem;
   margin-bottom: 1rem;
+  text-align: center;
 }
 
 .repo-cards {
@@ -345,45 +356,48 @@
 }
 
 /* Scrollbar styling */
-.repo-right-fixed::-webkit-scrollbar {
+.repo-card-wrapper::-webkit-scrollbar {
   width: 8px;
 }
-.repo-right-fixed::-webkit-scrollbar-thumb {
+.repo-card-wrapper::-webkit-scrollbar-thumb {
   background-color: #888;
   border-radius: 6px;
 }
-.repo-right-fixed::-webkit-scrollbar-track {
+.repo-card-wrapper::-webkit-scrollbar-track {
   background: transparent;
 }
 
-/* Light mode overrides */
-body.light .repo-left-fixed {
+/* ✅ Light mode styles */
+body.light .repo-left-split {
   background-color: #cfe8ff;
   color: #1f1f1f;
 }
-body.light .repo-left-fixed h2 {
+body.light .repo-left-split h2 {
   color: #007acc;
 }
-body.light .repo-left-fixed p {
+body.light .repo-left-split p {
   color: #1f1f1f;
 }
-body.light .repo-right-fixed {
+body.light .repo-right-split {
   background-color: #f2f2f2;
 }
+body.light .repo-card-wrapper {
+  background-color: #fff;
+}
 
-/* Mobile: stack top-bottom */
+/* Responsive: Stack layout on mobile */
 @media (max-width: 768px) {
-  .repo-section-fixed {
+  .repo-section-split {
     flex-direction: column;
   }
 
-  .repo-left-fixed,
-  .repo-right-fixed {
+  .repo-left-split,
+  .repo-right-split {
     height: 50vh;
     width: 100%;
   }
 
-  .repo-left-fixed {
+  .repo-left-split {
     align-items: center;
     text-align: center;
   }
@@ -662,13 +676,14 @@ body.light .repo-right-fixed {
 
 
   <!-- ✅ REPOSITORIES PAGE (Full screen, split layout) -->
-<section class="scroll-page repo-section-fixed">
-  <div class="repo-left-fixed">
+<section class="scroll-page repo-section-split">
+  <div class="repo-left-split">
       <h2>Projects I've<br><strong>Worked On</strong></h2>
       <p>Explore real-world solutions I have built.</p>
   </div>
 
-  <div class="repo-right-fixed">
+  <div class="repo-right-split">
+    <div class="repo-card-wrapper">
     <h4>My Repositories</h4>
     <div class="repo-cards">
       <a href="https://github.com/FarahIbrar/KPMG-Job-Simulation" target="_blank">
@@ -692,6 +707,7 @@ body.light .repo-right-fixed {
       <a href="https://github.com/FarahIbrar/FarahIbrar" target="_blank">
         <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=FarahIbrar&theme=tokyonight" />
       </a>
+    </div>
     </div>
   </div>
 </section>
