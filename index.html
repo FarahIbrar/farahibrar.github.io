@@ -278,50 +278,52 @@
   }
 }*/
 
-
-.repo-showcase {
+.repo-section-fixed {
   display: flex;
   height: 100vh;
   scroll-snap-align: start;
 }
 
-.repo-left-panel {
+.repo-left-fixed,
+.repo-right-fixed {
   flex: 1;
-  background-color: #1b1f3b; /* Deep blue */
-  color: #c9d1d9;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 2rem;
+}
+
+/* LEFT SIDE - text content */
+.repo-left-fixed {
+  background-color: #1b1f3b;
+  color: var(--accent);
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  padding: 2rem;
+  align-items: flex-start;
 }
 
-.repo-left-inner {
-  max-width: 80%;
-}
-
-.repo-left-panel h2 {
+.repo-left-fixed h2 {
   font-size: 2rem;
-  color: #58a6ff;
   margin-bottom: 1rem;
+  color: var(--accent);
 }
 
-.repo-left-panel p {
+.repo-left-fixed p {
   font-size: 1rem;
-  color: #c9d1d9;
+  color: var(--fg);
 }
 
-.repo-right-panel {
-  flex: 1;
-  background-color: #0d1117; /* Your existing dark theme card color */
-  padding: 2rem;
+/* RIGHT SIDE - repo cards */
+.repo-right-fixed {
+  background-color: #0d1117;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.repo-right-panel h4 {
-  color: #58a6ff;
+.repo-right-fixed h4 {
+  color: var(--accent);
   font-size: 1.2rem;
   margin-bottom: 1rem;
 }
@@ -343,49 +345,50 @@
 }
 
 /* Scrollbar styling */
-.repo-right-panel::-webkit-scrollbar {
+.repo-right-fixed::-webkit-scrollbar {
   width: 8px;
 }
-.repo-right-panel::-webkit-scrollbar-thumb {
+.repo-right-fixed::-webkit-scrollbar-thumb {
   background-color: #888;
   border-radius: 6px;
 }
-.repo-right-panel::-webkit-scrollbar-track {
+.repo-right-fixed::-webkit-scrollbar-track {
   background: transparent;
 }
 
-/* Light theme overrides */
-body.light .repo-left-panel {
-  background-color: #cfe8ff; /* Light blue for left */
+/* Light mode overrides */
+body.light .repo-left-fixed {
+  background-color: #cfe8ff;
   color: #1f1f1f;
 }
-body.light .repo-left-panel h2 {
+body.light .repo-left-fixed h2 {
   color: #007acc;
 }
-body.light .repo-left-panel p {
+body.light .repo-left-fixed p {
   color: #1f1f1f;
 }
-body.light .repo-right-panel {
+body.light .repo-right-fixed {
   background-color: #f2f2f2;
 }
 
-/* Mobile responsive */
+/* Mobile: stack top-bottom */
 @media (max-width: 768px) {
-  .repo-showcase {
+  .repo-section-fixed {
     flex-direction: column;
   }
 
-  .repo-left-panel,
-  .repo-right-panel {
-    flex: none;
-    width: 100%;
+  .repo-left-fixed,
+  .repo-right-fixed {
     height: 50vh;
+    width: 100%;
   }
 
-  .repo-left-inner {
+  .repo-left-fixed {
+    align-items: center;
     text-align: center;
   }
 }
+
 
 
 
@@ -659,15 +662,13 @@ body.light .repo-right-panel {
 
 
   <!-- ✅ REPOSITORIES PAGE (Full screen, split layout) -->
-<section class="scroll-page repo-showcase">
-  <div class="repo-left-panel">
-    <div class="repo-left-inner">
+<section class="scroll-page repo-section-fixed">
+  <div class="repo-left-fixed">
       <h2>Projects I've<br><strong>Worked On</strong></h2>
       <p>Explore real-world solutions I have built.</p>
-    </div>
   </div>
 
-  <div class="repo-right-panel">
+  <div class="repo-right-fixed">
     <h4>My Repositories</h4>
     <div class="repo-cards">
       <a href="https://github.com/FarahIbrar/KPMG-Job-Simulation" target="_blank">
