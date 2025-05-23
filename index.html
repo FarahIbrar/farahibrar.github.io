@@ -279,64 +279,54 @@
 }*/
 
 
-.repo-section-split {
+.repo-section {
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  gap: 2rem;
+  width: 100%;
   height: 100vh;
   scroll-snap-align: start;
-}
-
-.repo-left-split,
-.repo-right-split {
-  flex: 1;
-  height: 100%;
   box-sizing: border-box;
-  padding: 2rem;
 }
 
-.repo-left-split {
-  background-color: #1b1f3b;
+.repo-left {
+  flex: 1;
   color: var(--accent);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
+  padding-left: 3rem;
+  max-width: 40%;
 }
 
-.repo-left-split h2 {
+.repo-left h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
   color: var(--accent);
 }
 
-.repo-left-split p {
+.repo-left p {
   font-size: 1rem;
   color: var(--fg);
+  line-height: 1.5;
 }
 
-/* ✅ Right: only center the container, don't stretch cards full height */
-.repo-right-split {
-  background-color: #0d1117;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.repo-card-wrapper {
-  width: 90%;
-  max-width: 450px;
-  max-height: 80%;
-  overflow-y: auto;
-  background-color: var(--card);
-  padding: 1.5rem;
+.repo-right {
+  flex: 1;
+  height: 90%;
+  overflow-y: scroll;
+  background: var(--card);
+  padding: 1rem;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.25);
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
 }
 
-.repo-card-wrapper h4 {
+/* Keep existing scroll and hover styles */
+.repo-right h4 {
+  margin-top: 0;
   color: var(--accent);
   font-size: 1.2rem;
   margin-bottom: 1rem;
-  text-align: center;
 }
 
 .repo-cards {
@@ -355,53 +345,36 @@
   transform: scale(1.03);
 }
 
-/* Scrollbar styling */
-.repo-card-wrapper::-webkit-scrollbar {
+.repo-right::-webkit-scrollbar {
   width: 8px;
 }
-.repo-card-wrapper::-webkit-scrollbar-thumb {
+
+.repo-right::-webkit-scrollbar-thumb {
   background-color: #888;
   border-radius: 6px;
+  border: 2px solid transparent;
 }
-.repo-card-wrapper::-webkit-scrollbar-track {
+
+.repo-right::-webkit-scrollbar-track {
   background: transparent;
 }
 
-/* ✅ Light mode styles */
-body.light .repo-left-split {
-  background-color: #cfe8ff;
-  color: #1f1f1f;
-}
-body.light .repo-left-split h2 {
-  color: #007acc;
-}
-body.light .repo-left-split p {
-  color: #1f1f1f;
-}
-body.light .repo-right-split {
-  background-color: #f2f2f2;
-}
-body.light .repo-card-wrapper {
-  background-color: #fff;
-}
-
-/* Responsive: Stack layout on mobile */
 @media (max-width: 768px) {
-  .repo-section-split {
+  .repo-section {
     flex-direction: column;
+    padding: 1rem;
   }
 
-  .repo-left-split,
-  .repo-right-split {
-    height: 50vh;
-    width: 100%;
+  .repo-left, .repo-right {
+    max-width: 100%;
+    flex: unset;
   }
 
-  .repo-left-split {
-    align-items: center;
-    text-align: center;
+  .repo-right {
+    height: 300px;
   }
 }
+
 
 
 
@@ -675,48 +648,41 @@ body.light .repo-card-wrapper {
 </section-->
 
 
-  <!-- ✅ REPOSITORIES PAGE (Full screen, split layout) -->
-<!-- ✅ Projects + Repos FULL WIDTH SPLIT SECTION -->
-<section class="scroll-page repo-section-split">
-  <!-- LEFT SIDE -->
-  <div class="repo-left-split">
-    <h2>
-      <span style="font-weight: 400;">Projects I've</span><br>
-      <strong>Worked On</strong>
-    </h2>
-    <p>Explore real-world solutions I have built using Python, SQL, and Tableau.</p>
+<!-- ✅ REPOSITORIES PAGE (Full screen, split layout) -->
+<section class="scroll-page repo-section">
+  <div class="repo-left">
+    <h2>Projects I've Worked On</h2>
+    <p>Explore real-world solutions I’ve built using Python, SQL, Tableau, and more. These projects reflect my skills in data analysis, machine learning, and storytelling through data.</p>
   </div>
 
-  <!-- RIGHT SIDE -->
-  <div class="repo-right-split">
-    <div class="repo-card-wrapper">
-      <h4>My Repositories</h4>
-      <div class="repo-cards">
-        <a href="https://github.com/FarahIbrar/KPMG-Job-Simulation" target="_blank">
-          <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=KPMG-Job-Simulation&theme=tokyonight" />
-        </a>
-        <a href="https://github.com/FarahIbrar/CFG-Python-Activision" target="_blank">
-          <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=CFG-Python-Activision&theme=tokyonight" />
-        </a>
-        <a href="https://github.com/FarahIbrar/Programming-in-Python" target="_blank">
-          <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=Programming-in-Python&theme=tokyonight" />
-        </a>
-        <a href="https://github.com/FarahIbrar/CFG-SQL-Deloitte" target="_blank">
-          <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=CFG-SQL-Deloitte&theme=tokyonight" />
-        </a>
-        <a href="https://github.com/FarahIbrar/aws-random-quote-generator" target="_blank">
-          <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=aws-random-quote-generator&theme=tokyonight" />
-        </a>
-        <a href="https://github.com/FarahIbrar/5-Day-Coding-Challenge" target="_blank">
-          <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=5-Day-Coding-Challenge&theme=tokyonight" />
-        </a>
-        <a href="https://github.com/FarahIbrar/FarahIbrar" target="_blank">
-          <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=FarahIbrar&theme=tokyonight" />
-        </a>
-      </div>
+  <div class="repo-right">
+    <h4>My Repositories</h4>
+    <div class="repo-cards">
+      <a href="https://github.com/FarahIbrar/KPMG-Job-Simulation" target="_blank">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=KPMG-Job-Simulation&theme=tokyonight" />
+      </a>
+      <a href="https://github.com/FarahIbrar/CFG-Python-Activision" target="_blank">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=CFG-Python-Activision&theme=tokyonight" />
+      </a>
+      <a href="https://github.com/FarahIbrar/Programming-in-Python" target="_blank">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=Programming-in-Python&theme=tokyonight" />
+      </a>
+      <a href="https://github.com/FarahIbrar/CFG-SQL-Deloitte" target="_blank">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=CFG-SQL-Deloitte&theme=tokyonight" />
+      </a>
+      <a href="https://github.com/FarahIbrar/aws-random-quote-generator" target="_blank">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=aws-random-quote-generator&theme=tokyonight" />
+      </a>
+      <a href="https://github.com/FarahIbrar/5-Day-Coding-Challenge" target="_blank">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=5-Day-Coding-Challenge&theme=tokyonight" />
+      </a>
+      <a href="https://github.com/FarahIbrar/FarahIbrar" target="_blank">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=FarahIbrar&theme=tokyonight" />
+      </a>
     </div>
   </div>
 </section>
+
 
 
 
