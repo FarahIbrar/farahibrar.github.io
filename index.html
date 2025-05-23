@@ -83,6 +83,22 @@
     50% { transform: translateY(6px); }
   }
 
+  .about-section h3 {
+  color: var(--accent);
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--accent);
+  display: inline-block;
+  text-align: center;
+}
+
+.about-section .subsection {
+  margin-bottom: 1.4rem;
+  text-align: left;
+  max-width: 800px;
+}
+
+
   /* ========== GENERAL SECTIONS ========== */
   .section {
     max-width: 900px;
@@ -473,26 +489,31 @@
     </div>
   </section>
 
-  <!-- ✅ ABOUT ME SECTION -->
-  <section class="section two-column padded-section scroll-page">
-    <div class="about-left">
-      <h3>About Me</h3>
-      <div class="subsection"><strong>Who I Am</strong>
-        <p>I’m Farah Ibrar, a data scientist with a background in Biomedical Sciences and Immunology...</p>
-      </div>
-      <div class="subsection"><strong>What I Do</strong>
-        <p>I specialize in predictive modelling, statistical analysis, natural language processing (NLP)...</p>
-      </div>
-      <div class="subsection"><strong>My Interests</strong>
-        <p>My approach is grounded in extracting actionable insights from complex datasets...</p>
-      </div>
-      <div class="subsection"><strong>How I Work</strong>
-        <p>With an academic background in different field, I bring a unique interdisciplinary perspective...</p>
-      </div>
-    </div>
-  </section>
+<!-- ✅ ABOUT ME SECTION (REPLACE your old About Me section with this) -->
+<section class="scroll-page about-section">
+  <h3>About Me</h3>
 
-</div> <!-- ✅ Close scroll container -->
+  <div class="subsection"><strong>Who I Am</strong>
+    <p>I’m Farah Ibrar, a data scientist with a background in Biomedical Sciences and Immunology. My journey began in academic research, but my curiosity led me to data-driven problem-solving.</p>
+  </div>
+
+  <div class="subsection"><strong>What I Do</strong>
+    <p>I specialize in predictive modelling, statistical analysis, natural language processing (NLP), and advanced machine learning techniques. I also enjoy building meaningful dashboards and data visualisations that communicate insights clearly and effectively using Tableau and Python.</p>
+  </div>
+
+  <div class="subsection"><strong>My Interests</strong>
+    <p>My approach is grounded in extracting actionable insights from complex datasets, with a strong focus on commercial application and customer behaviour. I am particularly interested in data-driven storytelling that supports strategic decision-making, such as customer segmentation, propensity modelling, and campaign evaluation.</p>
+  </div>
+
+  <div class="subsection"><strong>How I Work</strong>
+    <p>With an academic background in different field, I bring a unique interdisciplinary perspective to data science. My transition from research to analytics has equipped me with robust problem-solving skills, attention to detail, a strategic mindset, and a passion for deriving insight from evidence.</p>
+  </div>
+
+  <div class="scroll-down-arrow">
+    <i class="fas fa-chevron-down"></i>
+  </div>
+</section>
+
 
 
 <!-- repository section -->
