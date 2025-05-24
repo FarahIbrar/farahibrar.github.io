@@ -376,7 +376,8 @@
 }*/
 
 
-  .repo-section {
+/* ========== FINAL FIX: SPLIT REPO SECTION ========== */
+.repo-section {
   display: flex;
   height: 100vh;
   width: 100%;
@@ -391,37 +392,36 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 2rem;
 }
 
 .repo-left {
   background-color: var(--bg);
   color: var(--fg);
-  padding: 2rem 3rem;
   text-align: left;
 }
 
 .repo-left h2 {
-  font-size: 2.2rem;
-  color: var(--accent);
+  font-size: 2.4rem;
   margin-bottom: 1rem;
-}
-
-.repo-left h2 span {
-  display: block;
-  font-weight: 700;
   color: var(--accent);
+  line-height: 1.2;
 }
 
 .repo-left p {
   font-size: 1rem;
   color: var(--fg);
-  max-width: 400px;
   line-height: 1.5;
+  max-width: 400px;
+}
+
+.repo-right {
+  background-color: #1b1f3b; /* blueish theme background */
 }
 
 .repo-card-wrapper {
   width: 90%;
-  max-width: 450px;
+  max-width: 420px;
   max-height: 80%;
   overflow-y: auto;
   background-color: var(--card);
@@ -464,7 +464,7 @@
   background: transparent;
 }
 
-/* LIGHT MODE support */
+/* Light mode */
 body.light .repo-left {
   background-color: #e6f1ff;
   color: #1f1f1f;
@@ -475,8 +475,11 @@ body.light .repo-left h2 {
 body.light .repo-left p {
   color: #1f1f1f;
 }
+body.light .repo-right {
+  background-color: #f2f2f2;
+}
 body.light .repo-card-wrapper {
-  background-color: #fff;
+  background-color: #ffffff;
 }
 
 /* Responsive */
@@ -488,16 +491,14 @@ body.light .repo-card-wrapper {
   .repo-left,
   .repo-right {
     height: auto;
-    padding: 1rem;
+    width: 100%;
+    padding: 1.5rem;
   }
 
   .repo-left {
-    align-items: center;
     text-align: center;
-  }
-
-  .repo-left h2 span {
-    display: inline;
+    align-items: center;
+    justify-content: center;
   }
 }
 
