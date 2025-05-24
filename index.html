@@ -380,48 +380,53 @@
 .repo-section {
   display: flex;
   height: 100vh;
-  width: 100%;
   scroll-snap-align: start;
 }
 
-.repo-left,
-.repo-right {
+.repo-left-split, .repo-right-split {
   flex: 1;
   height: 100%;
-  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem;
+  box-sizing: border-box;
 }
 
-.repo-left {
+/* Left side text */
+.repo-left-split {
   background-color: var(--bg);
+  flex-direction: column;
+  align-items: flex-start;
   color: var(--fg);
-  text-align: left;
 }
 
-.repo-left h2 {
-  font-size: 2.4rem;
-  margin-bottom: 1rem;
+.repo-left-split h2 {
+  font-size: 2.5rem;
   color: var(--accent);
+  margin-bottom: 1rem;
   line-height: 1.2;
 }
 
-.repo-left p {
+.repo-left-split h2 span {
+  display: block;
+  font-weight: 700;
+}
+
+.repo-left-split p {
   font-size: 1rem;
   color: var(--fg);
-  line-height: 1.5;
   max-width: 400px;
 }
 
-.repo-right {
-  background-color: #1b1f3b; /* blueish theme background */
+/* Right side repo container */
+.repo-right-split {
+  background-color: #1b1f3b;
 }
 
 .repo-card-wrapper {
   width: 90%;
-  max-width: 420px;
+  max-width: 450px;
   max-height: 80%;
   overflow-y: auto;
   background-color: var(--card);
@@ -453,6 +458,7 @@
   transform: scale(1.03);
 }
 
+/* Scrollbar styling */
 .repo-card-wrapper::-webkit-scrollbar {
   width: 8px;
 }
@@ -464,41 +470,43 @@
   background: transparent;
 }
 
-/* Light mode */
-body.light .repo-left {
+/* Light mode support */
+body.light .repo-left-split {
   background-color: #e6f1ff;
   color: #1f1f1f;
 }
-body.light .repo-left h2 {
+body.light .repo-left-split h2 {
   color: #007acc;
 }
-body.light .repo-left p {
+body.light .repo-left-split p {
   color: #1f1f1f;
 }
-body.light .repo-right {
+body.light .repo-right-split {
   background-color: #f2f2f2;
 }
 body.light .repo-card-wrapper {
-  background-color: #ffffff;
+  background-color: #fff;
 }
 
-/* Responsive */
+/* Responsive for mobile */
 @media (max-width: 768px) {
   .repo-section {
     flex-direction: column;
   }
 
-  .repo-left,
-  .repo-right {
+  .repo-left-split, .repo-right-split {
     height: auto;
     width: 100%;
-    padding: 1.5rem;
-  }
-
-  .repo-left {
     text-align: center;
     align-items: center;
-    justify-content: center;
+  }
+
+  .repo-left-split h2 span {
+    display: inline;
+  }
+
+  .repo-left-split p {
+    max-width: 90%;
   }
 }
 
@@ -811,11 +819,9 @@ body.light .repo-card-wrapper {
 
 
 <section class="scroll-page repo-section">
-  <div class="repo-left">
-    <div class="repo-text">
+  <div class="repo-left-split">
       <h2>Projects I've <span>Worked On</span></h2>
       <p>Explore real-world solutions I’ve built.</p>
-    </div>
   </div>
 
   <div class="repo-right">
