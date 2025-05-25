@@ -24,11 +24,6 @@
     --accent: #58a6ff;
     --card: #161b22;
     --button: linear-gradient(to right, #4e9af1, #705df2);
-    --bg-dark: #121212; /* Dark background for left side */
-    --card-light: #f8f9fa; /* Light color for gradient */
-    --card-lighter: #ffffff; /* Lighter color for gradient */
-    --card: #161b22;
-    --accent: #58a6ff;
   }
 
   body.light {
@@ -379,8 +374,6 @@
   }
 }
 
-
-
   
     /* skills section */
     .skills-grid {
@@ -573,6 +566,11 @@
     </button>
   </div>
 
+<!-- ✅ Scroll arrow -->
+<div class="scroll-down-arrow">
+  <i class="fas fa-chevron-down"></i>
+</div>
+
 
       <!-- ✅ Start the scroll container -->
 <div class="page-container">
@@ -649,7 +647,7 @@
 </section-->
 
 
-<!-- ✅ REPOSITORIES PAGE (Full screen, split layout, the one that worked)-->
+<!-- ✅ REPOSITORIES PAGE (Full screen, split layout, the one that worked)>
 <section class="scroll-page repo-section">
   <div class="repo-left">
     <h2>Projects I've Worked On</h2>
@@ -682,10 +680,14 @@
       </a>
     </div>
   </div>
-</section>
+</section-->
+
+
+  
   
   <!-- skills section -->
-  <section class="padded-section">
+  <section class="scroll-page section">
+  <!--section class="padded-section"-->
   <h3 class="section-heading">Skills & Tools</h3>
   <div class="skills-grid">
     <img src="https://go-skill-icons.vercel.app/api/icons?i=python" title="Python" />
@@ -729,18 +731,19 @@
   </section>
 
   <!-- ========== CONTACT SECTION ========== -->
-<section class="contact-bar">
-  <div class="contact-links">
-    <h3 class="section-heading">Get Acquainted</h3>
-    <div class="contact-icons">
-      <a href="mailto:farah11ibrar@gmail.com">Email</a>
-      <a href="https://www.linkedin.com/in/farahibrar/" target="_blank">LinkedIn</a>
-      <a href="https://github.com/FarahIbrar" target="_blank">GitHub</a>
-      <a href="https://public.tableau.com/app/profile/farah.ibrar" target="_blank">Tableau</a>
-    </div>
-  </div>
-  <button onclick="document.getElementById('contactModal').style.display='flex'">Contact Me</button>
-</section>
+<!--section class="contact-bar"-->
+    <section class="scroll-page contact-bar">
+      <div class="contact-links">
+        <h3 class="section-heading">Get Acquainted</h3>
+        <div class="contact-icons">
+          <a href="mailto:farah11ibrar@gmail.com">Email</a>
+          <a href="https://www.linkedin.com/in/farahibrar/" target="_blank">LinkedIn</a>
+          <a href="https://github.com/FarahIbrar" target="_blank">GitHub</a>
+          <a href="https://public.tableau.com/app/profile/farah.ibrar" target="_blank">Tableau</a>
+        </div>
+      </div>
+      <button onclick="document.getElementById('contactModal').style.display='flex'">Contact Me</button>
+    </section>
 
 
 
