@@ -286,7 +286,8 @@
   flex: 1;
   max-width: 50%;
   height: 85%;
-  background: rgba(255, 255, 255, 0.85); /* light glassy */
+  /* background: rgba(255, 255, 255, 0.85); /* light glassy */
+  background: linear-gradient(145deg, #c9d6ff, #e2e2e2); /* more visual pop */
   backdrop-filter: blur(8px);
   padding: 1.5rem;
   margin: auto;
@@ -296,6 +297,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+  .repo-left p {
+  font-size: 1rem;
+  color: var(--fg-muted); /* if you’ve set up a muted text variable */
 }
 
 /* Centered heading inside card */
@@ -316,8 +322,8 @@
 
 /* Reduce card size just a bit */
 .repo-cards img {
-  width: 100%;
-  max-width: 100%;
+  width: 85%;
+  max-width: 400px;
   border-radius: 8px;
   transition: transform 0.2s;
 }
