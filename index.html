@@ -279,7 +279,6 @@
 }*/
 
   /*the new one starts here*/
-/*
 .repo-section {
   display: flex;
   flex-direction: row;
@@ -373,148 +372,9 @@
   .repo-right {
     height: 300px;
   }
-}*/
-
-
-/* ========== FINAL FIX: SPLIT REPO SECTION ========== */
-.repo-section {
-  display: flex;
-  height: 100vh;
-  scroll-snap-align: start;
 }
 
-.repo-left-split, .repo-right-split {
-  flex: 1;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-  box-sizing: border-box;
-}
-
-/* Left side text */
-.repo-left-split {
-  background-color: var(--bg);
-  flex-direction: column;
-  align-items: flex-start;
-  color: var(--fg);
-}
-
-.repo-left-split h2 {
-  font-size: 2.5rem;
-  color: var(--accent);
-  margin-bottom: 1rem;
-  line-height: 1.2;
-}
-
-.repo-left-split h2 span {
-  display: block;
-  font-weight: 700;
-}
-
-.repo-left-split p {
-  font-size: 1rem;
-  color: var(--fg);
-  max-width: 400px;
-}
-
-/* Right side repo container */
-.repo-right-split {
-  background-color: #1b1f3b;
-}
-
-.repo-card-wrapper {
-  width: 90%;
-  max-width: 450px;
-  max-height: 80%;
-  overflow-y: auto;
-  background-color: var(--card);
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.25);
-}
-
-.repo-card-wrapper h4 {
-  color: var(--accent);
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-.repo-cards {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-}
-
-.repo-cards img {
-  width: 100%;
-  border-radius: 8px;
-  transition: transform 0.2s;
-}
-
-.repo-cards img:hover {
-  transform: scale(1.03);
-}
-
-/* Scrollbar styling */
-.repo-card-wrapper::-webkit-scrollbar {
-  width: 8px;
-}
-.repo-card-wrapper::-webkit-scrollbar-thumb {
-  background-color: #888;
-  border-radius: 6px;
-}
-.repo-card-wrapper::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-/* Light mode support */
-body.light .repo-left-split {
-  background-color: #e6f1ff;
-  color: #1f1f1f;
-}
-body.light .repo-left-split h2 {
-  color: #007acc;
-}
-body.light .repo-left-split p {
-  color: #1f1f1f;
-}
-body.light .repo-right-split {
-  background-color: #f2f2f2;
-}
-body.light .repo-card-wrapper {
-  background-color: #fff;
-}
-
-/* Responsive for mobile */
-@media (max-width: 768px) {
-  .repo-section {
-    flex-direction: column;
-  }
-
-  .repo-left-split, .repo-right-split {
-    height: auto;
-    width: 100%;
-    text-align: center;
-    align-items: center;
-  }
-
-  .repo-left-split h2 span {
-    display: inline;
-  }
-
-  .repo-left-split p {
-    max-width: 90%;
-  }
-}
-
-
-
-
-
-
+  
     /* skills section */
     .skills-grid {
       display: flex;
@@ -782,7 +642,7 @@ body.light .repo-card-wrapper {
 </section-->
 
 
-<!-- ✅ REPOSITORIES PAGE (Full screen, split layout, the one worked)>
+<!-- ✅ REPOSITORIES PAGE (Full screen, split layout)-->
 <section class="scroll-page repo-section">
   <div class="repo-left">
     <h2>Projects I've Worked On</h2>
@@ -815,46 +675,7 @@ body.light .repo-card-wrapper {
       </a>
     </div>
   </div>
-</section-->
-
-
-<section class="scroll-page repo-section">
-  <div class="repo-left-split">
-      <h2>Projects I've <span>Worked On</span></h2>
-      <p>Explore real-world solutions I’ve built.</p>
-  </div>
-
-  <div class="repo-right">
-    <div class="repo-card-wrapper">
-      <h4>My Repositories</h4>
-      <div class="repo-cards">
-        <a href="https://github.com/FarahIbrar/KPMG-Job-Simulation" target="_blank">
-          <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=KPMG-Job-Simulation&theme=tokyonight" />
-        </a>
-        <a href="https://github.com/FarahIbrar/CFG-Python-Activision" target="_blank">
-          <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=CFG-Python-Activision&theme=tokyonight" />
-        </a>
-        <a href="https://github.com/FarahIbrar/Programming-in-Python" target="_blank">
-          <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=Programming-in-Python&theme=tokyonight" />
-        </a>
-        <a href="https://github.com/FarahIbrar/CFG-SQL-Deloitte" target="_blank">
-          <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=CFG-SQL-Deloitte&theme=tokyonight" />
-        </a>
-        <a href="https://github.com/FarahIbrar/aws-random-quote-generator" target="_blank">
-          <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=aws-random-quote-generator&theme=tokyonight" />
-        </a>
-        <a href="https://github.com/FarahIbrar/5-Day-Coding-Challenge" target="_blank">
-          <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=5-Day-Coding-Challenge&theme=tokyonight" />
-        </a>
-        <a href="https://github.com/FarahIbrar/FarahIbrar" target="_blank">
-          <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=FarahIbrar&theme=tokyonight" />
-        </a>
-      </div>
-    </div>
-  </div>
 </section>
-
-
   
   <!-- skills section -->
   <section class="padded-section">
