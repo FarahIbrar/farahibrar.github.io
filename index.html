@@ -175,7 +175,7 @@
     }
 
     
-    /* REPO SECTIONS /
+    /* REPO SECTIONS */
 .repo-section {
   display: flex;
   flex-direction: row; 
@@ -257,88 +257,7 @@
   .repo-cards {
     max-height: 300px;
   }
-}*/
-
-
-.repo-section {
-  display: flex;
-  flex-direction: row;
-  width: 100vw;
-  height: 100vh;
-  scroll-snap-align: start;
-  overflow: hidden;
-  background: linear-gradient(to right, #0f0c29, #302b63 50%, #f5f7fa 50%);
 }
-
-.repo-left {
-  flex: 1;
-  padding: 3rem;
-  max-width: 50%;
-  color: var(--accent);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.repo-left p {
-  font-size: 1rem;
-  color: white; /* make subheading white */
-  line-height: 1.5;
-}
-
-.repo-right {
-  flex: none;
-  width: 85%;
-  height: 80%;
-  background: linear-gradient(145deg, #c9d6ff, #e2e2e2);
-  backdrop-filter: blur(8px);
-  padding: 2rem;
-  margin: auto;
-  border-radius: 16px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.repo-cards {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  width: 100%;
-  padding: 1rem;
-}
-
-.repo-cards img {
-  width: 80%;
-  max-width: 360px;
-  border-radius: 8px;
-  transition: transform 0.2s;
-}
-
-.repo-cards img:hover {
-  transform: scale(1.03);
-}
-
-.repo-right::-webkit-scrollbar {
-  width: 8px;
-}
-
-.repo-right::-webkit-scrollbar-thumb {
-  background-color: #888;
-  border-radius: 6px;
-  border: 2px solid transparent;
-}
-
-.repo-right::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-
-
 
   
     /* skills section */
