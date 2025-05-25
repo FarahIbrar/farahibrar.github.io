@@ -278,7 +278,7 @@
   }
 }*/
 
-  /*the new one starts here*/
+  /*the new one starts here/
 .repo-section {
   display: flex;
   flex-direction: row;
@@ -373,6 +373,89 @@
     height: 300px;
   }
 }
+
+
+  .repo-section {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  scroll-snap-align: start;
+}
+
+.repo-left, .repo-right {
+  width: 50%;
+  height: 100%;
+  padding: 3rem 2rem;
+  box-sizing: border-box;
+}
+
+.repo-left {
+  background-color: #0f0f0f; /* Dark background */
+  color: var(--accent);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.repo-right {
+  background: linear-gradient(to bottom right, #f4f4f4, #e6e6e6); /* Light/gradient bg */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.repo-right h4 {
+  margin: 0 0 1rem 0;
+  color: #333;
+}
+
+.repo-cards {
+  width: 90%;
+  max-height: 80%;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.repo-cards img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 8px;
+  transition: transform 0.2s;
+}
+
+.repo-cards img:hover {
+  transform: scale(1.03);
+}
+
+.repo-cards::-webkit-scrollbar {
+  width: 8px;
+}
+
+.repo-cards::-webkit-scrollbar-thumb {
+  background-color: #999;
+  border-radius: 6px;
+}
+
+@media (max-width: 768px) {
+  .repo-section {
+    flex-direction: column;
+  }
+
+  .repo-left, .repo-right {
+    width: 100%;
+    height: auto;
+  }
+
+  .repo-cards {
+    max-height: 300px;
+  }
+}
+
 
   
     /* skills section */
@@ -681,6 +764,42 @@
     </div>
   </div>
 </section-->
+
+
+  <!-- ✅ REPOSITORIES PAGE (Full screen, split layout-->
+<section class="scroll-page repo-section">
+  <div class="repo-left">
+    <h2>Projects I've Worked On</h2>
+    <p>Explore real-world solutions I’ve built using Python, SQL, Tableau, and more. These projects reflect my skills in data analysis, machine learning, and storytelling through data.</p>
+  </div>
+
+  <div class="repo-right">
+    <h4>My Repositories</h4>
+    <div class="repo-cards">
+      <a href="https://github.com/FarahIbrar/KPMG-Job-Simulation" target="_blank">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=KPMG-Job-Simulation&theme=tokyonight" />
+      </a>
+      <a href="https://github.com/FarahIbrar/CFG-Python-Activision" target="_blank">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=CFG-Python-Activision&theme=tokyonight" />
+      </a>
+      <a href="https://github.com/FarahIbrar/Programming-in-Python" target="_blank">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=Programming-in-Python&theme=tokyonight" />
+      </a>
+      <a href="https://github.com/FarahIbrar/CFG-SQL-Deloitte" target="_blank">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=CFG-SQL-Deloitte&theme=tokyonight" />
+      </a>
+      <a href="https://github.com/FarahIbrar/aws-random-quote-generator" target="_blank">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=aws-random-quote-generator&theme=tokyonight" />
+      </a>
+      <a href="https://github.com/FarahIbrar/5-Day-Coding-Challenge" target="_blank">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=5-Day-Coding-Challenge&theme=tokyonight" />
+      </a>
+      <a href="https://github.com/FarahIbrar/FarahIbrar" target="_blank">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=FarahIbrar&theme=tokyonight" />
+      </a>
+    </div>
+  </div>
+</section>
 
 
   
