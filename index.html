@@ -287,9 +287,9 @@
 }
 
 .repo-right {
-  flex: 1;
-  max-width: 50%;
-  height: 85%;
+  flex: none;
+  width: 85%;
+  height: 80%;
   background: linear-gradient(145deg, #c9d6ff, #e2e2e2);
   backdrop-filter: blur(8px);
   padding: 2rem;
@@ -298,8 +298,9 @@
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
   display: flex;
-  justify-content: center;  /* center vertically */
-  align-items: center;      /* center horizontally */
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .repo-cards {
@@ -678,13 +679,15 @@
 </section-->
 
 
-  <section class="scroll-page repo-section">
+ <!-- ✅ REPOSITORIES PAGE (Full screen, split layout-->
+<section class="scroll-page repo-section">
   <div class="repo-left">
     <h2>Projects I've Worked On</h2>
     <p>Explore real-world solutions I’ve built using Python, SQL, Tableau, and more. These projects reflect my skills in data analysis, machine learning, and storytelling through data.</p>
   </div>
 
   <div class="repo-right">
+    <h4>My Repositories</h4>
     <div class="repo-cards">
       <a href="https://github.com/FarahIbrar/KPMG-Job-Simulation" target="_blank">
         <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=KPMG-Job-Simulation&theme=tokyonight" />
@@ -710,6 +713,9 @@
     </div>
   </div>
 </section>
+
+
+
 
   
   <!-- skills section -->
