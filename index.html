@@ -322,17 +322,17 @@ body.light .repo-right {
   background: var(--card);
   padding: 1rem 1rem;
   margin-top: 2rem;
-}*/
+}
 
 .contact-bar {
   display: flex;
-  flex-direction: column;  /* stack vertically */
-  justify-content: center; /* center vertically */
-  align-items: flex-start; /* align left, or center if you prefer */
+  flex-direction: column;  
+  justify-content: center; 
+  align-items: flex-start;
   background: var(--card);
   padding: 1rem 1rem;
   margin-top: 2rem;
-  gap: 1rem;               /* add spacing between children */
+  gap: 1rem;           
 }
 
 .contact-links {
@@ -384,7 +384,76 @@ body.light .repo-right {
 
 .contact-bar button:hover {
   transform: rotate(1deg) scale(1.05);
+}*/
+
+  /* Contact Bar Section */
+.contact-bar {
+  display: flex;
+  flex-direction: column;       /* Stack vertically */
+  justify-content: center;      /* Vertically center in viewport */
+  align-items: center;          /* Horizontally center all content */
+  height: calc(100vh - 3rem);  /* Take full viewport height minus footer/padding */
+  gap: 1.5rem;                  /* Space between heading, links, and button */
+  background: var(--card);
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+  text-align: center;
 }
+
+.section-heading {
+  color: var(--accent);
+  font-size: 2rem;  /* Larger font */
+  margin-bottom: 0.5rem;
+  border-bottom: 2px solid var(--accent);
+  display: inline-block;
+}
+
+.contact-icons {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.contact-icons a {
+  color: var(--accent);
+  font-size: 1.2rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.contact-icons a:hover {
+  transform: scale(1.1);
+  color: white;
+}
+
+.contact-bar button {
+  background: var(--accent);
+  color: white;
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: transform 0.2s;
+}
+
+.contact-bar button:hover {
+  transform: rotate(1deg) scale(1.05);
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  font-size: 0.85rem;
+  padding: 1rem;
+  background: var(--bg);
+  border-top: 1px solid #333;
+}
+
 
 
 
@@ -527,113 +596,6 @@ body.light .repo-right {
 </section>
 
 
-
-<!-- repository section>
-<div class="repo-right">
-    <h4>My Repositories</h4>
-    <div class="repo-cards">
-      <a href="https://github.com/FarahIbrar/KPMG-Job-Simulation" target="_blank">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=KPMG-Job-Simulation&theme=tokyonight" />
-      </a>
-      <a href="https://github.com/FarahIbrar/CFG-Python-Activision" target="_blank">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=CFG-Python-Activision&theme=tokyonight" />
-      </a>
-      </a>
-      <a href="https://github.com/FarahIbrar/Programming-in-Python" target="_blank">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=Programming-in-Python&theme=tokyonight" />
-      </a>
-      </a>
-      <a href="https://github.com/FarahIbrar/CFG-SQL-Deloitte" target="_blank">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=CFG-SQL-Deloitte&theme=tokyonight" />
-      </a>
-      </a>
-      <a href="https://github.com/FarahIbrar/aws-random-quote-generator" target="_blank">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=aws-random-quote-generator&theme=tokyonight" />
-      </a>
-      </a>
-      <a href="https://github.com/FarahIbrar/5-Day-Coding-Challenge" target="_blank">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=5-Day-Coding-Challenge&theme=tokyonight" />
-      </a>
-      <a href="https://github.com/FarahIbrar/FarahIbrar" target="_blank">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=FarahIbrar&theme=tokyonight" />
-      </a>
-    </div>
-  </div>
-</section-->
-
-
-<!-- ✅ REPOSITORIES PAGE (Full screen, split layout, the one that worked)>
-<section class="scroll-page repo-section">
-  <div class="repo-left">
-    <h2>Projects I've Worked On</h2>
-    <p>Explore real-world solutions I’ve built using Python, SQL, Tableau, and more. These projects reflect my skills in data analysis, machine learning, and storytelling through data.</p>
-  </div>
-
-  <div class="repo-right">
-    <h4>My Repositories</h4>
-    <div class="repo-cards">
-      <a href="https://github.com/FarahIbrar/KPMG-Job-Simulation" target="_blank">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=KPMG-Job-Simulation&theme=tokyonight" />
-      </a>
-      <a href="https://github.com/FarahIbrar/CFG-Python-Activision" target="_blank">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=CFG-Python-Activision&theme=tokyonight" />
-      </a>
-      <a href="https://github.com/FarahIbrar/Programming-in-Python" target="_blank">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=Programming-in-Python&theme=tokyonight" />
-      </a>
-      <a href="https://github.com/FarahIbrar/CFG-SQL-Deloitte" target="_blank">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=CFG-SQL-Deloitte&theme=tokyonight" />
-      </a>
-      <a href="https://github.com/FarahIbrar/aws-random-quote-generator" target="_blank">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=aws-random-quote-generator&theme=tokyonight" />
-      </a>
-      <a href="https://github.com/FarahIbrar/5-Day-Coding-Challenge" target="_blank">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=5-Day-Coding-Challenge&theme=tokyonight" />
-      </a>
-      <a href="https://github.com/FarahIbrar/FarahIbrar" target="_blank">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=FarahIbrar&theme=tokyonight" />
-      </a>
-    </div>
-  </div>
-</section-->
-
-
-  <!-- ✅ REPOSITORIES PAGE (Full screen, split layout>
-<section class="scroll-page repo-section">
-  <div class="repo-left">
-    <h2>Projects I've Worked On</h2>
-    <p>Explore real-world solutions I’ve built using Python, SQL, Tableau, and more. These projects reflect my skills in data analysis, machine learning, and storytelling through data.</p>
-  </div>
-
-  <div class="repo-right">
-    <h4>My Repositories</h4>
-    <div class="repo-cards">
-      <a href="https://github.com/FarahIbrar/KPMG-Job-Simulation" target="_blank">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=KPMG-Job-Simulation&theme=tokyonight" />
-      </a>
-      <a href="https://github.com/FarahIbrar/CFG-Python-Activision" target="_blank">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=CFG-Python-Activision&theme=tokyonight" />
-      </a>
-      <a href="https://github.com/FarahIbrar/Programming-in-Python" target="_blank">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=Programming-in-Python&theme=tokyonight" />
-      </a>
-      <a href="https://github.com/FarahIbrar/CFG-SQL-Deloitte" target="_blank">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=CFG-SQL-Deloitte&theme=tokyonight" />
-      </a>
-      <a href="https://github.com/FarahIbrar/aws-random-quote-generator" target="_blank">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=aws-random-quote-generator&theme=tokyonight" />
-      </a>
-      <a href="https://github.com/FarahIbrar/5-Day-Coding-Challenge" target="_blank">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=5-Day-Coding-Challenge&theme=tokyonight" />
-      </a>
-      <a href="https://github.com/FarahIbrar/FarahIbrar" target="_blank">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=FarahIbrar&repo=FarahIbrar&theme=tokyonight" />
-      </a>
-    </div>
-  </div>
-</section-->
-
-
  <!-- ✅ REPOSITORIES PAGE (Full screen, split layout-->
 <section class="scroll-page repo-section">
   <div class="repo-left">
@@ -730,7 +692,7 @@ body.light .repo-right {
 </section-->
 
 
-<!-- ========== CONTACT SECTION ========== -->
+<!-- ========== CONTACT SECTION ==========>
 <section class="scroll-page contact-bar">
   <div class="contact-links">
     <h3 class="section-heading">Get Acquainted</h3>
@@ -741,14 +703,14 @@ body.light .repo-right {
       <a href="https://public.tableau.com/app/profile/farah.ibrar" target="_blank">Tableau</a>
     </div>
   </div>
-  <!-- Put button *inside* the section, after the links -->
+  <!-- Put button *inside* the section, after the links >
   <button onclick="document.getElementById('contactModal').style.display='flex'">Contact Me</button>
 </section>
 
 
 
 
-  <!-- ========== CONTACT FORM MODAL ========== -->
+  <!-- ========== CONTACT FORM MODAL ==========>
   <div class="modal" id="contactModal">
     <div class="modal-content">
       <span class="close" onclick="document.getElementById('contactModal').style.display='none'">&times;</span>
@@ -767,10 +729,27 @@ body.light .repo-right {
     </div>
   </div>
 
-  <!-- footer -->
+  <!-- footer>
   <div class="footer">
     © 2025 Farah Ibrar | All rights reserved.
+</div-->
+
+
+<section class="scroll-page contact-bar">
+  <h3 class="section-heading">Get Acquainted</h3>
+  <div class="contact-icons">
+    <a href="mailto:farah11ibrar@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/farahibrar/" target="_blank">LinkedIn</a>
+    <a href="https://github.com/FarahIbrar" target="_blank">GitHub</a>
+    <a href="https://public.tableau.com/app/profile/farah.ibrar" target="_blank">Tableau</a>
   </div>
+  <button onclick="document.getElementById('contactModal').style.display='flex'">Contact Me</button>
+</section>
+
+<footer class="footer">
+  © 2025 Farah Ibrar. All rights reserved.
+</footer>
+
 
   <!-- ========== dark/light mode icon ========== -->
 <script>
