@@ -216,7 +216,7 @@
 
 /* Right panel - default background */
 .repo-right {
-  background: #ce9cc5; 
+  background: #58a6ff; 
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -324,15 +324,15 @@ body.light .repo-right {
   margin-top: 2rem;
 }*/
 
-  .contact-bar {
+.contact-bar {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
+  flex-direction: column;  /* stack vertically */
+  justify-content: center; /* center vertically */
+  align-items: flex-start; /* align left, or center if you prefer */
   background: var(--card);
   padding: 1rem 1rem;
   margin-top: 2rem;
-  gap: 1rem;
+  gap: 1rem;               /* add spacing between children */
 }
 
 @media (min-width: 768px) {
