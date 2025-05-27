@@ -43,7 +43,8 @@
     height: 100%;
     margin: 0;
     scroll-behavior: smooth;
-    overflow-y: auto; /* Ensure this is not 'hidden' */
+    overflow-y: auto; /* New*/
+    scroll-snap-type: y mandatory; /* New*/
   }
 
   .page-container {
@@ -52,7 +53,7 @@
     scroll-snap-type: y mandatory;
   }
 
-  .scroll-page {
+  /*.scroll-page {
     height: 100vh;
     scroll-snap-align: start;
     display: flex;
@@ -60,7 +61,16 @@
     justify-content: center;
     align-items: center;
     position: relative;
-  }
+  }*/
+  /* New testing bit */
+  .scroll-page {
+  height: 100vh;
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  width: 100%;
+  position: relative;
+}
+
 
   .scroll-down-arrow {
     position: fixed;
@@ -765,31 +775,29 @@ button:focus {
   });
 </script>
 
-
+    
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const arrow = document.querySelector(".scroll-down-arrow");
     const sections = document.querySelectorAll(".scroll-page");
 
-    function updateArrowVisibility() {
-      const threshold = window.innerHeight / 2;
+    function hideArrowIfLastVisible() {
+      const lastSection = sections[sections.length - 1];
+      const lastSectionTop = lastSection.getBoundingClientRect().top;
 
-      sections.forEach((section, index) => {
-        const rect = section.getBoundingClientRect();
-        if (rect.top <= threshold && rect.bottom >= threshold) {
-          if (index === sections.length - 1) {
-            arrow.style.display = "none";
-          } else {
-            arrow.style.display = "block";
-          }
-        }
-      });
+      if (lastSectionTop <= window.innerHeight / 2) {
+        arrow.style.display = "none";
+      } else {
+        arrow.style.display = "block";
+      }
     }
 
-    window.addEventListener("scroll", updateArrowVisibility);
-    updateArrowVisibility(); // initial check
+    window.addEventListener("scroll", hideArrowIfLastVisible);
+    hideArrowIfLastVisible(); // run on page load
   });
 </script>
+
+
 
 
 </body>
