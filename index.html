@@ -313,7 +313,7 @@ body.light .repo-right {
       background: rgba(255, 255, 255, 0.07);
     }
 
-/* Contact parts*/
+/* Contact parts/
 .contact-bar {
   display: flex;
   flex-direction: column; 
@@ -371,6 +371,87 @@ body.light .repo-right {
 
 .contact-bar button:hover {
   transform: rotate(1deg) scale(1.05);
+}*/
+
+/* Footer */
+/*.footer {
+  text-align: center;
+  font-size: 0.85rem;
+  padding: 1rem;
+  background: var(--bg);
+  border-top: 1px solid #333;
+} */
+
+
+/* Page layout */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Contact Section */
+.contact-bar {
+  flex: 1;
+  display: flex;
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center; 
+  gap: 1.5rem; 
+  background: var(--card);
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.section-heading {
+  color: var(--accent);
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 2px solid var(--accent);
+  display: inline-block;
+}
+
+.contact-icons {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.contact-icons a {
+  color: var(--accent);
+  font-size: 1.2rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.contact-icons a:hover {
+  transform: scale(1.1);
+  color: white;
+}
+
+.contact-bar button {
+  background: var(--accent);
+  color: white;
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: transform 0.2s;
+}
+
+.contact-bar button:hover {
+  transform: rotate(1deg) scale(1.05);
 }
 
 /* Footer */
@@ -381,8 +462,6 @@ body.light .repo-right {
   background: var(--bg);
   border-top: 1px solid #333;
 }
-
-
 
 
 
@@ -506,7 +585,7 @@ body.light .repo-right {
   <div class="subsection"><strong>Who I Am</strong>
     <p>I’m Farah Ibrar, a data scientist with a background in Biomedical Sciences and Immunology. My journey began in academic research, but my curiosity led me to data-driven problem-solving.</p>
   </div>
-
+  
   <div class="subsection"><strong>What I Do</strong>
     <p>I specialize in predictive modelling, statistical analysis, natural language processing (NLP), and advanced machine learning techniques. I also enjoy building meaningful dashboards and data visualisations that communicate insights clearly and effectively using Tableau and Python.</p>
   </div>
@@ -636,17 +715,26 @@ body.light .repo-right {
   <button onclick="document.getElementById('contactModal').style.display='flex'">Contact Me</button>
 </section-->
 
-<section class="scroll-page contact-bar">
-  <h3 class="section-heading">Get Acquainted</h3>
-  <div class="contact-icons">
-    <a href="mailto:farah11ibrar@gmail.com">Email</a>
-    <a href="https://www.linkedin.com/in/farahibrar/" target="_blank">LinkedIn</a>
-    <a href="https://github.com/FarahIbrar" target="_blank">GitHub</a>
-    <a href="https://public.tableau.com/app/profile/farah.ibrar" target="_blank">Tableau</a>
-  </div>
-  <button onclick="document.getElementById('contactModal').style.display='flex'">Contact Me</button>
-</section>
+<body>
+  <div class="page-container">
+    <!-- Contact Section -->
+    <section class="scroll-page contact-bar">
+      <h3 class="section-heading">Get Acquainted</h3>
+      <div class="contact-icons">
+        <a href="mailto:farah11ibrar@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/farahibrar/" target="_blank">LinkedIn</a>
+        <a href="https://github.com/FarahIbrar" target="_blank">GitHub</a>
+        <a href="https://public.tableau.com/app/profile/farah.ibrar" target="_blank">Tableau</a>
+      </div>
+      <button onclick="document.getElementById('contactModal').style.display='flex'">Contact Me</button>
+    </section>
 
+    <!-- Footer -->
+    <div class="footer">
+      © 2025 Farah Ibrar | All rights reserved.
+    </div>
+  </div>
+  
   <!-- ========== CONTACT FORM MODAL ==========-->
   <div class="modal" id="contactModal">
     <div class="modal-content">
@@ -655,18 +743,17 @@ body.light .repo-right {
       <p style="margin-top: -0.5rem; font-size: 0.85rem; animation: fadeInSlide 1.2s ease-out;">
         I'm always open to discussing new projects, job opportunities, or partnerships. Feel free to reach out using the form below or through my social channels.
       </p>
-
+      
       <form id="contactForm" action="https://submit-form.com/s1eLtaukd" method="POST">
-  <input type="text" name="name"  placeholder="Your Name" required>
-  <input type="email" name="email" placeholder="Your Email Address" required>
-  <textarea name="message" rows="5" placeholder="Tell me about your project…"  required></textarea>
-  <button type="submit">Send Message →</button>
-</form>
-
+        <input type="text" name="name"  placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email Address" required>
+        <textarea name="message" rows="5" placeholder="Tell me about your project…"  required></textarea>
+        <button type="submit">Send Message →</button>
+      </form>
     </div>
   </div>
 
-  <!-- footer-->
+  <!-- footer>
   <div class="footer">
     © 2025 Farah Ibrar | All rights reserved.
 </div>
