@@ -34,7 +34,8 @@
     margin: 0;
     background: var(--bg);
     color: var(--fg);
-    font-family: 'Inter', sans-serif;
+    /*font-family: 'Inter', sans-serif;*/
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     transition: background 0.3s, color 0.3s;
   }
 
@@ -43,7 +44,7 @@
     height: 100%;
     margin: 0;
     scroll-behavior: smooth;
-    overflow: hidden;
+    /*overflow: hidden;*/
   }
 
   .page-container {
@@ -63,7 +64,8 @@
   }
 
   .scroll-down-arrow {
-    position: absolute;
+    /*position: absolute;*/
+    position: fixed;
     bottom: 20px;
     font-size: 1.5rem;
     color: var(--accent);
@@ -451,6 +453,18 @@ body.light .repo-right {
       background: var(--bg);
       border-top: 1px solid #333;
     }
+
+
+  body {
+  transition: background 0.3s ease, color 0.3s ease;
+}
+  
+  a:focus,
+button:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
 
       /* ========== Contact Button fade In effects ========== */
     @keyframes fadeIn {
