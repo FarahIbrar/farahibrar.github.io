@@ -43,11 +43,12 @@
     height: 100%;
     margin: 0;
     scroll-behavior: smooth;
+    overflow-y: auto; /* Ensure this is not 'hidden' */
   }
 
   .page-container {
-    height: 100vh;
-    overflow-y: scroll;
+    /*height: 100vh;
+    overflow-y: scroll;*/
     scroll-snap-type: y mandatory;
   }
 
@@ -67,6 +68,7 @@
     font-size: 1.5rem;
     color: #c5b8b8e9;
     animation: bounce 1.5s infinite;
+    z-index: 9999; /* New addition*/
   }
 
   @keyframes bounce {
@@ -762,6 +764,33 @@ button:focus {
     }, 3000);
   });
 </script>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const arrow = document.querySelector(".scroll-down-arrow");
+    const sections = document.querySelectorAll(".scroll-page");
+
+    function updateArrowVisibility() {
+      const threshold = window.innerHeight / 2;
+
+      sections.forEach((section, index) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= threshold && rect.bottom >= threshold) {
+          if (index === sections.length - 1) {
+            arrow.style.display = "none";
+          } else {
+            arrow.style.display = "block";
+          }
+        }
+      });
+    }
+
+    window.addEventListener("scroll", updateArrowVisibility);
+    updateArrowVisibility(); // initial check
+  });
+</script>
+
 
 </body>
 </html>
