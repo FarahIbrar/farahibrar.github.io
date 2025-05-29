@@ -49,6 +49,8 @@
     height: 100vh;
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
+    scroll-behavior: smooth; /*New */
+
   }
 
   .scroll-page {
@@ -62,13 +64,15 @@
   }
 
   .scroll-down-arrow {
-    position: fixed;
-    bottom: 20px;
-    font-size: 1.5rem;
-    color: #c5b8b8e9;
-    animation: bounce 1.5s infinite;
-    z-index: 9999;
-  }
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+  color: #c5b8b8e9;
+  animation: bounce 1.5s infinite;
+  z-index: 9999;
+}
 
   @keyframes bounce {
     0%, 100% { transform: translateY(0); }
@@ -317,12 +321,12 @@ body.light .repo-right {
       background: rgba(255, 255, 255, 0.07);
     }
 
-/* Contact parts*/
-.contact-bar {
+
+/* ===== COMBINED SECTION STYLES ===== */
+.contact-section {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
   min-height: 100vh;
   background: var(--card);
   padding: 2rem 1rem 0;
@@ -330,21 +334,28 @@ body.light .repo-right {
   text-align: center;
 }
 
-.contact-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; 
-  flex: 1; 
-  gap: 1.5rem;
+.collaborate-content {
+  margin: 2rem auto;
+  max-width: 800px;
+  padding: 0 1rem;
 }
+
 
 .section-heading {
   color: var(--accent);
   font-size: 2rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem 0; /*changed this from 0.5*/
   border-bottom: 2px solid var(--accent);
   display: inline-block;
+}
+
+
+.subheading {
+  font-size: 1rem;
+  color: var(--fg);
+  line-height: 1.6;
+  text-align: center;
+  margin: 1rem 0;
 }
 
 .contact-icons {
@@ -352,7 +363,7 @@ body.light .repo-right {
   gap: 2rem;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1rem 0;
 }
 
 .contact-icons a {
@@ -368,7 +379,7 @@ body.light .repo-right {
   color: white;
 }
 
-.contact-bar button {
+.contact-content button {
   background: var(--accent);
   color: white;
   padding: 0.8rem 2rem;
@@ -377,55 +388,19 @@ body.light .repo-right {
   cursor: pointer;
   font-size: 1.1rem;
   font-weight: 600;
-  transition: transform 0.2s;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  transform: perspective(1px) translateZ(0); /* For smooth animation */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
-.contact-bar button:hover {
-  transform: rotate(1deg) scale(1.05);
+.contact-content button:hover {
+  transform: perspective(1px) rotate(1deg) scale(1.05);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
-/* Let's collaborate section in middle /
-.subheading {
-    font-size: 1rem;
-    max-width: 800px;
-    color: var(--fg);
-    line-height: 1.25;
-    text-align: center;
-    padding: 0 1rem;
-    margin: 0.5rem auto 0;
-    display: inline-block;
-
-}*/
-
-.section-heading {
-  color: var(--accent);
-  font-size: 2rem;
-  margin-bottom: 0.3rem;
-  border-bottom: 2px solid var(--accent);
-  display: inline-block;
-}
-
-.subheading {
-  font-size: 1rem;
-  max-width: 800px;
-  color: var(--fg);
-  line-height: 1.25;
-  text-align: center;
-  padding: 0 1rem;
-  margin: 0.1rem auto 0;
-  display: inline-block;
-}
-
-.subheading p {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-
-
-/* Footer*/
 .footer {
-  width: 100%; 
+  width: 100%;
   text-align: center;
   font-size: 0.85rem;
   padding: 1rem;
@@ -433,6 +408,7 @@ body.light .repo-right {
   border-top: 1px solid #333;
   margin-top: auto;
 }
+
 
 
     /* ========== MODAL ========== */
@@ -539,10 +515,10 @@ button:focus {
     </button>
   </div>
 
-      <!-- ✅ Start the scroll container -->
+<!-- ✅ Start the scroll container -->
 <div class="page-container">
 
-  <!-- ✅ HERO SECTION -->
+  <!-- ✅ HERO SECTION-->
   <section class="hero scroll-page">
     <img src="profile.jpg" alt="Farah Ibrar">
     <h2>Farah Ibrar</h2>
@@ -553,8 +529,9 @@ button:focus {
     </div>
   </section>
 
+
 <!-- ✅ ABOUT ME SECTION (REPLACE your old About Me section with this) -->
-<section class="scroll-page about-section">
+<section class="scroll-page about-section"> 
   <h3>About Me</h3>
 
   <div class="subsection"><strong>Who I Am</strong>
@@ -571,10 +548,6 @@ button:focus {
 
   <div class="subsection"><strong>How I Work</strong>
     <p>With an academic background in different field, I bring a unique interdisciplinary perspective to data science. My transition from research to analytics has equipped me with robust problem-solving skills, attention to detail, a strategic mindset, and a passion for deriving insight from evidence.</p>
-  </div>
-
-  <div class="scroll-down-arrow">
-    <i class="fas fa-chevron-down"></i>
   </div>
 </section>
 
@@ -615,8 +588,7 @@ button:focus {
 
 
   <!-- skills section -->
-  <section class="scroll-page section">
-  <!--section class="padded-section"-->
+  <section class="scroll-page section"> 
   <h3 class="section-heading">Skills & Tools</h3>
   <div class="skills-grid">
     <img src="https://go-skill-icons.vercel.app/api/icons?i=python" title="Python" />
@@ -652,45 +624,23 @@ button:focus {
   </div>
 </section>
 
-
-  <!-- let's collaborate >
-<section class="scroll-page padded-section">
-  <h3 class="section-heading">Let’s Collaborate</h3>
-    <p>Have a project in mind, a challenge to solve, or an idea to explore? I am always open to connecting with professionals who share a passion for data and impact. Let’s build something meaningful together. Feel free to get in touch. I am always open to new opportunities and meaningful conversations.</p>
-  </section-->
-
-<!-- Let's Collaborate >
-<section class="scroll-page padded-section contact-bar">
-    <div class="contact-content">
-      <h3 class="section-heading">Let’s Collaborate</h3>
-      <p class="subheading">
-        Have a project in mind, a challenge to solve, or an idea to explore? I am always open to connecting with professionals who share a passion for data and impact. Let’s build something meaningful together. Feel free to get in touch. I am always open to new opportunities and meaningful conversations.
-      </p>
-    </div>
-  </section-->
-
-  <section class="scroll-page padded-section">
-    <h3 class="section-heading">Let’s Collaborate</h3>
-    <div class="subheading">
-      <p>Have a project in mind, a challenge to solve, or an idea to explore? I am always open to connecting with professionals who share a passion for data and impact. Let’s build something meaningful together. Feel free to get in touch. I am always open to new opportunities and meaningful conversations.</p>
-    </div>
-  </section>
-  
-  
-
-  <!-- ========== CONTACT SECTION ========== -->
-<section class="scroll-page contact-bar">
-    <div class="contact-content">
-      <div class="contact-links">
-        <h3 class="section-heading">Get Acquainted</h3>
-        <div class="contact-icons">
-          <a href="mailto:farah11ibrar@gmail.com">Email</a>
-          <a href="https://www.linkedin.com/in/farahibrar/" target="_blank">LinkedIn</a>
-          <a href="https://github.com/FarahIbrar" target="_blank">GitHub</a>
-          <a href="https://public.tableau.com/app/profile/farah.ibrar" target="_blank">Tableau</a>
-        </div>
+<!-- Collaboration & Contact Section -->
+<section class="scroll-page contact-section">
+    <div class="collaborate-content">
+      <h3 class="section-heading">Let's Collaborate</h3>
+      <div class="subheading">
+        <p>Have a project in mind, a challenge to solve, or an idea to explore? I am always open to connecting with professionals who share a passion for data and impact. Let's build something meaningful together. Feel free to get in touch. I am always open to new opportunities and meaningful conversations.</p>
       </div>
+    </div>
   
+    <div class="contact-content">
+      <h3 class="section-heading">Get Acquainted</h3>
+      <div class="contact-icons">
+        <a href="mailto:farah11ibrar@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/farahibrar/" target="_blank">LinkedIn</a>
+        <a href="https://github.com/FarahIbrar" target="_blank">GitHub</a>
+        <a href="https://public.tableau.com/app/profile/farah.ibrar" target="_blank">Tableau</a>
+      </div>
       <button onclick="document.getElementById('contactModal').style.display='flex'">Contact Me</button>
     </div>
   
@@ -698,8 +648,6 @@ button:focus {
       © 2025 Farah Ibrar | All rights reserved.
     </div>
   </section>
-  
-
 
   <!-- ========== CONTACT FORM MODAL ==========-->
   <div class="modal" id="contactModal">
@@ -718,11 +666,6 @@ button:focus {
       </form>
     </div>
   </div>
-
-  <!-- footer>
-  <div class="footer">
-    © 2025 Farah Ibrar | All rights reserved.
-</div>
 
 
   <!-- ========== dark/light mode icon ========== -->
@@ -812,27 +755,42 @@ button:focus {
   });
 </script>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const arrow = document.querySelector(".scroll-down-arrow");
-      const sections = document.querySelectorAll(".scroll-page");
-  
-      function hideArrowIfLastVisible() {
-        const lastSection = sections[sections.length - 1];
-        const lastSectionTop = lastSection.getBoundingClientRect().top;
-  
-        if (lastSectionTop <= window.innerHeight / 2) {
-          arrow.style.display = "none";
-        } else {
-          arrow.style.display = "block";
-        }
-      }
-  
-      window.addEventListener("scroll", hideArrowIfLastVisible);
-      hideArrowIfLastVisible(); // run on page load
-    });
-  </script>
-  
 
+<!-- ========== SCRIPT for the Arrow ========== --> 
+<script>
+// Scroll Arrow Behavior
+document.addEventListener("DOMContentLoaded", function () {
+  const arrow = document.querySelector(".scroll-down-arrow");
+  const allSections = document.querySelectorAll(".scroll-page");
+  const trueLastSection = allSections[allSections.length - 1];
+  
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.target === trueLastSection) {
+          if (entry.isIntersecting) {
+            arrow.style.opacity = "0";
+            arrow.style.pointerEvents = "none";
+            arrow.style.animation = "none";
+          } else {
+            arrow.style.opacity = "1";
+            arrow.style.pointerEvents = "auto";
+            arrow.style.animation = "bounce 1.5s infinite";
+          }
+        }
+      });
+    },
+    {
+      threshold: 0.5,
+      rootMargin: "0px 0px -100px 0px"
+    }
+  );
+
+  if (trueLastSection) {
+    observer.observe(trueLastSection);
+  }
+});
+</script>
+  
 </body>
 </html>
