@@ -318,118 +318,62 @@ body.light .repo-right {
     background: rgba(255, 255, 255, 0.07);
 }*/
 
-  /* ===== SKILLS SECTION =====/
-  .skills-section {
-    overflow: hidden;
-    width: 100%;
-    margin: 1rem 0 2rem;
-  }
-  
-  .skills-heading {
-    text-align: center;
-    margin-bottom: 1.5rem;
-  }
-  
-  .skills-container {
+/* Skills Grid - In-Place Focus Effect */
+.skills-grid {
     display: flex;
-    position: relative;
-  }
-  
-  .skills-track {
-    display: flex;
-    gap: 0.7rem;
-    animation: scroll 30s linear infinite;
-    padding: 0.5rem 0;
-    will-change: transform; /* Optimizes animation /
-  }
-  
-  .skills-track:hover {
-    animation-play-state: paused;
-  }
-  
-  .skills-track img {
-    background: var(--card);
-    padding: 0.2rem;
-    border-radius: 10px;
-    width: 2.8rem;
-    height: 2.8rem;
-    object-fit: contain;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
-  }
-  
-  .skills-track img:hover {
-    transform: scale(1.5);
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 10;
-  }
-  
-  @keyframes scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }*/
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    justify-content: center;
+    margin: 2rem auto;
+    max-width: 900px;
+    padding: 1rem;
+}
 
-         /* ===== SKILLS SECTION ===== */
-         .skills-section {
-            overflow: hidden;
-            width: 100%;
-            margin: 2rem 0 3rem;
-            padding: 0 1rem;
-        }
-        
-        .skills-heading {
-            text-align: center;
-            margin-bottom: 2rem;
-            font-size: 1.8rem;
-            color: var(--fg);
-        }
-        
-        .skills-container {
-            display: flex;
-            width: 200%; /* Double width for seamless loop */
-        }
-        
-        .skills-track {
-            display: flex;
-            gap: 1.2rem; /* Increased space between icons */
-            padding: 1.2rem 0;
-            will-change: transform;
-            animation: scroll 35s linear infinite;
-        }
-        
-        .skills-track:hover {
-            animation-play-state: paused;
-        }
-        
-        .skills-track img {
-            width: 4rem; /* Larger icons */
-            height: 4rem;
-            background: var(--card);
-            padding: 0.5rem;
-            border-radius: 14px;
-            object-fit: contain;
-            transition: all 0.3s ease;
-            flex-shrink: 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .skills-track img:hover {
-            transform: scale(1.6);
-            background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-            z-index: 10;
-        }
-        
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        
-        /* Hide duplicate track from screen readers */
-        .skills-track[aria-hidden="true"] {
-            visibility: visible; /* Keeps layout but hides from AT */
-        }
+.skills-grid img {
+    background: var(--card);
+    padding: 0.4rem;
+    border-radius: 12px;
+    transition: all 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    width: 3.5rem;
+    height: 3.5rem;
+    object-fit: contain;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    filter: blur(0);
+    opacity: 0.95;
+    transform: scale(1);
+    position: relative;
+    z-index: 1;
+}
+
+/* Hovered Item */
+.skills-grid img:hover {
+    transform: scale(2);
+    z-index: 10;
+    filter: blur(0);
+    opacity: 1;
+    background: var(--accent);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* Non-Hovered Items When One is Hovered */
+.skills-grid:has(img:hover) img:not(:hover) {
+    filter: blur(3px);
+    opacity: 0.6;
+    transform: scale(0.9);
+    transition: all 0.3s ease-out;
+}
+
+/* Mobile Adaptation */
+@media (max-width: 768px) {
+    .skills-grid img:hover {
+        transform: scale(1.6);
+    }
+    
+    .skills-grid:has(img:hover) img:not(:hover) {
+        filter: blur(2px);
+        transform: scale(0.95);
+    }
+}
 
 
 /* Combined Section Styles */
@@ -645,7 +589,6 @@ select:focus {
 
 
 
-
 <!--HTML part starts here-->
 <!--Navigation bar-->
  <body>
@@ -725,8 +668,7 @@ select:focus {
  <section class="scroll-page section"> 
     <h3 class="section-heading">Skills & Tools</h3>
 
-
-    <!--div class="skills-grid">
+    <div class="skills-grid">
         <img src="https://go-skill-icons.vercel.app/api/icons?i=python" title="Python" />
         <img src="https://go-skill-icons.vercel.app/api/icons?i=seaborn" title="Seaborn" />
         <img src="https://go-skill-icons.vercel.app/api/icons?i=sklearn" title="Scikit-learn" />
@@ -758,146 +700,6 @@ select:focus {
         <img src="https://go-skill-icons.vercel.app/api/icons?i=figma" title="Figma" />
         <img src="https://go-skill-icons.vercel.app/api/icons?i=canva" title="Canva" />
     </div>
-</section-->
-
-<!--div class="skills-container"-->
-    <!--div class="skills-track"-->
-      <!-- Original Set >
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=python" title="Python" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=seaborn" title="Seaborn" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=sklearn" title="Scikit-learn" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=tensorflow" title="TensorFlow" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=pandas" title="Pandas" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=numpy" title="NumPy" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=matplotlib" title="Matplotlib" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=docker" title="Docker" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=pytorch" title="PyTorch" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=scipy" title="SciPy" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=pycharm" title="PyCharm" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=jupyter" title="Jupyter" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=mysql" title="MySQL" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=postgresql" title="PostgreSQL" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=sqlite" title="SQLite" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=r" title="R" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=tableau" title="Tableau" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=vscode" title="VS Code" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=anaconda" title="Anaconda" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=git" title="Git" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=github" title="GitHub" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=aws" title="AWS" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=azure" title="Azure" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=html" title="HTML" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=css" title="CSS" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=js" title="JavaScript" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=nodejs" title="Node.js" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=bootstrap" title="Bootstrap" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=figma" title="Figma" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=canva" title="Canva" />
-      
-      < Duplicate Set for Seamless Looping >
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=python" title="Python" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=seaborn" title="Seaborn" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=sklearn" title="Scikit-learn" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=tensorflow" title="TensorFlow" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=pandas" title="Pandas" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=numpy" title="NumPy" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=matplotlib" title="Matplotlib" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=docker" title="Docker" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=pytorch" title="PyTorch" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=scipy" title="SciPy" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=pycharm" title="PyCharm" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=jupyter" title="Jupyter" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=mysql" title="MySQL" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=postgresql" title="PostgreSQL" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=sqlite" title="SQLite" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=r" title="R" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=tableau" title="Tableau" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=vscode" title="VS Code" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=anaconda" title="Anaconda" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=git" title="Git" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=github" title="GitHub" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=aws" title="AWS" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=azure" title="Azure" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=html" title="HTML" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=css" title="CSS" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=js" title="JavaScript" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=nodejs" title="Node.js" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=bootstrap" title="Bootstrap" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=figma" title="Figma" />
-      <img src="https://go-skill-icons.vercel.app/api/icons?i=canva" title="Canva" />
-    </div>
-  </div>
-</section-->
-
-<div class="skills-container">
-    <!-- Original Track -->
-    <div class="skills-track">
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=python" alt="Python" title="Python" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=seaborn" alt="Seaborn" title="Seaborn" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=sklearn" alt="Scikit-learn" title="Scikit-learn" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=tensorflow" alt="TensorFlow" title="TensorFlow" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=pandas" alt="Pandas" title="Pandas" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=numpy" alt="NumPy" title="NumPy" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=matplotlib" alt="Matplotlib" title="Matplotlib" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=docker" alt="Docker" title="Docker" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=pytorch" alt="PyTorch" title="PyTorch" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=scipy" alt="SciPy" title="SciPy" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=pycharm" alt="PyCharm" title="PyCharm" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=jupyter" alt="Jupyter" title="Jupyter" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=mysql" alt="MySQL" title="MySQL" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=postgresql" alt="PostgreSQL" title="PostgreSQL" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=sqlite" alt="SQLite" title="SQLite" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=r" alt="R" title="R" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=tableau" alt="Tableau" title="Tableau" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=vscode" alt="VS Code" title="VS Code" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=anaconda" alt="Anaconda" title="Anaconda" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=git" alt="Git" title="Git" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=github" alt="GitHub" title="GitHub" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=aws" alt="AWS" title="AWS" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=azure" alt="Azure" title="Azure" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=html" alt="HTML" title="HTML" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=css" alt="CSS" title="CSS" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=js" alt="JavaScript" title="JavaScript" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=nodejs" alt="Node.js" title="Node.js" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=bootstrap" alt="Bootstrap" title="Bootstrap" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=figma" alt="Figma" title="Figma" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=canva" alt="Canva" title="Canva" />
-    </div>
-    
-    <!-- Mirror Track for Seamless Loop -->
-    <div class="skills-track" aria-hidden="true">
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=python" alt="Python" title="Python" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=seaborn" alt="Seaborn" title="Seaborn" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=sklearn" alt="Scikit-learn" title="Scikit-learn" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=tensorflow" alt="TensorFlow" title="TensorFlow" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=pandas" alt="Pandas" title="Pandas" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=numpy" alt="NumPy" title="NumPy" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=matplotlib" alt="Matplotlib" title="Matplotlib" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=docker" alt="Docker" title="Docker" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=pytorch" alt="PyTorch" title="PyTorch" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=scipy" alt="SciPy" title="SciPy" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=pycharm" alt="PyCharm" title="PyCharm" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=jupyter" alt="Jupyter" title="Jupyter" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=mysql" alt="MySQL" title="MySQL" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=postgresql" alt="PostgreSQL" title="PostgreSQL" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=sqlite" alt="SQLite" title="SQLite" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=r" alt="R" title="R" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=tableau" alt="Tableau" title="Tableau" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=vscode" alt="VS Code" title="VS Code" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=anaconda" alt="Anaconda" title="Anaconda" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=git" alt="Git" title="Git" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=github" alt="GitHub" title="GitHub" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=aws" alt="AWS" title="AWS" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=azure" alt="Azure" title="Azure" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=html" alt="HTML" title="HTML" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=css" alt="CSS" title="CSS" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=js" alt="JavaScript" title="JavaScript" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=nodejs" alt="Node.js" title="Node.js" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=bootstrap" alt="Bootstrap" title="Bootstrap" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=figma" alt="Figma" title="Figma" />
-        <img src="https://go-skill-icons.vercel.app/api/icons?i=canva" alt="Canva" title="Canva" />
-    </div>
-</div>
 </section>
 
 <!--Collaboration & Contact Section-->
