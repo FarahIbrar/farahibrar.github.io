@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js"></script>
+<link href="https://use.typekit.com/yourkitid.css" rel="stylesheet">
 
 
 <!-- styles -->
@@ -30,18 +31,59 @@ body.light {
     --button: linear-gradient(to right, #007acc, #005ca9);
 }
 
-body {
+/*body {
     margin: 0;
     background: var(--bg);
     color: var(--fg);
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     transition: background 0.3s, color 0.3s;
+}*/
+
+/* Replace your current body font definition with this */
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Helvetica Now Text', 'Inter', -apple-system, sans-serif;
+    transition: background 0.3s, color 0.3s;
 }
 
-/* Page by Page, Arrow */
+/* Add these new styles for animations */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    will-change: opacity, transform; /* Improves performance */
+}
+
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Optional: Add this if you want elements to reset when scrolling up */
+.page-container {
+    scroll-snap-stop: always; /* Makes scroll-snap pause on each section */
+}
+
+/* Delay classes for staggered animations */
+.delay-1 { transition-delay: 0.1s !important; }
+.delay-2 { transition-delay: 0.2s !important; }
+.delay-3 { transition-delay: 0.3s !important; }
+.delay-4 { transition-delay: 0.4s !important; }
+
+/* Update your headings to use Helvetica Now Text Bold */
+.section-heading, h1, h2, h3, h4, h5, h6 {
+    font-family: 'Helvetica Now Text Bold', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 700;
+}
+
+/* Page by Page View and Arrow */
 html, body {
     height: 100%;
     margin: 0;
+    padding: 0;
+    overflow-x: hidden;
     scroll-behavior: smooth;
 }
 
@@ -52,14 +94,27 @@ html, body {
     scroll-behavior: smooth;
 }
 
-.scroll-page {
+/*.scroll-page {
     height: 100vh;
     scroll-snap-align: start;
+    scroll-snap-stop: always;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
+}*/
+
+.scroll-page {
+  height: 100vh;
+  width: 100vw;
+  scroll-snap-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 .scroll-down-arrow {
@@ -78,7 +133,7 @@ html, body {
     50% { transform: translateY(6px); }
 }
 
-.about-section h3 {
+/*.about-section h3 {
     color: var(--accent);
     font-size: 1.6rem;
     margin-bottom: 1.5rem;
@@ -91,6 +146,46 @@ html, body {
     margin-bottom: 1.4rem;
     text-align: left;
     max-width: 800px;
+}*/
+
+/* Update your existing about-section styles to include animation support */
+.about-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.about-section h3 {
+    color: var(--accent);
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--accent);
+    display: inline-block;
+    text-align: center;
+    /* Add these to ensure proper animation starting point */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.about-section .subsection {
+    margin-bottom: 1.4rem;
+    text-align: left;
+    max-width: 800px;
+    /* Add these for animation */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Add this new rule for visible state */
+.about-section h3.visible,
+.about-section .subsection.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* General sections */ 
@@ -175,7 +270,8 @@ html, body {
     font-size: 0.95rem;
     color: #888;
 }
-   
+ 
+
 /* Repository Section */
 .repo-section {
     display: flex;
@@ -202,6 +298,10 @@ html, body {
     margin: 0 0 0.2rem 0;
     flex-direction: column;
     justify-content: center;
+    /*New here*/
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 /* Left panel typography */
@@ -289,44 +389,17 @@ body.light .repo-right {
     }
 }
 
-  
-/* Skills Section /
-.skills-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.70rem;
-    justify-content: center;
-    margin-top: 1rem;
-}
-    
-.skills-grid img {
-    background: var(--card);
-    padding: 0.2rem;
-    border-radius: 10px;
-    transition: transform 0.25s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.80rem;
-    height: 2.80rem;
-    object-fit: contain;
-}
-    
-/* Hover effect/
-.skills-grid img:hover {
-    transform: scale(1.28);
-    background: rgba(255, 255, 255, 0.07);
-}*/
 
-/* Skills Grid - In-Place Focus Effect */
+/* Skills Section */
 .skills-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.2rem;
+    gap: 1rem;
     justify-content: center;
     margin: 2rem auto;
-    max-width: 900px;
+    max-width: 920px;
     padding: 1rem;
+    perspective: 1000px;
 }
 
 .skills-grid img {
@@ -345,6 +418,12 @@ body.light .repo-right {
     z-index: 1;
 }
 
+/* Visible state */
+.skills-grid img.visible {
+    opacity: 0.95;
+    transform: rotateY(0) scale(1);
+}
+
 /* Hovered Item */
 .skills-grid img:hover {
     transform: scale(2);
@@ -353,6 +432,7 @@ body.light .repo-right {
     opacity: 1;
     background: var(--accent);
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    transform: scale(2) rotateY(0) !important;
 }
 
 /* Non-Hovered Items When One is Hovered */
@@ -376,46 +456,55 @@ body.light .repo-right {
 }
 
 
-/* Combined Section Styles */
+/* Contact Section Styles */
 .contact-section {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
     min-height: 100vh;
-    background: var(--card);
-    padding: 2rem 1rem 0;
+    padding: 1rem 2rem;
     box-sizing: border-box;
+    position: relative;
     text-align: center;
 }
 
-.collaborate-content {
-    margin: 2rem auto;
+.collaborate-content,
+.contact-content {
+    width: 100%;
     max-width: 800px;
-    padding: 0 1rem;
+    margin: 0;
+    padding: 0;
+    text-align: center;
 }
 
 .section-heading {
     color: var(--accent);
     font-size: 2rem;
-    margin-bottom: 1rem 0;
-    border-bottom: 2px solid var(--accent);
+    margin-bottom: 0.5rem !important;
+    line-height: 1.2;
     display: inline-block;
+}
+
+.contact-content .section-heading {
+    display: none;
 }
 
 .subheading {
     font-size: 1rem;
     color: var(--fg);
-    line-height: 1.6;
-    text-align: center;
-    margin: 1rem 0;
+    line-height: 1.5;
+    margin-bottom: 1rem !important; 
+    padding: 0;
 }
 
 .contact-icons {
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
     flex-wrap: wrap;
     justify-content: center;
-    margin-bottom: 1rem 0;
+    margin-top: 0.5rem !important; 
+    padding: 0;
 }
 
 .contact-icons a {
@@ -441,7 +530,7 @@ body.light .repo-right {
     font-size: 1.1rem;
     font-weight: 600;
     transition: all 0.3s ease;
-    margin-top: 1rem;
+    margin-top: 0.75rem !important;
     transform: perspective(1px) translateZ(0);
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
@@ -454,11 +543,23 @@ body.light .repo-right {
 .footer {
     width: 100%;
     text-align: center;
-    font-size: 0.85rem;
-    padding: 1rem;
+    padding: 0.8rem;
     background: var(--bg);
     border-top: 1px solid #333;
-    margin-top: auto;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-section {
+        padding: 2rem 1rem;
+    }
+    
+    .contact-icons {
+        gap: 1.5rem;
+    }
 }
 
 /* Modal */
@@ -602,39 +703,43 @@ select:focus {
 <!--Scroll container-->
 <div class="page-container">
 
-<!--Hero Section-->
+<!-- Hero Section -->
 <section class="hero scroll-page">
-    <img src="profile.jpg" alt="Farah Ibrar">
-    <h2>Farah Ibrar</h2>
-    <h3>Data Scientist</h3>
-    <p>Evidence. Insight. Impact.</p>
-    <div class="scroll-down-arrow">
+    <img src="profile.jpg" alt="Farah Ibrar" class="animate-on-scroll">
+    <h2 class="animate-on-scroll delay-1">Farah Ibrar</h2>
+    <h3 class="animate-on-scroll delay-2">Data Scientist</h3>
+    <p class="animate-on-scroll delay-3">Evidence. Insight. Impact.</p>
+    <div class="scroll-down-arrow animate-on-scroll delay-4">
         <i class="fas fa-chevron-down"></i>
     </div>
 </section>
 
-<!--About me-->
-<section class="scroll-page about-section"> 
-    <h3>About Me</h3>
-    <div class="subsection"><strong>Who I Am</strong>
-        <p>I’m Farah Ibrar, a data scientist with a background in Biomedical Sciences and Immunology. My journey began in academic research, but my curiosity led me to data-driven problem-solving.</p>
+<!-- About me -->
+<section class="scroll-page about-section">
+    <h3 class="animate-on-scroll">About Me</h3>
+    <div class="subsection animate-on-scroll delay-1">
+        <strong>Who I Am</strong>
+        <p>I'm Farah Ibrar, a data scientist with a background in Biomedical Sciences and Immunology. My journey began in academic research, but my curiosity led me to data-driven problem-solving.</p>
     </div>
-    <div class="subsection"><strong>What I Do</strong>
+    <div class="subsection animate-on-scroll delay-2">
+        <strong>What I Do</strong>
         <p>I specialize in predictive modelling, statistical analysis, natural language processing (NLP), and advanced machine learning techniques. I also enjoy building meaningful dashboards and data visualisations that communicate insights clearly and effectively using Tableau and Python.</p>
     </div>
-    <div class="subsection"><strong>My Interests</strong>
-        <p>My approach is grounded in extracting actionable insights from complex datasets, with a strong focus on commercial application and customer behaviour. I am particularly interested in data-driven storytelling that supports strategic decision-making, such as customer segmentation, propensity modelling, and campaign evaluation.</p>
+    <div class="subsection animate-on-scroll delay-3">
+        <strong>My Interests</strong>
+        <p>My approach is grounded in extracting actionable insights from complex datasets, with a strong focus on commercial application and customer behavior. I am particularly interested in data-driven storytelling that supports strategic decision-making, such as customer segmentation, propensity modelling, and campaign evaluation.</p>
     </div>
-    <div class="subsection"><strong>How I Work</strong>
+    <div class="subsection animate-on-scroll delay-4">
+        <strong>How I Work</strong>
         <p>With an academic background in different field, I bring a unique interdisciplinary perspective to data science. My transition from research to analytics has equipped me with robust problem-solving skills, attention to detail, a strategic mindset, and a passion for deriving insight from evidence.</p>
     </div>
 </section>
 
 <!--Repository Section - Full screen, split layout-->
 <section class="scroll-page repo-section">
-    <div class="repo-left">
-        <h2>Projects I Have Worked On</h2>
-        <p>Explore real-world solutions I have built.</p>
+     <div class="repo-left animate-on-scroll">
+        <h2 class="animate-on-scroll delay-1">Projects I Have Worked On</h2>
+        <p class="animate-on-scroll delay-2">Explore real-world solutions I have built.</p>
     </div>
     
     <div class="repo-right">
@@ -666,7 +771,7 @@ select:focus {
 
 <!--Skills Section-->
  <section class="scroll-page section"> 
-    <h3 class="section-heading">Skills & Tools</h3>
+    <h3 class="section-heading animate-on-scroll">Skills & Tools</h3>
 
     <div class="skills-grid">
         <img src="https://go-skill-icons.vercel.app/api/icons?i=python" title="Python" />
@@ -702,7 +807,7 @@ select:focus {
     </div>
 </section>
 
-<!--Collaboration & Contact Section-->
+<!--Collaboration & Contact Section>
 <section class="scroll-page contact-section">
     <div class="collaborate-content">
         <h3 class="section-heading">Let's Collaborate</h3>
@@ -720,6 +825,28 @@ select:focus {
             <a href="https://public.tableau.com/app/profile/farah.ibrar" target="_blank">Tableau</a>
         </div>
         <button onclick="document.getElementById('contactModal').style.display='flex'">Contact Me</button>
+    </div>
+    
+    <div class="footer">
+        © 2025 Farah Ibrar | All rights reserved.
+    </div>
+</section-->
+
+<!-- Collaboration & Contact Section -->
+<section class="scroll-page contact-section">
+    <div class="collaborate-content animate-on-scroll">
+        <h3 class="section-heading animate-on-scroll delay-1">Let's Collaborate</h3>
+        <p class="subheading animate-on-scroll delay-2">Have a project in mind, a challenge to solve, or an idea to explore? I'm always open to connecting with professionals who share a passion for data and impact.</p>
+    </div>
+    
+    <div class="contact-content animate-on-scroll delay-3">
+        <div class="contact-icons animate-on-scroll delay-5">
+            <a href="mailto:farah11ibrar@gmail.com">Email</a>
+            <a href="https://www.linkedin.com/in/farahibrar/" target="_blank">LinkedIn</a>
+            <a href="https://github.com/FarahIbrar" target="_blank">GitHub</a>
+            <a href="https://public.tableau.com/app/profile/farah.ibrar" target="_blank">Tableau</a>
+        </div>
+        <button class="animate-on-scroll delay-6" onclick="document.getElementById('contactModal').style.display='flex'">Contact Me</button>
     </div>
     
     <div class="footer">
@@ -861,5 +988,69 @@ document.addEventListener("DOMContentLoaded", function () { // Scroll Arrow Beha
     }
     });
 </script>
+
+<script>
+    // Improved scroll animation observer that retriggers
+    const animateOnScroll = () => {
+        const elements = document.querySelectorAll('.animate-on-scroll');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } else {
+                    // Remove the class when element leaves viewport
+                    entry.target.classList.remove('visible'); 
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px' // Smaller margin makes it trigger sooner
+        });
+    
+        elements.forEach(element => {
+            // Initialize as not visible
+            element.classList.remove('visible');
+            observer.observe(element);
+        });
+    }
+    
+    // Modify your existing DOMContentLoaded event
+    document.addEventListener("DOMContentLoaded", function() {
+        // Your existing arrow code here...
+        
+        // Initialize scroll animations
+        animateOnScroll();
+        
+        // Add this to retrigger on theme changes (optional)
+        document.querySelector('.theme-toggle').addEventListener('click', function() {
+            setTimeout(animateOnScroll, 300); // Wait for theme transition
+        });
+    });
+    </script>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    // Force recalculate heights
+    function resizePages() {
+      const vh = window.innerHeight;
+      document.querySelectorAll('.scroll-page').forEach(page => {
+        page.style.height = `${vh}px`;
+      });
+    }
+    
+    // Run on load and resize
+    resizePages();
+    window.addEventListener('resize', resizePages);
+    
+    // Fix for mobile address bar
+    window.addEventListener('orientationchange', resizePages);
+    window.addEventListener('load', function() {
+      setTimeout(resizePages, 500);
+    });
+  });
+</script>
+
 </body>
 </html>
