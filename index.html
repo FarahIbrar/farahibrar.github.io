@@ -12,6 +12,10 @@
 <script src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js"></script>
 <link href="https://use.typekit.com/yourkitid.css" rel="stylesheet">
 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-python.min.js"></script>
 
 <!-- styles -->
 <style>
@@ -21,6 +25,9 @@
     --accent: #58a6ff;
     --card: #161b22;
     --button: linear-gradient(to right, #4e9af1, #705df2);
+    --code-text: #c9d1d9;
+    --code-bg: #161b22;
+    --border-color: rgba(255,255,255,0.1);
 }
 
 body.light {
@@ -29,6 +36,17 @@ body.light {
     --accent: #007acc;
     --card: #f2f2f2;
     --button: linear-gradient(to right, #007acc, #005ca9);
+    --code-text: #383a42;
+    --code-bg: #f6f8fa;
+    --border-color: rgba(0,0,0,0.1);
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --border-color: rgba(0,0,0,0.1);
+        --code-text: #383a42;
+        --code-bg: #f6f8fa;
+    }
 }
 
 /*body {
@@ -434,6 +452,139 @@ body.light .repo-right {
 }
 
 
+/* Hobbies & Code Section */
+/* Hobbies & Code Section - Modern Professional */
+.hobbies-code-section {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    scroll-margin-top: 80px;
+}
+
+.section-header {
+    color: var(--accent);
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    position: relative;
+}
+
+.section-header::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--accent);
+    margin: 0.5rem auto 0;
+}
+
+.hobbies-code-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.hobbies-subsection, .code-subsection {
+    flex: 1;
+    min-width: 300px;
+    max-width: 450px;
+}
+
+.subsection-title {
+    color: var(--accent);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.hobbies-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.hobbies-list li {
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: flex-start;
+    line-height: 1.6;
+}
+
+.hobby-icon {
+    margin-right: 0.8rem;
+    font-size: 1.1em;
+}
+
+/* Code Snippet - Professional Style */
+.code-snippet {
+    background: var(--card);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    margin-top: 1rem;
+    font-family: 'Fira Code', monospace;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.code-header {
+    background: var(--card);
+    padding: 0.6rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.code-content {
+    padding: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    background: var(--code-bg);
+    overflow-x: auto;
+}
+
+.code-content pre {
+    margin: 0;
+    font-family: 'Fira Code', monospace;
+}
+
+.copy-btn {
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.copy-btn:hover {
+    background: var(--accent);
+    color: white;
+}
+
+/* Font Settings */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600&display=swap');
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hobbies-code-container {
+        flex-direction: column;
+    }
+    
+    .hobbies-subsection, .code-subsection {
+        max-width: 100%;
+    }
+    
+    .section-header {
+        font-size: 1.6rem;
+    }
+}
+
+
+
 /* Contact Section Styles */
 .contact-section {
     display: flex;
@@ -785,30 +936,55 @@ select:focus {
     </div>
 </section>
 
-<!--Collaboration & Contact Section>
-<section class="scroll-page contact-section">
-    <div class="collaborate-content">
-        <h3 class="section-heading">Let's Collaborate</h3>
-        <div class="subheading">
-            <p>Have a project in mind, a challenge to solve, or an idea to explore? I am always open to connecting with professionals who share a passion for data and impact. Let's build something meaningful together. Feel free to get in touch. I am always open to new opportunities and meaningful conversations.</p>
+    
+<!-- Hobbies & Code Section -->
+<!-- Hobbies & Code Section -->
+<section id="hobbies-code" class="hobbies-code-section">
+    <h3 class="section-header animate-on-scroll">Hobbies & Code</h3>
+    
+    <div class="hobbies-code-container">
+        <!-- Hobbies Column -->
+        <div class="hobbies-subsection animate-on-scroll delay-1">
+            <h4 class="subsection-title">My Hobbies</h4>
+            <ul class="hobbies-list">
+                <li><span class="hobby-icon">📚</span> Reading science fiction and fantasy novels</li>
+                <li><span class="hobby-icon">🎨</span> Creating digital art and illustrations</li>
+                <li><span class="hobby-icon">🌱</span> Learning about sustainable gardening</li>
+                <li><span class="hobby-icon">✍️</span> Writing technical blog posts</li>
+            </ul>
+        </div>
+    
+        <!-- Code Column -->
+        <div class="code-subsection animate-on-scroll delay-2">
+            <h4 class="subsection-title">Code Snippets</h4>
+            <p class="code-description">Here's my outlier detection function:</p>
+            
+            <div class="code-snippet">
+                <div class="code-header">
+                    <div class="code-dots">
+                        <div class="code-dot red"></div>
+                        <div class="code-dot yellow"></div>
+                        <div class="code-dot green"></div>
+                    </div>
+                    <button class="copy-btn">Copy</button>
+                </div>
+                <div class="code-content">
+                    <pre><code class="language-python">def detect_outliers_iqr(data, feature, threshold=1.5):
+    """Detect outliers using Interquartile Range"""
+    Q1 = data[feature].quantile(0.25)
+    Q3 = data[feature].quantile(0.75)
+    IQR = Q3 - Q1
+    
+    lower_bound = Q1 - threshold * IQR
+    upper_bound = Q3 + threshold * IQR
+    
+    return (data[feature] < lower_bound) | 
+           (data[feature] > upper_bound)</code></pre>
+                </div>
+            </div>
         </div>
     </div>
-    
-    <div class="contact-content">
-        <h3 class="section-heading">Get Acquainted</h3>
-        <div class="contact-icons">
-            <a href="mailto:farah11ibrar@gmail.com">Email</a>
-            <a href="https://www.linkedin.com/in/farahibrar/" target="_blank">LinkedIn</a>
-            <a href="https://github.com/FarahIbrar" target="_blank">GitHub</a>
-            <a href="https://public.tableau.com/app/profile/farah.ibrar" target="_blank">Tableau</a>
-        </div>
-        <button onclick="document.getElementById('contactModal').style.display='flex'">Contact Me</button>
-    </div>
-    
-    <div class="footer">
-        © 2025 Farah Ibrar | All rights reserved.
-    </div>
-</section-->
+</section>
 
 <!-- Collaboration & Contact Section -->
 <section class="scroll-page contact-section">
@@ -1030,5 +1206,43 @@ document.addEventListener("DOMContentLoaded", function () { // Scroll Arrow Beha
     });
   });
 </script>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const copyButtons = document.querySelectorAll('.copy-btn');
+        
+        copyButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const codeBlock = this.closest('.code-snippet').querySelector('code');
+                const range = document.createRange();
+                range.selectNode(codeBlock);
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+                
+                try {
+                    document.execCommand('copy');
+                    const originalText = button.textContent;
+                    button.textContent = 'Copied!';
+                    button.style.backgroundColor = '#27c93f';
+                    button.style.borderColor = '#27c93f';
+                    
+                    setTimeout(() => {
+                        button.textContent = originalText;
+                        button.style.backgroundColor = 'transparent';
+                        button.style.borderColor = 'var(--accent)';
+                    }, 2000);
+                } catch(err) {
+                    console.error('Failed to copy: ', err);
+                }
+                
+                window.getSelection().removeAllRanges();
+            });
+        });
+    });
+    </script>
+
+
 </body>
 </html>
