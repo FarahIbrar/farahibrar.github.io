@@ -12,10 +12,6 @@
 <script src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js"></script>
 <link href="https://use.typekit.com/yourkitid.css" rel="stylesheet">
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" rel="stylesheet" />
-<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-python.min.js"></script>
 
 <!-- styles -->
 <style>
@@ -25,9 +21,6 @@
     --accent: #58a6ff;
     --card: #161b22;
     --button: linear-gradient(to right, #4e9af1, #705df2);
-    --code-text: #c9d1d9;
-    --code-bg: #161b22;
-    --border-color: rgba(255,255,255,0.1);
 }
 
 body.light {
@@ -36,28 +29,9 @@ body.light {
     --accent: #007acc;
     --card: #f2f2f2;
     --button: linear-gradient(to right, #007acc, #005ca9);
-    --code-text: #383a42;
-    --code-bg: #f6f8fa;
-    --border-color: rgba(0,0,0,0.1);
 }
 
-@media (prefers-color-scheme: light) {
-    :root {
-        --border-color: rgba(0,0,0,0.1);
-        --code-text: #383a42;
-        --code-bg: #f6f8fa;
-    }
-}
-
-/*body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--fg);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    transition: background 0.3s, color 0.3s;
-}*/
-
-/* Replace your current body font definition with this */
+/*body */
 body {
     margin: 0;
     background: var(--bg);
@@ -452,136 +426,336 @@ body.light .repo-right {
 }
 
 
-/* Hobbies & Code Section */
-/* Hobbies & Code Section - Modern Professional */
-.hobbies-code-section {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
-    scroll-margin-top: 80px;
+
+
+/* Code Section Styles */
+/* Code Section Layout */
+.code-content-wrapper {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  width: 100%;
+  max-width: 100%;
 }
 
-.section-header {
-    color: var(--accent);
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-    text-align: center;
-    position: relative;
+.code-column {
+  flex: 1;
+  min-width: 0; /* Prevent overflow */
 }
 
-.section-header::after {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 3px;
-    background: var(--accent);
-    margin: 0.5rem auto 0;
+.content-column {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
 }
 
-.hobbies-code-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: center;
-}
-
-.hobbies-subsection, .code-subsection {
-    flex: 1;
-    min-width: 300px;
-    max-width: 450px;
-}
-
-.subsection-title {
-    color: var(--accent);
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-    font-weight: 600;
-}
-
-.hobbies-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.hobbies-list li {
-    padding: 0.5rem 0;
-    display: flex;
-    align-items: flex-start;
-    line-height: 1.6;
-}
-
-.hobby-icon {
-    margin-right: 0.8rem;
-    font-size: 1.1em;
-}
-
-/* Code Snippet - Professional Style */
-.code-snippet {
-    background: var(--card);
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-    overflow: hidden;
-    margin-top: 1rem;
-    font-family: 'Fira Code', monospace;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+/* Compact Code Container */
+.code-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--code-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border: 1px solid var(--code-border);
 }
 
 .code-header {
-    background: var(--card);
-    padding: 0.6rem 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1.25rem;
+  background: var(--code-header-bg);
+  border-bottom: 1px solid var(--code-border);
 }
 
-.code-content {
-    padding: 1rem;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    background: var(--code-bg);
-    overflow-x: auto;
+.code-block {
+  flex-grow: 1;
+  margin: 0;
+  padding: 1.25rem;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  background: transparent;
 }
 
-.code-content pre {
-    margin: 0;
-    font-family: 'Fira Code', monospace;
+/* Improved Color Scheme */
+:root {
+  --code-bg: #161b22;
+  --code-header-bg: #0d1117;
+  --code-border: #30363d;
+  --code-text: #e6edf3;
 }
 
-.copy-btn {
-    background: transparent;
-    border: 1px solid var(--accent);
-    color: var(--accent);
-    padding: 0.25rem 0.75rem;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    cursor: pointer;
-    transition: all 0.2s ease;
+.light {
+  --code-bg: #f6f8fa;
+  --code-header-bg: #eaeef2;
+  --code-border: #d0d7de;
+  --code-text: #1f2328;
 }
 
-.copy-btn:hover {
-    background: var(--accent);
-    color: white;
+/* Description Styling */
+/* ====== Outlier Detection Section ====== */
+.horizontal-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+
 }
 
-/* Font Settings */
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600&display=swap');
+.code-iqr-container {
+  display: flex;
+  gap: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Horizontal Code Container */
+.horizontal-code-container {
+  flex: 3;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--code-bg);
+  border-radius: 12px;
+  border: 1px solid var(--code-border);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.horizontal-code-container .code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1.25rem;
+  background: var(--code-header-bg);
+  border-bottom: 1px solid var(--code-border);
+}
+
+.horizontal-code-container .language-tag {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.horizontal-code-container .code-block {
+  height: 100%;
+  padding: 1rem;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  margin: 0;
+  background: transparent;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  color: var(--code-text);
+  overflow-x: auto;
+}
+
+/* IQR Method Container */
+.code-description {
+  flex: 1;
+  background: var(--card);
+  padding: 1.25rem;
+  border-radius: 12px;
+  border: 1px solid var(--code-border);
+  box-sizing: border-box;
+}
+
+.code-description h3 {
+  color: var(--accent);
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.code-description ul {
+  padding-left: 1.25rem;
+  margin: 1rem 0;
+}
+
+.code-description li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+/* Demo Container */
+.interactive-demo, .demo-container {
+  width: 100%;
+  background: var(--card);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--code-border);
+  box-sizing: border-box;
+}
+
+.demo-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1rem 0 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+textarea#data-input {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--code-border);
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'SFMono-Regular', Consolas, monospace;
+  resize: vertical;
+  min-height: 80px;
+  box-sizing: border-box;
+}
+
+.demo-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--button);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.2s;
+  width: fit-content;
+}
+
+.demo-button:hover {
+  transform: translateY(-2px);
+}
+
+.demo-results {
+  background: rgba(88, 166, 255, 0.05);
+  padding: 1rem;
+  border-radius: 8px;
+  font-family: 'SFMono-Regular', Consolas, monospace;
+  white-space: pre-wrap;
+  min-height: 100px;
+  border: 1px solid var(--code-border);
+  margin-top: 1rem;
+  box-sizing: border-box;
+}
+
+.result-group {
+  margin-bottom: 0.75rem;
+}
+
+.result-group label {
+  font-weight: 600;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
+}
+
+.result-group span {
+  display: block;
+  padding-left: 0.5rem;
+}
+
+.outlier-value {
+  color: #ff7b72;
+  font-weight: 600;
+}
+
+.success {
+  color: #3fb950;
+}
+
+.error {
+  color: #ff7b72;
+}
+
+.stats {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--code-border);
+}
+
+.stats span {
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+    .scroll-page.outlier-page {
+    align-items: flex-start;
+    padding: 2rem;
+    justify-content: flex-start;
+    overflow-y: auto;
+    box-sizing: border-box;
+    margin: 0;             /* Remove auto-centering */
+    max-width: none;       /* Allow full width */
+    width: 100vw;          /* Force full viewport width */
+}
+
+.scroll-page.outlier-page > * {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box; /* Include padding in width calculations */
+}
+
+/* Targets only pages containing the outlier detection components */
+.scroll-page:has(.code-content-wrapper) {
+  align-items: flex-start;
+  padding: 2rem;
+}
+
+/* Loading spinner */
+.fa-spinner {
+  margin-right: 0.5rem;
+}
+
+/* Theme Variables */
+:root {
+  --code-bg: #161b22;
+  --code-header-bg: #0d1117;
+  --code-border: #30363d;
+  --code-text: #e6edf3;
+}
+
+.light {
+  --code-bg: #f6f8fa;
+  --code-header-bg: #eaeef2;
+  --code-border: #d0d7de;
+  --code-text: #1f2328;
+}
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
-    .hobbies-code-container {
-        flex-direction: column;
-    }
-    
-    .hobbies-subsection, .code-subsection {
-        max-width: 100%;
-    }
-    
-    .section-header {
-        font-size: 1.6rem;
-    }
+  .code-iqr-container {
+    flex-direction: column;
+  }
+  
+  .demo-controls {
+    flex-direction: column;
+  }
+  
+  .demo-button {
+    align-self: flex-start;
+    padding: 0.75rem 1.5rem;
+  }
+  
+  .horizontal-code-container, .code-description {
+    width: 100%;
+  }
 }
+
+
+
+
+
 
 
 
@@ -936,55 +1110,70 @@ select:focus {
     </div>
 </section>
 
-    
-<!-- Hobbies & Code Section -->
-<!-- Hobbies & Code Section -->
-<section id="hobbies-code" class="hobbies-code-section">
-    <h3 class="section-header animate-on-scroll">Hobbies & Code</h3>
-    
-    <div class="hobbies-code-container">
-        <!-- Hobbies Column -->
-        <div class="hobbies-subsection animate-on-scroll delay-1">
-            <h4 class="subsection-title">My Hobbies</h4>
-            <ul class="hobbies-list">
-                <li><span class="hobby-icon">📚</span> Reading science fiction and fantasy novels</li>
-                <li><span class="hobby-icon">🎨</span> Creating digital art and illustrations</li>
-                <li><span class="hobby-icon">🌱</span> Learning about sustainable gardening</li>
-                <li><span class="hobby-icon">✍️</span> Writing technical blog posts</li>
-            </ul>
-        </div>
-    
-        <!-- Code Column -->
-        <div class="code-subsection animate-on-scroll delay-2">
-            <h4 class="subsection-title">Code Snippets</h4>
-            <p class="code-description">Here's my outlier detection function:</p>
-            
-            <div class="code-snippet">
-                <div class="code-header">
-                    <div class="code-dots">
-                        <div class="code-dot red"></div>
-                        <div class="code-dot yellow"></div>
-                        <div class="code-dot green"></div>
-                    </div>
-                    <button class="copy-btn">Copy</button>
-                </div>
-                <div class="code-content">
-                    <pre><code class="language-python">def detect_outliers_iqr(data, feature, threshold=1.5):
-    """Detect outliers using Interquartile Range"""
-    Q1 = data[feature].quantile(0.25)
-    Q3 = data[feature].quantile(0.75)
-    IQR = Q3 - Q1
-    
-    lower_bound = Q1 - threshold * IQR
-    upper_bound = Q3 + threshold * IQR
-    
-    return (data[feature] < lower_bound) | 
-           (data[feature] > upper_bound)</code></pre>
-                </div>
+
+<!-- Outlier Detection Section -->
+<!-- Outlier Detection Section -->
+<section class="scroll-page">
+    <div class="section animate-on-scroll">
+     <div class="scroll-page outlier-page">
+      <h2 class="section-heading animate-on-scroll delay-1">Outlier Detection</h2>
+      
+      <div class="horizontal-layout">
+        <!-- Code and IQR Method Side by Side -->
+        <div class="code-iqr-container">
+          <!-- Horizontal Code Block -->
+          <div class="horizontal-code-container animate-on-scroll delay-2">
+            <div class="code-header">
+              <span class="language-tag">Python</span>
+              <button class="copy-button" aria-label="Copy code">
+                <i class="far fa-copy"></i>
+              </button>
             </div>
+            <pre class="code-block"><code class="language-python">import numpy as np
+  
+  def detect_outliers(data):
+      q1, q3 = np.percentile(data, [25, 75])
+      iqr = q3 - q1
+      lower_bound = q1 - 1.5 * iqr
+      upper_bound = q3 + 1.5 * iqr
+      return [x for x in data if x < lower_bound or x > upper_bound]</code></pre>
+          </div>
+          
+          <!-- IQR Method (stays as is) -->
+          <div class="code-description animate-on-scroll delay-3">
+            <h3>IQR Method</h3>
+            <p>This algorithm identifies anomalies using statistical properties:</p>
+            <ul>
+              <li><strong>Q1/Q3:</strong> 25th/75th percentiles</li>
+              <li><strong>IQR:</strong> The range between Q1 and Q3</li>
+              <li><strong>Bounds:</strong> 1.5×IQR from the quartiles</li>
+              <li><strong>Outliers:</strong> Points outside these bounds</li>
+            </ul>
+          </div>
         </div>
+        
+        <!-- Test with Your Data Section (full width below) -->
+        <div class="demo-container animate-on-scroll delay-4">
+          <h3>Test with Your Data</h3>
+          <div class="demo-controls">
+            <textarea id="data-input" rows="2" 
+              placeholder="Enter numbers separated by commas, e.g.: 12, 18, 25, 7, 10, 15">12, 18, 25, 7, 10, 15, 8, 19, 3, 100, 16</textarea>
+            <button id="detect-btn" class="demo-button">
+              <i class="fas fa-search"></i> Detect Outliers
+            </button>
+          </div>
+          <div class="demo-results">
+            <div id="results-container"></div>
+          </div>
+        </div>
+      </div>
     </div>
+</div>
 </section>
+
+
+
+
 
 <!-- Collaboration & Contact Section -->
 <section class="scroll-page contact-section">
@@ -1007,6 +1196,13 @@ select:focus {
         © 2025 Farah Ibrar | All rights reserved.
     </div>
 </section>
+
+
+
+
+
+
+
 
 <!--Modal-->
 <div class="modal" id="contactModal">
@@ -1185,76 +1381,151 @@ document.addEventListener("DOMContentLoaded", function () { // Scroll Arrow Beha
     </script>
 
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-    // Force recalculate heights
-    function resizePages() {
-      const vh = window.innerHeight;
-      document.querySelectorAll('.scroll-page').forEach(page => {
-        page.style.height = `${vh}px`;
-      });
-    }
+
+<script> 
+// Add this to your existing DOMContentLoaded event
+document.addEventListener("DOMContentLoaded", function() {
+    // Your existing code...
     
-    // Run on load and resize
-    resizePages();
-    window.addEventListener('resize', resizePages);
+    // Initialize scroll animations
+    animateOnScroll();
     
-    // Fix for mobile address bar
-    window.addEventListener('orientationchange', resizePages);
-    window.addEventListener('load', function() {
-      setTimeout(resizePages, 500);
-    });
-  });
-</script>
-
-
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Intersection Observer for animations
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('in-view');
-            }
-        });
-    }, { threshold: 0.1 });
-
-    // Observe all animate-on-scroll elements
-    document.querySelectorAll('.animate-on-scroll').forEach(el => {
-        observer.observe(el);
-    });
-
     // Copy button functionality
-    document.querySelectorAll('.copy-btn').forEach(button => {
+    setupCopyButtons();
+    
+    // Initialize interactive demo
+    setupOutlierDemo();
+    
+    // Initialize syntax highlighting
+    initSyntaxHighlighting();
+});
+
+function setupCopyButtons() {
+    const copyButtons = document.querySelectorAll('.copy-button');
+    
+    copyButtons.forEach(button => {
         button.addEventListener('click', function() {
-            const code = this.closest('.code-snippet').querySelector('code');
-            navigator.clipboard.writeText(code.textContent).then(() => {
-                const originalHtml = this.innerHTML;
-                this.innerHTML = '<i class="fas fa-check"></i> Copied!';
+            const codeBlock = this.closest('.code-container').querySelector('.code-block');
+            const codeText = codeBlock.textContent;
+            
+            navigator.clipboard.writeText(codeText).then(() => {
+                const icon = this.querySelector('i');
+                const originalClass = icon.className;
+                icon.className = 'fas fa-check';
+                
                 setTimeout(() => {
-                    this.innerHTML = originalHtml;
+                    icon.className = originalClass;
                 }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
             });
         });
     });
+}
 
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                window.scrollTo({
-                    top: target.offsetTop,
-                    behavior: 'smooth'
-                });
+function setupOutlierDemo() {
+    const detectBtn = document.getElementById('detect-btn');
+    if (!detectBtn) return;
+    
+    detectBtn.addEventListener('click', function() {
+        const input = document.getElementById('data-input').value;
+        const resultsContainer = document.getElementById('results-container');
+        
+        // Add loading state
+        const originalText = this.innerHTML;
+        this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Analyzing...';
+        this.disabled = true;
+        
+        // Small delay for better UX
+        setTimeout(() => {
+            try {
+                const data = input.split(',')
+                    .map(item => parseFloat(item.trim()))
+                    .filter(item => !isNaN(item));
+                
+                if (data.length === 0) {
+                    resultsContainer.innerHTML = '<span class="error">Please enter valid numbers</span>';
+                    return;
+                }
+                
+                const outliers = detectOutliers(data);
+                
+                if (outliers.length > 0) {
+                    resultsContainer.innerHTML = `
+                        <div class="result-group">
+                            <label>Outliers Found:</label>
+                            <span class="outlier-value">${outliers.join(', ')}</span>
+                        </div>
+                        <div class="result-group">
+                            <label>Normal Values:</label>
+                            <span>${data.filter(x => !outliers.includes(x)).join(', ')}</span>
+                        </div>
+                        <div class="result-group stats">
+                            <label>Stats:</label>
+                            <span>Q1: ${Math.min(...data).toFixed(2)} | Q3: ${Math.max(...data).toFixed(2)} | IQR: ${(Math.max(...data) - Math.min(...data)).toFixed(2)}</span>
+                        </div>`;
+                } else {
+                    resultsContainer.innerHTML = `
+                        <div class="result-group">
+                            <label>Result:</label>
+                            <span class="success">No outliers detected</span>
+                        </div>
+                        <div class="result-group">
+                            <label>All Values:</label>
+                            <span>${data.join(', ')}</span>
+                        </div>`;
+                }
+            } catch (error) {
+                resultsContainer.innerHTML = `<span class="error">Error: ${error.message}</span>`;
+            } finally {
+                this.innerHTML = originalText;
+                this.disabled = false;
             }
-        });
+        }, 300); // Short delay for perceived performance
     });
-});
-</script>
+}
 
+// The actual outlier detection function
+function detectOutliers(data) {
+    // Calculate quartiles
+    const sorted = [...data].sort((a, b) => a - b);
+    const q1 = sorted[Math.floor(sorted.length * 0.25)];
+    const q3 = sorted[Math.floor(sorted.length * 0.75)];
+    const iqr = q3 - q1;
+    
+    // Calculate bounds
+    const lowerBound = q1 - 1.5 * iqr;
+    const upperBound = q3 + 1.5 * iqr;
+    
+    // Find outliers
+    return data.filter(x => x < lowerBound || x > upperBound);
+}
+
+function initSyntaxHighlighting() {
+    // Load Prism.js dynamically if not already loaded
+    if (typeof Prism === 'undefined') {
+        const prismCSS = document.createElement('link');
+        prismCSS.rel = 'stylesheet';
+        prismCSS.href = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-okaidia.min.css';
+        document.head.appendChild(prismCSS);
+        
+        const prismJS = document.createElement('script');
+        prismJS.src = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js';
+        prismJS.onload = function() {
+            // Load Python syntax
+            const prismPython = document.createElement('script');
+            prismPython.src = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-python.min.js';
+            document.head.appendChild(prismPython);
+            
+            // Highlight all code blocks
+            Prism.highlightAll();
+        };
+        document.head.appendChild(prismJS);
+    } else {
+        Prism.highlightAll();
+    }
+}
+</script>
 
 </body>
 </html>
