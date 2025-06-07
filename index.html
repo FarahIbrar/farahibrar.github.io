@@ -502,10 +502,11 @@ body.light .repo-right {
 .horizontal-layout {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1 rem;
   margin-top: 1.5rem;
   width: 100%;
   box-sizing: border-box;
+  padding-left: 0;
 
 }
 
@@ -514,6 +515,7 @@ body.light .repo-right {
   gap: 1.5rem;
   width: 100%;
   box-sizing: border-box;
+  max-width: 100%;
 }
 
 /* Horizontal Code Container */
@@ -691,7 +693,7 @@ textarea#data-input {
 
     .scroll-page.outlier-page {
     align-items: flex-start;
-    padding: 2rem;
+    padding: 0;
     justify-content: flex-start;
     overflow-y: auto;
     box-sizing: border-box;
@@ -732,6 +734,7 @@ textarea#data-input {
   --code-text: #1f2328;
 }
 
+
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .code-iqr-container {
@@ -751,8 +754,6 @@ textarea#data-input {
     width: 100%;
   }
 }
-
-
 
 
 
@@ -986,6 +987,7 @@ select:focus {
     from {opacity: 0; transform: translateY(-10px);}
     to {opacity: 1; transform: translateY(0);}
 }
+
 
 </style>
 </head>
