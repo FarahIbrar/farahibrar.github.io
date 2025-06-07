@@ -502,7 +502,7 @@ body.light .repo-right {
 .horizontal-layout {
   display: flex;
   flex-direction: column;
-  gap: 1 rem;
+  gap: 1rem;
   margin-top: 1.5rem;
   width: 100%;
   box-sizing: border-box;
@@ -517,6 +517,13 @@ body.light .repo-right {
   box-sizing: border-box;
   max-width: 100%;
 }
+
+.code-iqr-container > * {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
 
 /* Horizontal Code Container */
 .horizontal-code-container {
@@ -562,7 +569,7 @@ body.light .repo-right {
 
 /* IQR Method Container */
 .code-description {
-  flex: 1;
+  flex: 3;
   background: var(--card);
   padding: 1.25rem;
   border-radius: 12px;
@@ -700,18 +707,13 @@ textarea#data-input {
     margin: 0;             /* Remove auto-centering */
     max-width: none;       /* Allow full width */
     width: 100vw;          /* Force full viewport width */
+    overflow-x: hidden;
 }
 
 .scroll-page.outlier-page > * {
   width: 100%;
   max-width: 100%;
   box-sizing: border-box; /* Include padding in width calculations */
-}
-
-/* Targets only pages containing the outlier detection components */
-.scroll-page:has(.code-content-wrapper) {
-  align-items: flex-start;
-  padding: 2rem;
 }
 
 /* Loading spinner */
@@ -734,6 +736,14 @@ textarea#data-input {
   --code-text: #1f2328;
 }
 
+.content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem; /* keeps space on mobile */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
@@ -1115,9 +1125,8 @@ select:focus {
 
 <!-- Outlier Detection Section -->
 <!-- Outlier Detection Section -->
-<section class="scroll-page">
+<section class="scroll-page outlier-page"> <!-- Combine them -->
     <div class="section animate-on-scroll">
-     <div class="scroll-page outlier-page">
       <h2 class="section-heading animate-on-scroll delay-1">Outlier Detection</h2>
       
       <div class="horizontal-layout">
