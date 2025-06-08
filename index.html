@@ -89,7 +89,7 @@ html, body {
 .scroll-page {
   height: 100vh;
   width: 100vw;
-  scroll-snap-align: center;
+  scroll-snap-align: start;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -708,6 +708,8 @@ textarea#data-input {
     max-width: none;       /* Allow full width */
     width: 100vw;          /* Force full viewport width */
     overflow-x: hidden;
+    position: static; /* Remove any positioning that might affect the modal */
+    z-index: auto;
 }
 
 .scroll-page.outlier-page > * {
@@ -720,6 +722,65 @@ textarea#data-input {
 .fa-spinner {
   margin-right: 0.5rem;
 }
+
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: var(--card);
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 90%;
+  position: relative;
+  border: 1px solid var(--code-border);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.close-modal {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--fg);
+  transition: color 0.2s;
+}
+
+.close-modal:hover {
+  color: var(--accent);
+}
+
+
+/* Update copy button colors to match theme */
+.copy-button {
+  background: transparent;
+  border: none;
+  color: var(--accent);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.copy-button:hover {
+  color: var(--accent-light);
+}
+
+.copy-button .fa-check {
+  color: var(--success);
+}
+
 
 /* Theme Variables */
 :root {
@@ -1124,8 +1185,7 @@ select:focus {
 
 
 <!-- Outlier Detection Section -->
-<!-- Outlier Detection Section -->
-<section class="scroll-page outlier-page"> <!-- Combine them -->
+<section class="scroll-page outlier-page">
     <div class="section animate-on-scroll">
       <h2 class="section-heading animate-on-scroll delay-1">Outlier Detection</h2>
       
@@ -1143,11 +1203,13 @@ select:focus {
             <pre class="code-block"><code class="language-python">import numpy as np
   
   def detect_outliers(data):
-      q1, q3 = np.percentile(data, [25, 75])
-      iqr = q3 - q1
-      lower_bound = q1 - 1.5 * iqr
-      upper_bound = q3 + 1.5 * iqr
-      return [x for x in data if x < lower_bound or x > upper_bound]</code></pre>
+    q1, q3 = np.percentile(data, [25, 75])
+    iqr = q3 - q1
+    lower_bound = q1 - 1.5 * iqr
+    upper_bound = q3 + 1.5 * iqr
+
+    outliers = [x for x in data if x < lower_bound or x > upper_bound]
+    return outliers</code></pre>
           </div>
           
           <!-- IQR Method (stays as is) -->
@@ -1173,13 +1235,16 @@ select:focus {
               <i class="fas fa-search"></i> Detect Outliers
             </button>
           </div>
-          <div class="demo-results">
-            <div id="results-container"></div>
+          <div id="results-modal" class="modal-overlay">
+            <div class="modal-content">
+              <span class="close-modal">&times;</span>
+              <h3>Outlier Detection Results</h3>
+              <div id="modal-results" class="demo-results"></div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-</div>
 </section>
 
 
@@ -1393,150 +1458,132 @@ document.addEventListener("DOMContentLoaded", function () { // Scroll Arrow Beha
 
 
 
-<script> 
-// Add this to your existing DOMContentLoaded event
-document.addEventListener("DOMContentLoaded", function() {
-    // Your existing code...
-    
-    // Initialize scroll animations
-    animateOnScroll();
-    
-    // Copy button functionality
-    setupCopyButtons();
-    
-    // Initialize interactive demo
-    setupOutlierDemo();
-    
-    // Initialize syntax highlighting
-    initSyntaxHighlighting();
-});
-
-function setupCopyButtons() {
-    const copyButtons = document.querySelectorAll('.copy-button');
-    
-    copyButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const codeBlock = this.closest('.code-container').querySelector('.code-block');
-            const codeText = codeBlock.textContent;
-            
-            navigator.clipboard.writeText(codeText).then(() => {
-                const icon = this.querySelector('i');
-                const originalClass = icon.className;
-                icon.className = 'fas fa-check';
+<script>
+    // Update your existing script with these modified functions
+    function setupCopyButtons() {
+        const copyButtons = document.querySelectorAll('.copy-button');
+        
+        copyButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const codeBlock = this.closest('.code-container')?.querySelector('.code-block') || 
+                                this.closest('.horizontal-code-container')?.querySelector('.code-block');
+                const codeText = codeBlock.textContent;
                 
-                setTimeout(() => {
-                    icon.className = originalClass;
-                }, 2000);
-            }).catch(err => {
-                console.error('Failed to copy text: ', err);
+                navigator.clipboard.writeText(codeText).then(() => {
+                    const icon = this.querySelector('i');
+                    const originalClass = icon.className;
+                    icon.className = 'fas fa-check';
+                    
+                    setTimeout(() => {
+                        icon.className = originalClass;
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Failed to copy text: ', err);
+                });
             });
         });
-    });
-}
-
-function setupOutlierDemo() {
-    const detectBtn = document.getElementById('detect-btn');
-    if (!detectBtn) return;
-    
-    detectBtn.addEventListener('click', function() {
-        const input = document.getElementById('data-input').value;
-        const resultsContainer = document.getElementById('results-container');
-        
-        // Add loading state
-        const originalText = this.innerHTML;
-        this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Analyzing...';
-        this.disabled = true;
-        
-        // Small delay for better UX
-        setTimeout(() => {
-            try {
-                const data = input.split(',')
-                    .map(item => parseFloat(item.trim()))
-                    .filter(item => !isNaN(item));
-                
-                if (data.length === 0) {
-                    resultsContainer.innerHTML = '<span class="error">Please enter valid numbers</span>';
-                    return;
-                }
-                
-                const outliers = detectOutliers(data);
-                
-                if (outliers.length > 0) {
-                    resultsContainer.innerHTML = `
-                        <div class="result-group">
-                            <label>Outliers Found:</label>
-                            <span class="outlier-value">${outliers.join(', ')}</span>
-                        </div>
-                        <div class="result-group">
-                            <label>Normal Values:</label>
-                            <span>${data.filter(x => !outliers.includes(x)).join(', ')}</span>
-                        </div>
-                        <div class="result-group stats">
-                            <label>Stats:</label>
-                            <span>Q1: ${Math.min(...data).toFixed(2)} | Q3: ${Math.max(...data).toFixed(2)} | IQR: ${(Math.max(...data) - Math.min(...data)).toFixed(2)}</span>
-                        </div>`;
-                } else {
-                    resultsContainer.innerHTML = `
-                        <div class="result-group">
-                            <label>Result:</label>
-                            <span class="success">No outliers detected</span>
-                        </div>
-                        <div class="result-group">
-                            <label>All Values:</label>
-                            <span>${data.join(', ')}</span>
-                        </div>`;
-                }
-            } catch (error) {
-                resultsContainer.innerHTML = `<span class="error">Error: ${error.message}</span>`;
-            } finally {
-                this.innerHTML = originalText;
-                this.disabled = false;
-            }
-        }, 300); // Short delay for perceived performance
-    });
-}
-
-// The actual outlier detection function
-function detectOutliers(data) {
-    // Calculate quartiles
-    const sorted = [...data].sort((a, b) => a - b);
-    const q1 = sorted[Math.floor(sorted.length * 0.25)];
-    const q3 = sorted[Math.floor(sorted.length * 0.75)];
-    const iqr = q3 - q1;
-    
-    // Calculate bounds
-    const lowerBound = q1 - 1.5 * iqr;
-    const upperBound = q3 + 1.5 * iqr;
-    
-    // Find outliers
-    return data.filter(x => x < lowerBound || x > upperBound);
-}
-
-function initSyntaxHighlighting() {
-    // Load Prism.js dynamically if not already loaded
-    if (typeof Prism === 'undefined') {
-        const prismCSS = document.createElement('link');
-        prismCSS.rel = 'stylesheet';
-        prismCSS.href = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-okaidia.min.css';
-        document.head.appendChild(prismCSS);
-        
-        const prismJS = document.createElement('script');
-        prismJS.src = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js';
-        prismJS.onload = function() {
-            // Load Python syntax
-            const prismPython = document.createElement('script');
-            prismPython.src = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-python.min.js';
-            document.head.appendChild(prismPython);
-            
-            // Highlight all code blocks
-            Prism.highlightAll();
-        };
-        document.head.appendChild(prismJS);
-    } else {
-        Prism.highlightAll();
     }
-}
-</script>
+    
+    function setupOutlierDemo() {
+        const detectBtn = document.getElementById('detect-btn');
+        if (!detectBtn) return;
+        
+        detectBtn.addEventListener('click', function() {
+            const input = document.getElementById('data-input').value;
+            const resultsContainer = document.getElementById('modal-results');
+            const modal = document.getElementById('results-modal');
+            
+            // Add loading state
+            const originalText = this.innerHTML;
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Analyzing...';
+            this.disabled = true;
+            
+            // Small delay for better UX
+            setTimeout(() => {
+                try {
+                    const data = input.split(',')
+                        .map(item => parseFloat(item.trim()))
+                        .filter(item => !isNaN(item));
+                    
+                    if (data.length === 0) {
+                        resultsContainer.innerHTML = '<span class="error">Please enter valid numbers</span>';
+                        modal.style.display = 'flex';
+                        return;
+                    }
+                    
+                    const outliers = detectOutliers(data);
+                    
+                    if (outliers.length > 0) {
+                        resultsContainer.innerHTML = `
+                            <div class="result-group">
+                                <label>Outliers Found:</label>
+                                <span class="outlier-value">${outliers.join(', ')}</span>
+                            </div>
+                            <div class="result-group">
+                                <label>Normal Values:</label>
+                                <span>${data.filter(x => !outliers.includes(x)).join(', ')}</span>
+                            </div>
+                            <div class="result-group stats">
+                                <label>Stats:</label>
+                                <span>Q1: ${Math.min(...data).toFixed(2)} | Q3: ${Math.max(...data).toFixed(2)} | IQR: ${(Math.max(...data) - Math.min(...data)).toFixed(2)}</span>
+                            </div>`;
+                    } else {
+                        resultsContainer.innerHTML = `
+                            <div class="result-group">
+                                <label>Result:</label>
+                                <span class="success">No outliers detected</span>
+                            </div>
+                            <div class="result-group">
+                                <label>All Values:</label>
+                                <span>${data.join(', ')}</span>
+                            </div>`;
+                    }
+                    
+                    modal.style.display = 'flex';
+                } catch (error) {
+                    resultsContainer.innerHTML = `<span class="error">Error: ${error.message}</span>`;
+                    modal.style.display = 'flex';
+                } finally {
+                    this.innerHTML = originalText;
+                    this.disabled = false;
+                }
+            }, 300);
+        });
+        
+        // Close modal when clicking X
+        document.querySelector('.close-modal').addEventListener('click', function() {
+            document.getElementById('results-modal').style.display = 'none';
+        });
+        
+        // Close modal when clicking outside
+        document.getElementById('results-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.style.display = 'none';
+            }
+        });
+    }
+    
+    // Keep all other existing functions exactly the same
+    function detectOutliers(data) {
+        const sorted = [...data].sort((a, b) => a - b);
+        const q1 = sorted[Math.floor(sorted.length * 0.25)];
+        const q3 = sorted[Math.floor(sorted.length * 0.75)];
+        const iqr = q3 - q1;
+        
+        const lowerBound = q1 - 1.5 * iqr;
+        const upperBound = q3 + 1.5 * iqr;
+        
+        return data.filter(x => x < lowerBound || x > upperBound);
+    }
+    
+    // Initialize everything when DOM is loaded
+    document.addEventListener("DOMContentLoaded", function() {
+        animateOnScroll();
+        setupCopyButtons();
+        setupOutlierDemo();
+        initSyntaxHighlighting();
+    });
+    </script>
 
 </body>
 </html>
