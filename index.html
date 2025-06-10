@@ -864,7 +864,69 @@ textarea#data-input {
   color: var(--accent);
 }
 
+/* Info Tooltip Styles */
+.info-tooltip {
+  position: relative;
+  display: inline-block;
+}
 
+.info-icon {
+  background: none;
+  border: none;
+  color: var(--accent);
+  cursor: pointer;
+  font-size: 1.4rem; /* Larger icon */
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+.info-icon:hover {
+  color: var(--fg);
+}
+
+.tooltip-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.tooltip-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  width: 300px;
+  background: var(--card);
+  border: 1px solid var(--code-border);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 100;
+}
+
+.info-tooltip:hover .tooltip-content {
+  display: block;
+}
+
+.tooltip-content p {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.tooltip-content a {
+  color: var(--accent);
+  font-size: 0.85rem;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.tooltip-content a:hover {
+  text-decoration: underline;
+}
 
 /* Update copy button colors to match theme */
 .copy-button {
@@ -1303,10 +1365,24 @@ select:focus {
 </section>
 
 
-<!-- Outlier Detection Section -->
+        <!-- Outlier Detection Section -->
 <section class="scroll-page outlier-page">
     <div class="section animate-on-scroll">
-      <h2 class="section-heading animate-on-scroll delay-1">Farah’s IQR Outlier Finder </h2>
+      <!-- Modified Title with Hover Tooltip -->
+      <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+        <h2 class="section-heading animate-on-scroll delay-1" style="margin: 0;">Farah's IQR Outlier Finder</h2>
+        <div class="info-tooltip">
+          <button id="iqr-info-btn" class="info-icon" aria-label="How this works">
+            <i class="fas fa-info-circle"></i>
+            <span class="tooltip-text">Find out how this works</span>
+          </button>
+          <div class="tooltip-content">
+            <p>A statistical method to identify anomalies in your data using quartiles...</p>
+            <a href="https://github.com/FarahIbrar/FarahIbrar/blob/main/Outlier%20Detection%20Script.md" 
+               target="_blank">Read more</a>
+          </div>
+        </div>
+      </div>
       
       <div class="horizontal-layout">
         <!-- Code and IQR Method Side by Side -->
@@ -1702,6 +1778,14 @@ document.addEventListener("DOMContentLoaded", function () { // Scroll Arrow Beha
         setupOutlierDemo();
         initSyntaxHighlighting();
     });
+
+
+
+    // Icon for more information on outlier detection:
+document.getElementById('iqr-info-btn')?.addEventListener('click', (e) => {
+  e.preventDefault(); // Prevent default if it's a link
+  console.log("View full documentation on GitHub");
+});
     </script>
 
 </body>
