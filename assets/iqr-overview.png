@@ -1,0 +1,4 @@
+## IQR Outlier Detection
+- Finds anomalies using Q1/Q3 quartiles
+- Bounds: 1.5×IQR from median
+- Perfect for skewed data
