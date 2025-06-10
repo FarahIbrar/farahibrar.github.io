@@ -483,7 +483,7 @@ body.light .repo-right {
   font-size: 0.85rem;
   line-height: 1.5;
   background: transparent;
-  color: var(--code-text); /* Make sure this is applied */
+  color: var(--code-text) !important;
 }
 
 /* Improved Color Scheme */
@@ -494,11 +494,53 @@ body.light .repo-right {
   --code-text: #e6edf3;
 }
 
-.light {
+/* Light theme variables */
+body.light {
   --code-bg: #f6f8fa;
-  --code-header-bg: #eaeef2;
-  --code-border: #d0d7de;
+  --code-header-bg: #ffffff;
+  --code-border: #d1d9e0;
   --code-text: #1f2328;
+}
+
+/* Light theme code block - more specific selectors */
+body.light .code-block,
+body.light .code-container .code-block,
+body.light .horizontal-code-container .code-block {
+  color: #1f2328 !important;
+  background: transparent !important;
+}
+
+/* Ensure code containers also update their backgrounds */
+body.light .code-container,
+body.light .horizontal-code-container {
+  background: var(--code-bg);
+  border-color: var(--code-border);
+}
+
+body.light .code-header,
+body.light .horizontal-code-container .code-header {
+  background: var(--code-header-bg);
+  border-bottom-color: var(--code-border);
+}
+
+/* Additional specificity for any Prism.js syntax highlighting that might override */
+body.light .code-block code,
+body.light .code-block pre,
+body.light .code-block *:not(.token) {
+  color: #1f2328 !important;
+}
+
+/* Dark theme specificity */
+body:not(.light) .code-block,
+body:not(.light) .code-container .code-block,
+body:not(.light) .horizontal-code-container .code-block {
+  color: #e6edf3 !important;
+}
+
+body:not(.light) .code-block code,
+body:not(.light) .code-block pre,
+body:not(.light) .code-block *:not(.token) {
+  color: #e6edf3 !important;
 }
 
 /* Description Styling */
@@ -726,9 +768,6 @@ textarea#data-input {
 .fa-spinner {
   margin-right: 0.5rem;
 }
-
-/*SO FAR SO GOOD - Point where not to go back in changes - WARNING*/
-/*SO FAR SO GOOD - Point where not to go back in changes - WARNING*/
 
 /* Modal Container*/
 .modal-overlay {
@@ -1267,7 +1306,7 @@ select:focus {
 <!-- Outlier Detection Section -->
 <section class="scroll-page outlier-page">
     <div class="section animate-on-scroll">
-      <h2 class="section-heading animate-on-scroll delay-1">Outlier Detection</h2>
+      <h2 class="section-heading animate-on-scroll delay-1">Farah’s IQR Outlier Finder </h2>
       
       <div class="horizontal-layout">
         <!-- Code and IQR Method Side by Side -->
