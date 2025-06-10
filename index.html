@@ -283,8 +283,22 @@ html, body {
     margin: 0;
 }
 
+/*.repo-left h2 - underline */
 .repo-left h2 {
-    margin-bottom: 0.5rem;
+    position: relative;
+    display: inline-flex; 
+    margin-bottom: 1rem;
+    width: fit-content;
+}
+
+.repo-left h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -0.3rem;
+    width: 100%;
+    height: 2px;
+    background: var(--accent);
 }
 
 .repo-left p {
@@ -750,11 +764,11 @@ textarea#data-input {
     justify-content: flex-start;
     overflow-y: auto;
     box-sizing: border-box;
-    margin: 0;             /* Remove auto-centering */
-    max-width: none;       /* Allow full width */
-    width: 100vw;          /* Force full viewport width */
+    margin: 0;  
+    max-width: none; 
+    width: 100vw; 
     overflow-x: hidden;
-    position: static; /* Remove any positioning that might affect the modal */
+    position: static;
     z-index: auto;
 }
 
@@ -781,13 +795,14 @@ textarea#data-input {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px); /* Safari support */
+  -webkit-backdrop-filter: blur(5px);
   z-index: 1000;
   justify-content: center;
   align-items: center;
-  overflow-y: auto; /* Allows scrolling if content exceeds height */
+  overflow-y: auto;
   padding: 20px;
 }
+
 .modal-content {
   background: var(--card);
   padding: 1.5rem 2.5rem; 
@@ -802,10 +817,12 @@ textarea#data-input {
   display: flex;
   flex-direction: column;
 }
+
 .modal-content h3 {
   margin-top: 0;
   margin-bottom: 1; /* Reduced from 1rem to reduce space at top */
 }
+
 .demo-results {
   flex-grow: 1;
   overflow-y: auto;
@@ -814,22 +831,26 @@ textarea#data-input {
   padding: 0.5rem 0 !important; 
   line-height: 1.2 !important;
 }
+
 /* Target ONLY the spacing without affecting other styles */
 #modal-results.demo-results {
   padding: 0 !important;
   margin: 0 !important;
   line-height: 0.60 !important;
 }
+
 #modal-results .result-group {
   margin-bottom: 0 !important;
   padding: 0 !important;
 }
+
 /* Add dotted line only after the first result-group (Outliers Found) */
 #modal-results .result-group:first-child {
   margin-bottom: 0.5rem !important;
   padding-bottom: 0.5rem !important;
   border-bottom: 1px dashed var(--code-border);
 }
+
 #modal-results .result-group label,
 #modal-results .result-group span {
   display: block;
@@ -837,17 +858,20 @@ textarea#data-input {
   padding: 0 !important;
   line-height: 0.60 !important;
 }
+
 #modal-results .stats {
   margin-top: 0.5rem !important; /* Added top margin for spacing */
   padding-top: 0.5rem !important; /* Added top padding */
   border-top: 1px dashed var(--code-border);
 }
+
 /* Keep your existing font styles */
 #modal-results {
   font-family: 'SFMono-Regular', Consolas, monospace;
   font-size: inherit;
   color: inherit;
 }
+
 .close-modal {
   position: absolute;
   top: 1rem;
@@ -860,6 +884,7 @@ textarea#data-input {
   border: none;
   padding: 0;
 }
+
 .close-modal:hover {
   color: var(--accent);
 }
@@ -1010,6 +1035,248 @@ textarea#data-input {
     font-size: 1.3rem;
   }
 }
+
+
+
+/* Personal Interests Section */
+/* Personal Interests Section */
+/* Personal Interests Section */
+/* Personal Interests Section */
+
+/* Personal Interests Section */
+
+.interests-section {
+    background: var(--bg);
+    color: var(--fg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    scroll-snap-align: start;
+    text-align: center;
+}
+
+.interests-container {
+    max-width: 1400px; /* Increased to accommodate 12 items */
+    margin: 0 auto;
+    width: 100%;
+}
+
+.interests-intro {
+    margin: 1rem auto 2rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    max-width: 800px;
+}
+
+/* Hobbies Grid - Updated for 12 items in one row */
+.hobbies-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr); /* Changed to 12 columns for 12 hobbies */
+    gap: 0.4rem; /* Increased gap slightly for better spacing */
+    margin: 2rem auto;
+    max-width: 1200px; /* Increased to accommodate larger items */
+    padding: 0 1rem;
+}
+
+.hobby-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+    padding: 0.6rem 0.4rem; /* Increased padding for better visual balance */
+    border-radius: 8px;
+    background: var(--card);
+}
+
+.hobby-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.hobby-item img {
+    width: 34px; /* Increased from 28px for better visibility */
+    height: 34px;
+    margin-bottom: 0.4rem; /* Increased margin for better spacing */
+    object-fit: contain;
+}
+
+.hobby-item span {
+    font-size: 0.8rem; /* Increased font size for better readability */
+    color: var(--fg);
+    text-align: center;
+    line-height: 1.3; /* Improved line height */
+}
+
+/* Additional Info Section */
+.additional-info {
+    margin: 2rem auto 0; /* Reduced from 3rem to 2rem */
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 1rem;
+}
+
+.info-columns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.7rem;
+}
+
+.info-column {
+    flex: 1;
+    min-width: 280px; /* Reduced from 350px to allow 3 columns to fit */
+    background: var(--card);
+    padding: 1.5rem;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+/* Make all columns align with hobbies grid */
+.info-column:nth-child(1) {
+    flex: 1.2; /* Languages column */
+}
+
+.info-column:nth-child(2) {
+    flex: 1.4; /* Achievements column - wider to align with hobbies */
+}
+
+.info-column:nth-child(3) {
+    flex: 1.2; /* Creative Skills column */
+}
+
+.info-column:hover {
+    transform: translateY(-5px);
+}
+
+.info-column h4 {
+    color: var(--accent);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.info-column h4 i {
+    font-size: 1rem;
+}
+
+.info-content {
+    text-align: left;
+}
+
+.multilingual {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--accent);
+}
+
+.languages-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.languages-list li {
+    position: relative;
+    padding-left: 1.2rem;
+    margin-bottom: 0.3rem;
+}
+
+.languages-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+}
+
+.info-column ul {
+    padding-left: 1.2rem;
+    margin: 0;
+}
+
+.info-column li {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+/* Light Mode Adjustments */
+body.light .hobby-item,
+body.light .info-column {
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+    .hobbies-grid {
+        grid-template-columns: repeat(6, 1fr); /* 2 rows of 6 on large screens */
+        max-width: 650px; /* Increased for larger items */
+    }
+}
+
+@media (max-width: 1200px) {
+    .hobbies-grid {
+        grid-template-columns: repeat(4, 1fr); /* 3 rows of 4 on medium screens */
+        max-width: 440px; /* Increased for larger items */
+    }
+}
+
+@media (max-width: 900px) {
+    .info-column {
+        min-width: 45%; /* Allow 2 columns on medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .hobbies-grid {
+        grid-template-columns: repeat(3, 1fr); /* 4 rows of 3 on small screens */
+        max-width: 330px; /* Increased for larger items */
+    }
+
+    .hobby-item img {
+        width: 32px; /* Maintain decent size on tablets */
+        height: 32px;
+    }
+
+    .hobby-item span {
+        font-size: 0.78rem; /* Maintain readability on tablets */
+    }
+
+    .info-column {
+        min-width: 100%; /* Stack all columns on mobile */
+    }
+
+    .interests-intro {
+        font-size: 0.95rem;
+        max-width: 100%;
+    }
+
+    .interests-container {
+        max-width: 100%;
+    }
+
+    .additional-info {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .hobbies-grid {
+        grid-template-columns: repeat(2, 1fr); /* 6 rows of 2 on very small screens */
+        max-width: 220px; /* Increased for larger items */
+    }
+
+    .hobby-item span {
+        font-size: 0.75rem; /* Maintain readability on mobile */
+    }
+
+    .info-column {
+        padding: 1.2rem;
+    }
+}
+
 
 
 
@@ -1443,6 +1710,137 @@ select:focus {
 
 
 
+<!-- Add this right after your Outlier Detection Section -->
+<section class="scroll-page interests-section">
+    <div class="interests-container animate-on-scroll">
+      <h2 class="section-heading animate-on-scroll delay-1">Personal Interests</h2>
+      
+      <p class="interests-intro animate-on-scroll delay-2">
+        I embrace a healthy, dynamic lifestyle and thrive on continuous learning and new challenges. Motivational quotes keep me focused and driven, fueling my passion for growth and self-improvement.
+      </p>
+  
+      <!-- Hobbies Grid with Fixed GIF URLs -->
+      <div class="hobbies-grid animate-on-scroll delay-4">
+        <!-- Cricket -->
+        <div class="hobby-item">
+          <img src="https://raw.githubusercontent.com/FarahIbrar/FarahIbrar/main/gifs/Cricket.gif" alt="Cricket">
+          <span>Cricket</span>
+        </div>
+        
+        <!-- Badminton -->
+        <div class="hobby-item">
+          <img src="https://raw.githubusercontent.com/FarahIbrar/FarahIbrar/main/gifs/Badminton-sports.gif" alt="Badminton">
+          <span>Badminton</span>
+        </div>
+        
+        <!-- Cooking -->
+        <div class="hobby-item">
+          <img src="https://raw.githubusercontent.com/FarahIbrar/FarahIbrar/main/gifs/Cooking.gif" alt="Cooking">
+          <span>Cooking</span>
+        </div>
+        
+        <!-- Reading -->
+        <div class="hobby-item">
+          <img src="https://raw.githubusercontent.com/FarahIbrar/FarahIbrar/main/gifs/book.gif" alt="Reading">
+          <span>Reading</span>
+        </div>
+        
+        <!-- Traveling -->
+        <div class="hobby-item">
+          <img src="https://raw.githubusercontent.com/FarahIbrar/FarahIbrar/main/gifs/travel.gif" alt="Travel">
+          <span>Travelling</span>
+        </div>
+        
+        <!-- Productive -->
+        <div class="hobby-item">
+          <img src="https://raw.githubusercontent.com/FarahIbrar/FarahIbrar/main/gifs/busy.gif" alt="Productive">
+          <span>Productive</span>
+        </div>
+        
+        <!-- Gym -->
+        <div class="hobby-item">
+          <img src="https://raw.githubusercontent.com/FarahIbrar/FarahIbrar/main/gifs/training.gif" alt="Training">
+          <span>Gym</span>
+        </div>
+        
+        <!-- Music -->
+        <div class="hobby-item">
+          <img src="https://raw.githubusercontent.com/FarahIbrar/FarahIbrar/main/gifs/music.gif" alt="Music">
+          <span>Music</span>
+        </div>
+        
+        <!-- Dancing -->
+        <div class="hobby-item">
+          <img src="https://raw.githubusercontent.com/FarahIbrar/FarahIbrar/main/gifs/dance.gif" alt="Dancing">
+          <span>Dancing</span>
+        </div>
+        
+        <!-- Art -->
+        <div class="hobby-item">
+            <img src="https://raw.githubusercontent.com/FarahIbrar/FarahIbrar/main/gifs/Art.gif" alt="Art">
+            <span>Art</span>
+        </div>
+
+        <!-- ML -->
+        <div class="hobby-item">
+          <img src="https://raw.githubusercontent.com/FarahIbrar/FarahIbrar/main/gifs/Data%20Science.gif" alt="ML">
+          <span>ML</span>
+        </div>
+
+        <!-- AI -->
+        <div class="hobby-item">
+            <img src="https://raw.githubusercontent.com/FarahIbrar/FarahIbrar/main/gifs/artificial-intelligence.gif" alt="AI">
+            <span>AI</span>
+          </div>
+      </div>
+  
+      <!-- Additional Info Section - 3 Columns -->
+      <div class="additional-info animate-on-scroll delay-5">
+        <div class="info-columns">
+          <!-- Languages Column -->
+          <div class="info-column">
+            <h4><i class="fas fa-language"></i> Languages</h4>
+            <div class="info-content">
+              <p class="multilingual">Multilingual</p>
+              <ul class="languages-list">
+                <li>English</li>
+                <li>Urdu</li>
+                <li>Punjabi</li>
+                <li>Hindi</li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- Achievements Column -->
+          <div class="info-column">
+            <h4><i class="fas fa-trophy"></i> Achievements</h4>
+            <div class="info-content">
+              <ul>
+                <li>Best Progress Award (2019 & 2020)</li>
+                <li>Rochdale School's Badminton Champion (2019)</li>
+                <li>Sports Achievements (Cricket & Badminton)</li>
+                <li>Best Handwriting Award</li>
+                <li>State-Level Urdu Competition</li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- Creative Skills Column -->
+          <div class="info-column">
+            <h4><i class="fas fa-paint-brush"></i> Creative Skills</h4>
+            <div class="info-content">
+              <ul>
+                <li>Calligraphy</li>
+                <li>Henna Artistry</li>
+                <li>Choreography</li>
+                <li>Vision Board Curation</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
 <!-- Collaboration & Contact Section -->
@@ -1480,7 +1878,7 @@ select:focus {
         <span class="close" onclick="document.getElementById('contactModal').style.display='none'">&times;</span>
         <h3 style="animation: fadeInSlide 0.8s ease-out;">Let's Work Together</h3>
         <p style="margin-top: -0.5rem; font-size: 0.85rem; animation: fadeInSlide 1.2s ease-out;">
-            I'm always open to discussing new projects, job opportunities, or partnerships. Feel free to reach out using the form below or through my social channels.
+            Interested in working together or discussing a project? I'd love to hear from you. Reach out using the form below or connect with me through my social links.
         </p>
         
         <form id="contactForm" action="https://submit-form.com/s1eLtaukd" method="POST">
