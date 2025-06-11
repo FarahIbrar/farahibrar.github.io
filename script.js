@@ -1,5 +1,4 @@
 <!--Dark/light Mode Icon-->
-<script>
 // Theme toggle functionality
 function toggleTheme() {
     const body = document.body;
@@ -61,7 +60,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
-</script>
 
 <!--For the Form messages--> 
 <script>
@@ -117,10 +115,8 @@ form.addEventListener("submit", async (e) => {
     eval(document.currentScript.textContent); // Reattach this script again so it continues working on reopen
 }, 3000);
 });
-</script>
 
 <!--For the Arrow to vanish on last page--> 
-<script>
 document.addEventListener("DOMContentLoaded", function () { // Scroll Arrow Behavior
     const arrow = document.querySelector(".scroll-down-arrow");
     const allSections = document.querySelectorAll(".scroll-page");
@@ -153,10 +149,8 @@ document.addEventListener("DOMContentLoaded", function () { // Scroll Arrow Beha
         observer.observe(trueLastSection);
     }
     });
-</script>
 
 <!--For the Animation effects on all pages--> 
-<script>
     // Improved scroll animation observer that retriggers
     const animateOnScroll = () => {
         const elements = document.querySelectorAll('.animate-on-scroll');
@@ -194,11 +188,8 @@ document.addEventListener("DOMContentLoaded", function () { // Scroll Arrow Beha
             setTimeout(animateOnScroll, 300); // Wait for theme transition
         });
     });
-    </script>
 
 
-
-<script>
     // Update your existing script with these modified functions
     function setupCopyButtons() {
         const copyButtons = document.querySelectorAll('.copy-button');
@@ -332,4 +323,3 @@ document.getElementById('iqr-info-btn')?.addEventListener('click', (e) => {
   e.preventDefault(); // Prevent default if it's a link
   console.log("View full documentation on GitHub");
 });
-    </script>
