@@ -1039,22 +1039,15 @@ textarea#data-input {
 
 
 /* Personal Interests Section */
-/* Personal Interests Section */
-/* Personal Interests Section */
-/* Personal Interests Section */
-
-/* Personal Interests Section */
-
 .interests-section {
     background: var(--bg);
     color: var(--fg);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     padding: 2rem 1rem;
     scroll-snap-align: start;
     text-align: center;
+    min-height: 100vh;
+    position: relative;
+    box-sizing: border-box;
 }
 
 .interests-container {
@@ -1064,7 +1057,7 @@ textarea#data-input {
 }
 
 .interests-intro {
-    margin: 1rem auto 2rem;
+    margin: 0.5rem auto 1.5rem;
     font-size: 1rem;
     line-height: 1.5;
     max-width: 800px;
@@ -1111,7 +1104,7 @@ textarea#data-input {
 
 /* Additional Info Section */
 .additional-info {
-    margin: 2rem auto 0; /* Reduced from 3rem to 2rem */
+    margin: 1.5rem auto 0; /* Reduced spacing */
     max-width: 1200px;
     width: 100%;
     padding: 0 1rem;
@@ -1227,6 +1220,11 @@ body.light .info-column {
     .info-column {
         min-width: 45%; /* Allow 2 columns on medium screens */
     }
+    
+    .interests-section {
+        min-height: fit-content;
+        padding: 1.5rem 1rem;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1259,6 +1257,11 @@ body.light .info-column {
 
     .additional-info {
         max-width: 100%;
+    }
+    
+    .interests-section {
+        min-height: fit-content;
+        padding: 1rem;
     }
 }
 
@@ -1387,16 +1390,37 @@ button:focus-visible {
     margin-top: 0.8rem !important;
 }
 
-.footer {
-    width: 100%;
-    text-align: center;
-    padding: 0.8rem;
-    background: var(--bg);
-    border-top: 1px solid #333;
+/*.copyright-watermark {
     position: absolute;
-    bottom: 0;
-    left: 0;
-}
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    color: var(--fg);
+    opacity: 0.2;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 0;
+  }*/
+
+  .copyright-watermark {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    color: var(--fg); /* Uses your theme's text color */
+    opacity: 0.15;    /* More subtle in dark, visible in light */
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 0;
+    transition: opacity 0.3s, color 0.3s; /* Smooth theme switch */
+  }
+
+  /* Light mode adjustment */
+  body.light .copyright-watermark {
+    opacity: 0.6; /* Slightly more visible against light bg */
+  }
 
 
 /* Responsive Design */
@@ -1883,12 +1907,17 @@ select:focus {
         <button class="animate-on-scroll delay-6" onclick="document.getElementById('contactModal').style.display='flex'">Contact Me</button>
     </div>
     
-    <div class="footer">
+    <!--div class="footer">
         © 2025 Farah Ibrar | All rights reserved.
-    </div>
+    </div-->
+    <div class="copyright-watermark">
+        © <span id="year"></span> Farah Ibrar | All rights reserved
+      </div>
 </section>
 
-
+<footer>
+  <p>© <span id="year"></span> Farah Ibrar. All rights reserved.</p>
+</footer>
 
 
 
@@ -2273,6 +2302,11 @@ document.getElementById('iqr-info-btn')?.addEventListener('click', (e) => {
 });
     </script>
 
+
+<script>
+    // Auto-update year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 
 </body>
 </html>
