@@ -1,5 +1,4 @@
 <!-- styles -->
-<style>
 :root {
     --bg: #0d1117;
     --fg: #c9d1d9;
@@ -1511,6 +1510,3 @@ select:focus {
     from {opacity: 0; transform: translateY(-10px);}
     to {opacity: 1; transform: translateY(0);}
 }
-
-
-</style>
