@@ -1,26 +1,66 @@
 <!--Dark/light Mode Icon-->
 <script>
+// Theme toggle functionality
 function toggleTheme() {
     const body = document.body;
     const icon = document.getElementById('theme-icon');
     const isNowLight = body.classList.toggle('light');
-
-    localStorage.setItem('theme', isNowLight ? 'light' : 'dark'); // Save the preference
-
-    icon.classList = isNowLight ? 'fas fa-moon' : 'fas fa-sun'; // Set the icon to represent the *opposite* theme for toggling
+    
+    // Update icon based on current theme
+    icon.className = isNowLight ? 'fas fa-moon' : 'fas fa-sun';
 }
 
-window.addEventListener('DOMContentLoaded', () => { // Set icon on load
-const savedTheme = localStorage.getItem('theme');
-const icon = document.getElementById('theme-icon');
-
-if (savedTheme === 'light') {
-    document.body.classList.add('light');
-    if (icon) icon.classList = 'fas fa-moon'; // light mode → show moon to toggle to dark
-    } else {
-        if (icon) icon.classList = 'fas fa-sun'; // dark mode → show sun to toggle to light
+// Initialize theme on page load
+window.addEventListener('DOMContentLoaded', () => {
+    const icon = document.getElementById('theme-icon');
+    
+    // Set default theme to dark mode
+    // Icon shows sun (to switch to light mode)
+    if (icon) {
+        icon.className = 'fas fa-sun';
     }
+});
+
+// Scroll animation functionality
+function handleScrollAnimations() {
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            } else {
+                // Remove visible class when element is out of view
+                // This allows re-animation when scrolling back
+                entry.target.classList.remove('visible');
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
     });
+    
+    animatedElements.forEach(element => {
+        observer.observe(element);
+    });
+}
+
+// Initialize scroll animations when page loads
+window.addEventListener('DOMContentLoaded', handleScrollAnimations);
+
+// Smooth scrolling for arrow
+document.addEventListener('DOMContentLoaded', function() {
+    const scrollArrow = document.querySelector('.scroll-down-arrow');
+    
+    if (scrollArrow) {
+        scrollArrow.addEventListener('click', function() {
+            const nextSection = document.querySelector('.about-section');
+            if (nextSection) {
+                nextSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
+});
 </script>
 
 <!--For the Form messages--> 
