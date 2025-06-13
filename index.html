@@ -58,7 +58,7 @@ body {
 
 /* Elements Reset when Scrolling Up */
 .page-container {
-    scroll-snap-stop: always; /* Makes scroll-snap pause on each section */
+    scroll-snap-stop: always;
 }
 
 /* Delay classes for staggered animations */
@@ -84,9 +84,10 @@ html, body {
 
 .page-container {
     height: 100vh;
-    overflow-y: scroll;
+    overflow-y: auto;
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
+    position: relative; /* New */
 }
 
 .scroll-page {
@@ -1448,6 +1449,25 @@ button:focus-visible {
     opacity: 0.6; /* Slightly more visible against light bg */
   }
 
+  /* 2. Add proper footer only for last page */
+.scroll-page:last-child::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3rem; /* Footer height */
+    background: var(--bg);
+    border-top: 1px solid #333;
+    scroll-snap-align: end;
+    z-index: 10;
+}
+
+/* 3. Prevent overscroll without breaking snap */
+.page-container {
+    overscroll-behavior-y: none;
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -1938,10 +1958,6 @@ select:focus {
       </div>
 </section>
 
-<footer>
-  <p>© <span id="year"></span> Farah Ibrar. All rights reserved.</p>
-</footer>
-
 
 
 
@@ -2330,6 +2346,36 @@ document.getElementById('iqr-info-btn')?.addEventListener('click', (e) => {
     // Auto-update year
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+
+
+
+/* ===== Watermark Footer Boundary Fix ===== */
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const container = document.querySelector('.page-container');
+        const lastPage = document.querySelector('.scroll-page:last-child');
+        
+        let isScrolling = false;
+        
+        container.addEventListener('scroll', () => {
+            if (isScrolling) return;
+            
+            // Check if trying to scroll past last page
+            const lastPageBottom = lastPage.offsetTop + lastPage.offsetHeight;
+            const scrollBottom = container.scrollTop + window.innerHeight;
+            
+            if (scrollBottom > lastPageBottom) {
+                isScrolling = true;
+                container.scrollTo({
+                    top: lastPage.offsetTop,
+                    behavior: 'smooth'
+                });
+                setTimeout(() => { isScrolling = false; }, 500);
+            }
+        });
+    });
+    </script>
+
 
 </body>
 </html>
