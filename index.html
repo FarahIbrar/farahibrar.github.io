@@ -20,7 +20,7 @@
 
 <!--HTML part starts here-->
 <!--Navigation bar-->
- <body>
+<body>
     <div class="navbar">
         <h1>Farah Ibrar</h1>
         <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
@@ -31,8 +31,23 @@
 <!--Scroll container-->
 <div class="page-container">
 
-<!-- Hero Section -->
+<!--Hero Section-->
 <section class="hero scroll-page">
+    <!--Social icons container-->
+        <div class="hero-social-icons animate-on-scroll delay-4">
+            <a href="https://www.linkedin.com/in/farah-ibrar-a013b51a9/" target="_blank" title="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/FarahIbrar" target="_blank" title="GitHub">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://public.tableau.com/app/profile/farah.ibrar" target="_blank" title="Tableau">
+                <i class="fas fa-chart-pie"></i>
+            </a>
+            <a href="mailto:farah11ibrar@gmail.com" title="Email">
+              <i class="fas fa-envelope"></i>
+            </a>
+        </div>
     <img src="profile.jpg" alt="Farah Ibrar" class="animate-on-scroll">
     <h2 class="animate-on-scroll delay-1">Farah Ibrar</h2>
     <h3 class="animate-on-scroll delay-2">Data Scientist</h3>
@@ -42,7 +57,7 @@
     </div>
 </section>
 
-<!-- About me -->
+<!--About me-->
 <section class="scroll-page about-section">
     <h3 class="animate-on-scroll">About Me</h3>
     <div class="subsection animate-on-scroll delay-1">
@@ -132,219 +147,212 @@
 </section>
 
 
-        <!-- Outlier Detection Section -->
+<!--Outlier Detection Section-->
 <section class="scroll-page outlier-page">
     <div class="section animate-on-scroll">
-      <!-- Modified Title with Hover Tooltip -->
+      <!--Modified Title with Hover Tooltip-->
       <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
         <h2 class="section-heading animate-on-scroll delay-1" style="margin: 0;">Farah's IQR Outlier Finder</h2>
         <div class="info-tooltip">
-          <button id="iqr-info-btn" class="info-icon" aria-label="How this works">
-            <i class="fas fa-info-circle"></i>
-            <span class="tooltip-text">Find out how this works</span>
-          </button>
-          <div class="tooltip-content">
-            <p>A statistical method to identify anomalies in your data using quartiles...</p>
-            <a href="https://github.com/FarahIbrar/FarahIbrar/blob/main/Outlier%20Detection%20Script.md" 
-               target="_blank">Read more</a>
-          </div>
-        </div>
-      </div>
-      
-      <div class="horizontal-layout">
-        <!-- Code and IQR Method Side by Side -->
-        <div class="code-iqr-container">
-          <!-- Horizontal Code Block -->
-          <div class="horizontal-code-container animate-on-scroll delay-2">
-            <div class="code-header">
-              <span class="language-tag">Python</span>
-              <button class="copy-button" aria-label="Copy code">
-                <i class="far fa-copy"></i>
-              </button>
-            </div>
-            <pre class="code-block"><code class="language-python">import numpy as np
-  
-  def detect_outliers(data):
-    q1, q3 = np.percentile(data, [25, 75])
-    iqr = q3 - q1
-    lower_bound = q1 - 1.5 * iqr
-    upper_bound = q3 + 1.5 * iqr
-
-    outliers = [x for x in data if x < lower_bound or x > upper_bound]
-    return outliers</code></pre>
-          </div>
-          
-          <!-- IQR Method (stays as is) -->
-          <div class="code-description animate-on-scroll delay-3">
-            <h3>IQR Method</h3>
-            <p>This algorithm identifies anomalies using statistical properties:</p>
-            <ul>
-              <li><strong>Q1/Q3:</strong> 25th/75th percentiles</li>
-              <li><strong>IQR:</strong> The range between Q1 and Q3</li>
-              <li><strong>Bounds:</strong> 1.5×IQR from the quartiles</li>
-              <li><strong>Outliers:</strong> Points outside these bounds</li>
-            </ul>
-          </div>
-        </div>
-        
-        <!-- Test with Your Data Section (full width below) -->
-        <div class="demo-container animate-on-scroll delay-4">
-          <h3>Test with Your Data</h3>
-          <div class="demo-controls">
-            <textarea id="data-input" rows="2" 
-              placeholder="Enter numbers separated by commas, e.g.: 12, 18, 25, 7, 10, 15">12, 18, 25, 7, 10, 15, 8, 19, 3, 100, 16</textarea>
-            <button id="detect-btn" class="demo-button">
-              <i class="fas fa-search"></i> Detect Outliers
+            <button id="iqr-info-btn" class="info-icon" aria-label="How this works">
+                <i class="fas fa-info-circle"></i>
+                <span class="tooltip-text">Find out how this works</span>
             </button>
-          </div>
+            
+            <div class="tooltip-content">
+                <p>A statistical method to identify anomalies in your data using quartiles...</p>
+                <a href="https://github.com/FarahIbrar/FarahIbrar/blob/main/Outlier%20Detection%20Script.md" 
+                target="_blank">Read more</a>
+            </div>
         </div>
     </div>
-          <div id="results-modal" class="modal-overlay">
-            <div class="modal-content">
-              <span class="close-modal">&times;</span>
-              <h3>Outlier Detection Results</h3>
-              <div id="modal-results" class="demo-results"></div>
+      
+    <div class="horizontal-layout">
+        <!--Code and IQR Method Side by Side-->
+        <div class="code-iqr-container">
+            
+            <!--Horizontal Code Block-->
+             <div class="horizontal-code-container animate-on-scroll delay-2">
+                <div class="code-header">
+                    <span class="language-tag">Python</span>
+                    <button class="copy-button" aria-label="Copy code">
+                        <i class="far fa-copy"></i>
+                    </button>
+                </div>
+                
+                <pre class="code-block"><code class="language-python">import numpy as np
+                    def detect_outliers(data):
+                    q1, q3 = np.percentile(data, [25, 75])
+                    iqr = q3 - q1
+                    lower_bound = q1 - 1.5 * iqr
+                    upper_bound = q3 + 1.5 * iqr
+                    
+                    outliers = [x for x in data if x < lower_bound or x > upper_bound]
+                    return outliers</code></pre>
+                </div>
+                
+                <!--IQR Method-->
+                <div class="code-description animate-on-scroll delay-3">
+                    <h3>IQR Method</h3>
+                    <p>This algorithm identifies anomalies using statistical properties:</p>
+                    <ul>
+                        <li><strong>Q1/Q3:</strong> 25th/75th percentiles</li>
+                        <li><strong>IQR:</strong> The range between Q1 and Q3</li>
+                        <li><strong>Bounds:</strong> 1.5×IQR from the quartiles</li>
+                        <li><strong>Outliers:</strong> Points outside these bounds</li>
+                    </ul>
+                </div>
             </div>
-          </div>
+            
+            <!-- Test with Your Data Set-->
+             <div class="demo-container animate-on-scroll delay-4">
+                <h3>Test with Your Data</h3>
+                <div class="demo-controls">
+                    <textarea id="data-input" rows="2" 
+                    placeholder="Enter numbers separated by commas, e.g.: 12, 18, 25, 7, 10, 15">12, 18, 25, 7, 10, 15, 8, 19, 3, 100, 16</textarea>
+                    <button id="detect-btn" class="demo-button">
+                        <i class="fas fa-search"></i> Detect Outliers
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="results-modal" class="modal-overlay">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h3>Outlier Detection Results</h3>
+                <div id="modal-results" class="demo-results"></div>
+            </div>
+        </div>
 </section>
 
 
 
-<!-- Add this right after your Outlier Detection Section -->
+<!--Personal Interests-->
 <section class="scroll-page interests-section">
     <div class="interests-container animate-on-scroll">
-      <h2 class="section-heading animate-on-scroll delay-1">Personal Interests</h2>
-      
-      <p class="interests-intro animate-on-scroll delay-2">
-        I embrace a healthy, dynamic lifestyle and thrive on continuous learning and new challenges. Motivational quotes keep me focused and driven, fueling my passion for growth and self-improvement.
-      </p>
-  
-      <!-- Hobbies Grid with Fixed GIF URLs -->
-      <div class="hobbies-grid animate-on-scroll delay-4">
-        <!-- Cricket -->
-        <div class="hobby-item">
-          <img src="https://raw.githubusercontent.com/FarahIbrar/FarahIbrar/main/gifs/Cricket.gif" alt="Cricket">
-          <span>Cricket</span>
-        </div>
+        <h2 class="section-heading animate-on-scroll delay-1">Personal Interests</h2>
         
-        <!-- Badminton -->
-        <div class="hobby-item">
-          <img src="https://raw.githubusercontent.com/FarahIbrar/FarahIbrar/main/gifs/Badminton-sports.gif" alt="Badminton">
-          <span>Badminton</span>
-        </div>
+        <p class="interests-intro animate-on-scroll delay-2">
+            I embrace a healthy, dynamic lifestyle and thrive on continuous learning and new challenges. Motivational quotes keep me focused and driven, fueling my passion for growth and self-improvement.
+        </p>
         
-        <!-- Cooking -->
-        <div class="hobby-item">
-          <img src="https://raw.githubusercontent.com/FarahIbrar/FarahIbrar/main/gifs/Cooking.gif" alt="Cooking">
-          <span>Cooking</span>
-        </div>
+        <!--Hobbies Grid with Fixed GIF URLs-->
+         <div class="hobbies-grid animate-on-scroll delay-4">
         
-        <!-- Reading -->
-        <div class="hobby-item">
-          <img src="https://raw.githubusercontent.com/FarahIbrar/FarahIbrar/main/gifs/book.gif" alt="Reading">
-          <span>Reading</span>
+        <!--Cricket-->
+         <div class="hobby-item">
+            <img src="https://raw.githubusercontent.com/FarahIbrar/FarahIbrar/main/gifs/Cricket.gif" alt="Cricket">
+            <span>Cricket</span>
         </div>
-        
-        <!-- Traveling -->
+        <!--Badminton-->
         <div class="hobby-item">
-          <img src="https://raw.githubusercontent.com/FarahIbrar/FarahIbrar/main/gifs/travel.gif" alt="Travel">
-          <span>Travelling</span>
+            <img src="https://raw.githubusercontent.com/FarahIbrar/FarahIbrar/main/gifs/Badminton-sports.gif" alt="Badminton">
+            <span>Badminton</span>
         </div>
-        
-        <!-- Productive -->
+        <!--Cooking-->
         <div class="hobby-item">
-          <img src="https://raw.githubusercontent.com/FarahIbrar/FarahIbrar/main/gifs/busy.gif" alt="Productive">
-          <span>Productive</span>
+            <img src="https://raw.githubusercontent.com/FarahIbrar/FarahIbrar/main/gifs/Cooking.gif" alt="Cooking">
+            <span>Cooking</span>
         </div>
-        
-        <!-- Gym -->
+        <!--Reading-->
         <div class="hobby-item">
-          <img src="https://raw.githubusercontent.com/FarahIbrar/FarahIbrar/main/gifs/training.gif" alt="Training">
-          <span>Gym</span>
+            <img src="https://raw.githubusercontent.com/FarahIbrar/FarahIbrar/main/gifs/book.gif" alt="Reading">
+            <span>Reading</span>
         </div>
-        
-        <!-- Music -->
+        <!--Traveling-->
         <div class="hobby-item">
-          <img src="https://raw.githubusercontent.com/FarahIbrar/FarahIbrar/main/gifs/music.gif" alt="Music">
-          <span>Music</span>
+            <img src="https://raw.githubusercontent.com/FarahIbrar/FarahIbrar/main/gifs/travel.gif" alt="Travel">
+            <span>Travelling</span>
         </div>
-        
-        <!-- Dancing -->
+        <!--Productive-->
         <div class="hobby-item">
-          <img src="https://raw.githubusercontent.com/FarahIbrar/FarahIbrar/main/gifs/dance.gif" alt="Dancing">
-          <span>Dancing</span>
+            <img src="https://raw.githubusercontent.com/FarahIbrar/FarahIbrar/main/gifs/busy.gif" alt="Productive">
+            <span>Productive</span>
         </div>
-        
-        <!-- Art -->
+        <!--Gym-->
+        <div class="hobby-item">
+            <img src="https://raw.githubusercontent.com/FarahIbrar/FarahIbrar/main/gifs/training.gif" alt="Training">
+            <span>Gym</span>
+        </div>
+        <!--Music-->
+        <div class="hobby-item">
+            <img src="https://raw.githubusercontent.com/FarahIbrar/FarahIbrar/main/gifs/music.gif" alt="Music">
+            <span>Music</span>
+        </div>
+        <!--Dancing-->
+        <div class="hobby-item">
+            <img src="https://raw.githubusercontent.com/FarahIbrar/FarahIbrar/main/gifs/dance.gif" alt="Dancing">
+            <span>Dancing</span>
+        </div>
+        <!--Art-->
         <div class="hobby-item">
             <img src="https://raw.githubusercontent.com/FarahIbrar/FarahIbrar/main/gifs/Art.gif" alt="Art">
             <span>Art</span>
         </div>
-
-        <!-- ML -->
+        <!--ML-->
         <div class="hobby-item">
-          <img src="https://raw.githubusercontent.com/FarahIbrar/FarahIbrar/main/gifs/Data%20Science.gif" alt="ML">
-          <span>ML</span>
+            <img src="https://raw.githubusercontent.com/FarahIbrar/FarahIbrar/main/gifs/Data%20Science.gif" alt="ML">
+            <span>ML</span>
         </div>
-
-        <!-- AI -->
+        <!--AI-->
         <div class="hobby-item">
             <img src="https://raw.githubusercontent.com/FarahIbrar/FarahIbrar/main/gifs/artificial-intelligence.gif" alt="AI">
             <span>AI</span>
-          </div>
-      </div>
-  
-      <!-- Additional Info Section - 3 Columns -->
-      <div class="additional-info animate-on-scroll delay-5">
-        <div class="info-columns">
-          <!-- Languages Column -->
-          <div class="info-column">
-            <h4><i class="fas fa-language"></i> Languages</h4>
-            <div class="info-content">
-              <p class="multilingual">Multilingual</p>
-              <ul class="languages-list">
-                <li>English</li>
-                <li>Urdu</li>
-                <li>Punjabi</li>
-                <li>Hindi</li>
-              </ul>
-            </div>
-          </div>
-          
-          <!-- Achievements Column -->
-          <div class="info-column">
-            <h4><i class="fas fa-trophy"></i> Achievements</h4>
-            <div class="info-content">
-              <ul>
-                <li>Best Progress Award (2019 & 2020)</li>
-                <li>Rochdale School's Badminton Champion (2019)</li>
-                <li>Sports Achievements (Cricket & Badminton)</li>
-                <li>Best Handwriting Award</li>
-                <li>State-Level Urdu Competition (1st Prize)</li>
-              </ul>
-            </div>
-          </div>
-          
-          <!-- Creative Skills Column -->
-          <div class="info-column">
-            <h4><i class="fas fa-paint-brush"></i> Creative Skills</h4>
-            <div class="info-content">
-              <ul>
-                <li>Calligraphy</li>
-                <li>Texture Art</li>
-                <li>Henna Artistry</li>
-                <li>Choreography</li>
-                <li>Vision Board Curation</li>
-              </ul>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
-  </section>
+    
+    <!--Additional Info Section-->
+    <div class="additional-info animate-on-scroll delay-5">
+        <div class="info-columns">
+            
+            <!--Languages-->
+             <div class="info-column">
+                <h4><i class="fas fa-language"></i> Languages</h4>
+                <div class="info-content">
+                    <p class="multilingual">Multilingual</p>
+                    <ul class="languages-list">
+                        <li>English</li>
+                        <li>Urdu</li>
+                        <li>Punjabi</li>
+                        <li>Hindi</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!--Achievements-->
+            <div class="info-column">
+                <h4><i class="fas fa-trophy"></i> Achievements</h4>
+                <div class="info-content">
+                    <ul>
+                        <li>Best Progress Award (2019 & 2020)</li>
+                        <li>Rochdale School's Badminton Champion (2019)</li>
+                        <li>Sports Achievements (Cricket & Badminton)</li>
+                        <li>Best Handwriting Award</li>
+                        <li>State-Level Urdu Competition (1st Prize)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!--Creative Skills-->
+            <div class="info-column">
+                <h4><i class="fas fa-paint-brush"></i> Creative Skills</h4>
+                <div class="info-content">
+                    <ul>
+                        <li>Calligraphy</li>
+                        <li>Texture Art</li>
+                        <li>Henna Artistry</li>
+                        <li>Choreography</li>
+                        <li>Vision Board Curation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
 
 
-<!-- Collaboration & Contact Section -->
+<!--Collaboration & Contact Section-->
 <section class="scroll-page contact-section">
     <div class="collaborate-content animate-on-scroll">
         <h3 class="section-heading animate-on-scroll delay-1">Let’s Build a Smarter Future</h3>
@@ -353,20 +361,26 @@
     
     <div class="contact-content animate-on-scroll delay-3">
         <div class="contact-icons animate-on-scroll delay-5">
-            <a href="mailto:farah11ibrar@gmail.com">Email</a>
-            <a href="https://www.linkedin.com/in/farah-ibrar-a013b51a9/" target="_blank">LinkedIn</a>
-            <a href="https://github.com/FarahIbrar" target="_blank">GitHub</a>
-            <a href="https://public.tableau.com/app/profile/farah.ibrar" target="_blank">Tableau</a>
+            <a href="https://www.linkedin.com/in/farah-ibrar-a013b51a9/" target="_blank" title="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/FarahIbrar" target="_blank" title="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://public.tableau.com/app/profile/farah.ibrar" target="_blank" title="Tableau">
+                <i class="fas fa-chart-pie"></i>
+            </a>
+            <a href="mailto:farah11ibrar@gmail.com" title="Email">
+                <i class="fas fa-envelope"></i>
+            </a>
         </div>
         <button class="animate-on-scroll delay-6" onclick="document.getElementById('contactModal').style.display='flex'">Contact Me</button>
     </div>
     
-    <!--div class="footer">
-        © 2025 Farah Ibrar | All rights reserved.
-    </div-->
+    <!--footer-->
     <div class="copyright-watermark">
         © <span id="year"></span> Farah Ibrar | All rights reserved
-      </div>
+    </div>
 </section>
 
 
