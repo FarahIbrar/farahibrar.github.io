@@ -73,7 +73,7 @@ cd FarahIbrar
 
 3. **Explore the architecture:**
    - All styling and animations are contained in ```style.css```
-   - Interactive elements and the outlier detection tool are implemented in script.js
+   - Interactive elements and the outlier detection tool are implemented in ```script.js```
    - The fully responsive design works across all modern browsers
 
 ---
