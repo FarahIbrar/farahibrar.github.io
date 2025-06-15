@@ -69,3 +69,9 @@ cd FarahIbrar
    - The fully responsive design works across all modern browsers
 
 **Note: While this code is viewable for educational purposes, I appreciate when developers use it as inspiration for their own unique implementations rather than direct reproduction. If you adapt any concepts, proper attribution is appreciated.**
+
+## Contributing
+While this is my personal portfolio, I welcome suggestions and constructive feedback. If you spot any issues or have ideas for improvement, please feel free to fork the repository and submit pull request.
+
+## License
+This project is licensed under the MIT License. You are free to use, modify, and distribute the code, provided that appropriate credit is given to the original author.
