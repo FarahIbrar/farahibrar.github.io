@@ -34,15 +34,13 @@ window.addEventListener('DOMContentLoaded', () => {
     // Add no-transitions class initially to prevent flash on load
     document.documentElement.classList.add('no-transitions');
     setTimeout(() => {
-        
         document.documentElement.classList.remove('no-transitions');
     }, 500);
 });
-
+    
 function handleScrollAnimations() {
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
     const observer = new IntersectionObserver((entries) => {
-        
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
@@ -72,7 +70,53 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+});
+    
+// Progress dots //
+document.addEventListener("DOMContentLoaded", function() {
+    // Check if dots already exist
+    if (document.querySelector('.progress-indicator')) return;
+    
+    // Create progress dots container
+    const progressContainer = document.createElement('div');
+    progressContainer.className = 'progress-indicator';
+    progressContainer.innerHTML = '<div class="progress-dots"></div>';
+    document.body.appendChild(progressContainer);
+    
+    // Initialize dots
+    const sections = document.querySelectorAll(".scroll-page");
+    const dotsContainer = document.querySelector(".progress-dots");
+    
+    sections.forEach((section, index) => {
+        const dot = document.createElement("div");
+        dot.className = "progress-dot";
+        dot.addEventListener("click", () => {
+            window.scrollTo({
+                top: section.offsetTop - 20,
+                behavior: "smooth"
+            });
+        });
+        dotsContainer.appendChild(dot);
     });
+    
+    // Update active dot
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const index = Array.from(sections).indexOf(entry.target);
+            const dots = document.querySelectorAll(".progress-dot");
+            if (entry.isIntersecting) {
+                dots[index].classList.add("active");
+            } else {
+                dots[index].classList.remove("active");
+            }
+        });
+    }, { 
+        threshold: 0.5,
+        rootMargin: "-20px 0px -20px 0px"
+    });
+    
+    sections.forEach(section => observer.observe(section));
+});
 
 
 //For the Form messages
@@ -130,39 +174,60 @@ form.addEventListener("submit", async (e) => {
 });
 
 
-//For the Arrow to vanish on last page
-document.addEventListener("DOMContentLoaded", function () {
-    const arrow = document.querySelector(".scroll-down-arrow");
-    const allSections = document.querySelectorAll(".scroll-page");
-    const trueLastSection = allSections[allSections.length - 1];
+//For the progress dots
+document.addEventListener("DOMContentLoaded", function() {
+    const sections = document.querySelectorAll(".scroll-page");
+    const dotsContainer = document.querySelector(".progress-dots");
     
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach(entry => {
-                if (entry.target === trueLastSection) {
-                    if (entry.isIntersecting) {
-                        arrow.style.opacity = "0";
-                        arrow.style.pointerEvents = "none";
-                        arrow.style.animation = "none";
-                    } else {
-                        arrow.style.opacity = "1";
-                        arrow.style.pointerEvents = "auto";
-                        arrow.style.animation = "bounce 1.5s infinite";
-                    }
-                }
+    // Create minimal dots
+    sections.forEach((section, index) => {
+        const dot = document.createElement("div");
+        dot.className = "progress-dot";
+        dot.addEventListener("click", () => {
+            
+            // Scroll with offset to prevent hiding section titles
+            window.scrollTo({
+                top: section.offsetTop - 20,
+                behavior: "smooth"
             });
-        },
-        
-        {
-            threshold: 0.5,
-            rootMargin: "0px 0px -100px 0px"
-        }
-    );
-    
-    if (trueLastSection) {
-        observer.observe(trueLastSection);
-    }
+        });
+        dotsContainer.appendChild(dot);
     });
+
+    // Update active dot with intersection observer
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const index = Array.from(sections).indexOf(entry.target);
+            const dots = document.querySelectorAll(".progress-dot");
+            if (entry.isIntersecting) {
+                dots[index].classList.add("active");
+            } else {
+                dots[index].classList.remove("active");
+            }
+        });
+    }, { 
+        
+        threshold: 0.5,
+        rootMargin: "-20px 0px -20px 0px" // Prevents pushing content up
+    });
+    
+    sections.forEach(section => observer.observe(section));
+    });
+
+    // Remove from the last page
+    const lastSection = document.querySelector('.contact-section');
+    const progressContainer = document.querySelector('.progress-indicator');
+    
+    if (lastSection && progressContainer) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                progressContainer.style.opacity = entry.isIntersecting ? '0' : '1';
+                progressContainer.style.pointerEvents = entry.isIntersecting ? 'none' : 'auto';
+            });
+        }, { threshold: 0.5 });
+        
+        observer.observe(lastSection);
+        }
 
 
 //For the Animation effects on all pages
