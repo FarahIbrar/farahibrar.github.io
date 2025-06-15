@@ -63,7 +63,7 @@ To explore or adapt this project locally, follow these steps:
 
 1. **Clone the repository:**
 ```bash
-git clone https://github.com/FarahIbrar/FarahIbrar.git
+git clone https://github.com/FarahIbrar/farahibrar.github.io
 cd FarahIbrar
 ```
 
