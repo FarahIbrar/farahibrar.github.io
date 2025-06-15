@@ -1,25 +1,48 @@
 //Dark/light Mode Icon
+// Theme toggle with pre-rendering prevention
+let themeTransitionInProgress = false;
+
 function toggleTheme() {
+    if (themeTransitionInProgress) return;
+    themeTransitionInProgress = true;
+    
+    // Disable transitions during the switch
+    document.documentElement.classList.add('no-transitions');
+    
     const body = document.body;
     const icon = document.getElementById('theme-icon');
     const isNowLight = body.classList.toggle('light');
-    
     icon.className = isNowLight ? 'fas fa-moon' : 'fas fa-sun';
+    
+    // Force synchronous layout calculation
+    void body.offsetWidth;
+    
+    // Re-enable transitions after a minimal delay
+    setTimeout(() => {
+        document.documentElement.classList.remove('no-transitions');
+        themeTransitionInProgress = false;
+    }, 10);
 }
 
+// Initialize theme icon
 window.addEventListener('DOMContentLoaded', () => {
     const icon = document.getElementById('theme-icon');
-    
     if (icon) {
         icon.className = 'fas fa-sun';
     }
+    
+    // Add no-transitions class initially to prevent flash on load
+    document.documentElement.classList.add('no-transitions');
+    setTimeout(() => {
+        
+        document.documentElement.classList.remove('no-transitions');
+    }, 500);
 });
 
-// Scroll animation functionality
 function handleScrollAnimations() {
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
-    
     const observer = new IntersectionObserver((entries) => {
+        
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
@@ -37,13 +60,10 @@ function handleScrollAnimations() {
     });
 }
 
-// Initialize scroll animations when page loads
 window.addEventListener('DOMContentLoaded', handleScrollAnimations);
 
-// Smooth scrolling for arrow
 document.addEventListener('DOMContentLoaded', function() {
     const scrollArrow = document.querySelector('.scroll-down-arrow');
-    
     if (scrollArrow) {
         scrollArrow.addEventListener('click', function() {
             const nextSection = document.querySelector('.about-section');
@@ -52,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-});
+    });
 
 
 //For the Form messages
