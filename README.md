@@ -1,9 +1,5 @@
 # Farah Ibrar - Data Scientist Portfolio 
 
-![Portfolio Screenshot](https://github.com/FarahIbrar/FarahIbrar/blob/main/gifs/portfolio-preview.gif)
-
----
-
 ## Overview
 
 Welcome to my professional portfolio - a dynamic showcase of my skills, projects, and journey as a Data Scientist. This responsive, single-page application blends elegant design with technical sophistication to present my capabilities in data science, machine learning, and web development.
