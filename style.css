@@ -114,6 +114,7 @@ html, body {
     margin-bottom: 1rem;
     transition: transform 0.3s ease-out;
     transform-origin: center;
+    transition-property: transform;
 }
 
 .hero img:hover {
