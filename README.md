@@ -74,4 +74,4 @@ cd FarahIbrar
 While this is my personal portfolio, I welcome suggestions and constructive feedback. If you spot any issues or have ideas for improvement, please feel free to fork the repository and submit pull request.
 
 ## License
-This project is licensed under the MIT License. You are free to use, modify, and distribute the code, provided that appropriate credit is given to the original author.
+This project is licensed under the [MIT License](LICENSE). You are free to use, modify, and distribute the code, provided that appropriate credit is given to the original author.
