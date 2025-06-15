@@ -2,7 +2,7 @@
 
 ## Overview
 
-Welcome to my professional portfolio - a dynamic showcase of my skills, projects, and journey as a Data Scientist. This responsive, single-page application blends elegant design with technical sophistication to present my capabilities in data science, machine learning, and web development.
+Welcome to my professional portfolio: a dynamic showcase of my skills, projects, and journey as a Data Scientist. This responsive, single-page application blends elegant design with technical sophistication to present my capabilities in web development and strengthen my personal brand.
 
 **Live Demo:** [Visit My Portfolio](https://farahibrar.github.io)
 
@@ -10,7 +10,7 @@ Welcome to my professional portfolio - a dynamic showcase of my skills, projects
 
 ## About This Project
 
-This portfolio represents a full-stack development project where I've combined:
+This portfolio represents a full-stack development project where I have combined:
 
 - **Frontend Development**: HTML5, CSS3, JavaScript
 - **Data Science Integration**: Interactive outlier detection tool
@@ -44,7 +44,7 @@ Building this portfolio was an enriching experience that helped me grow in multi
 
 ## What I Enjoyed Most - The Outlier Detection Implementation
 
-The standout feature of this portfolio is the interactive **IQR Outlier Detection** tool. This wasn't just about displaying code - I created a fully functional statistical analyzer that:
+The standout feature of this portfolio is the interactive **IQR Outlier Detection** tool. This wasn't just about displaying code, I created a fully functional statistical analyzer that:
 
 - Processes real user input
 - Calculates quartiles and interquartile ranges
