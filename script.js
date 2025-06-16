@@ -405,13 +405,94 @@ if (lastSection && progressContainer) {
         initSyntaxHighlighting();
     });
 
-
-
     // Icon for more information on outlier detection:
     document.getElementById('iqr-info-btn')?.addEventListener('click', (e) => {
         e.preventDefault(); // Prevent default if it's a link
         console.log("View full documentation on GitHub");
     });
+
+// Keyboard navigation for scroll-snap sections
+document.addEventListener('DOMContentLoaded', function() {
+    const pageContainer = document.querySelector('.page-container');
+    const sections = document.querySelectorAll('.scroll-page');
+    let currentSectionIndex = 0;
+    let isScrolling = false;
+    const scrollDelay = 800;
+    
+    // Function to scroll to a specific section with offset
+    function scrollToSection(index) {
+        if (index < 0 || index >= sections.length || isScrolling) return;
+        
+        isScrolling = true;
+        currentSectionIndex = index;
+        
+        // Get the section element
+        const section = sections[index];
+        let sectionPosition = section.offsetTop;
+        
+        // Apply offset only if it's the outlier section (similar to dots implementation)
+        if (section.classList.contains('outlier-page')) {
+            const offset = 20; // Same as your dots offset
+            sectionPosition -= offset;
+        }
+        
+        // Smooth scroll to position
+        pageContainer.scrollTo({
+            top: sectionPosition,
+            behavior: 'smooth'
+        });
+
+        // Prevent rapid scrolling
+        setTimeout(() => {
+            isScrolling = false;
+        }, scrollDelay);
+    }
+
+    // Keyboard event listener
+    document.addEventListener('keydown', function(e) {
+        // Only handle arrow keys if not in a text input/textarea
+        if (['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
+
+        switch(e.key) {
+            case 'ArrowDown':
+                e.preventDefault();
+                scrollToSection(currentSectionIndex + 1);
+                break;
+            case 'ArrowUp':
+                e.preventDefault();
+                scrollToSection(currentSectionIndex - 1);
+                break;
+            case 'Home':
+                e.preventDefault();
+                scrollToSection(0);
+                break;
+            case 'End':
+                e.preventDefault();
+                scrollToSection(sections.length - 1);
+                break;
+        }
+    });
+
+    // Update current section on scroll
+    pageContainer.addEventListener('scroll', function() {
+        if (isScrolling) return;
+
+        // Find which section is currently in view
+        const scrollPosition = pageContainer.scrollTop + (window.innerHeight / 2);
+        
+        sections.forEach((section, index) => {
+            const sectionTop = section.offsetTop;
+            const sectionBottom = sectionTop + section.offsetHeight;
+            
+            if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                currentSectionIndex = index;
+            }
+        });
+    });
+
+    // Initialize current section on load
+    currentSectionIndex = 0;
+});
 
 
 //Footer Update
