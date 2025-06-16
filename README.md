@@ -2,7 +2,7 @@
 
 ## Overview
 
-Welcome to my professional portfolio: a dynamic showcase of my skills, projects, and journey as a Data Scientist. This responsive, single-page application blends elegant design with technical sophistication to present my capabilities in web development and strengthen my personal brand.
+**Welcome to my professional portfolio:** a dynamic showcase of my skills, projects, and journey as a Data Scientist. This responsive, single-page application blends elegant design with technical sophistication to present my capabilities in web development and strengthen my personal brand.
 
 **Live Demo:** [Visit My Portfolio](https://farahibrar.github.io)
 
