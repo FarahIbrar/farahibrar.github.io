@@ -181,6 +181,17 @@ body:not(.light) .repo-right .progress-dot {
     color: #888;
 }
 
+/* Prevent Overscrolling */
+.page-container {
+    height: 100vh;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    position: relative;
+    overscroll-behavior: none;
+    overscroll-behavior-y: contain;
+}
+
 /* Hero Social Icons */
 .hero-social-icons {
     position: absolute;
