@@ -4,11 +4,16 @@
 
 **Welcome to my professional portfolio:** a dynamic showcase of my skills, projects, and journey as a Data Scientist. This responsive, single-page application blends elegant design with technical sophistication to present my capabilities in web development and strengthen my personal brand.
 
-**Live Demo:** [Visit My Portfolio](https://farahibrar.github.io)
 
 <div style="text-align: center; margin-bottom: 40px;">
-  <img src="https://github.com/FarahIbrar/farahibrar.github.io/blob/main/portfolio/Portfolio.gif" style="width: auto; height: auto;" alt="portfolio.gif" />
+  <img 
+    src="https://github.com/FarahIbrar/farahibrar.github.io/blob/main/portfolio/Portfolio.gif" 
+    style="width: 800px; height: auto;" 
+    alt="portfolio.gif" 
+  />
 </div>
+
+**Live Demo:** https://farahibrar.github.io
 
 ---
 
