@@ -6,6 +6,10 @@
 
 **Live Demo:** [Visit My Portfolio](https://farahibrar.github.io)
 
+<div style="text-align: center; margin-bottom: 40px;">
+  <img src="https://github.com/FarahIbrar/farahibrar.github.io/blob/main/portfolio/Portfolio.gif" style="width: auto; height: auto;" alt="portfolio.gif" />
+</div>
+
 ---
 
 ## About This Project
