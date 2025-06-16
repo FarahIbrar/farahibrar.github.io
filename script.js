@@ -178,14 +178,14 @@ form.addEventListener("submit", async (e) => {
 document.addEventListener("DOMContentLoaded", function() {
     const sections = document.querySelectorAll(".scroll-page");
     const dotsContainer = document.querySelector(".progress-dots");
+    const pageContainer = document.querySelector(".page-container");
     
     // Create minimal dots
     sections.forEach((section, index) => {
         const dot = document.createElement("div");
         dot.className = "progress-dot";
         dot.addEventListener("click", (e) => {
-            
-            // Prevent any default behavior
+            // Prevent any default behaviour
             e.preventDefault();
             e.stopPropagation();
             
@@ -193,8 +193,8 @@ document.addEventListener("DOMContentLoaded", function() {
             const sectionTop = section.offsetTop;
             const offset = 80;
             
-            // Scroll with offset to ensure title is visible
-            window.scrollTo({
+            // Scroll the page container (not window) with offset to ensure title is visible
+            pageContainer.scrollTo({
                 top: sectionTop - offset,
                 behavior: "smooth"
             });
@@ -207,35 +207,39 @@ document.addEventListener("DOMContentLoaded", function() {
         entries.forEach(entry => {
             const index = Array.from(sections).indexOf(entry.target);
             const dots = document.querySelectorAll(".progress-dot");
+            
             if (entry.isIntersecting) {
                 dots[index].classList.add("active");
             } else {
                 dots[index].classList.remove("active");
             }
         });
-    }, { 
-        
+    }, {
         threshold: 0.5,
-        rootMargin: "-20px 0px -20px 0px" // Prevents pushing content up
-    });
-    
-    sections.forEach(section => observer.observe(section));
+        rootMargin: "-20px 0px -20px 0px", // Prevents pushing content up
+        root: pageContainer // Set the scrolling container as the root
     });
 
-    // Remove from the last page
-    const lastSection = document.querySelector('.contact-section');
-    const progressContainer = document.querySelector('.progress-indicator');
+    sections.forEach(section => observer.observe(section));
+});
+
+// Remove from the last page
+const lastSection = document.querySelector('.contact-section');
+const progressContainer = document.querySelector('.progress-indicator');
+
+if (lastSection && progressContainer) {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            progressContainer.style.opacity = entry.isIntersecting ? '0' : '1';
+            progressContainer.style.pointerEvents = entry.isIntersecting ? 'none' : 'auto';
+        });
+    }, { 
+        threshold: 0.5,
+        root: document.querySelector(".page-container") // Also fix this observer
+    });
     
-    if (lastSection && progressContainer) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                progressContainer.style.opacity = entry.isIntersecting ? '0' : '1';
-                progressContainer.style.pointerEvents = entry.isIntersecting ? 'none' : 'auto';
-            });
-        }, { threshold: 0.5 });
-        
-        observer.observe(lastSection);
-        }
+    observer.observe(lastSection);
+}
 
 
 //For the Animation effects on all pages
