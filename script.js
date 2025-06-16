@@ -183,11 +183,19 @@ document.addEventListener("DOMContentLoaded", function() {
     sections.forEach((section, index) => {
         const dot = document.createElement("div");
         dot.className = "progress-dot";
-        dot.addEventListener("click", () => {
+        dot.addEventListener("click", (e) => {
             
-            // Scroll with offset to prevent hiding section titles
+            // Prevent any default behavior
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Get the section's position and add offset to show the title
+            const sectionTop = section.offsetTop;
+            const offset = 80;
+            
+            // Scroll with offset to ensure title is visible
             window.scrollTo({
-                top: section.offsetTop - 20,
+                top: sectionTop - offset,
                 behavior: "smooth"
             });
         });
