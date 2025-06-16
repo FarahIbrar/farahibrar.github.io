@@ -13,7 +13,8 @@
   />
 </div>
 
-**Live Demo:** https://farahibrar.github.io
+
+**Live Demo: Explore my website here: ** https://farahibrar.github.io
 
 ---
 
