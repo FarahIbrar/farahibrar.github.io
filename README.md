@@ -8,7 +8,7 @@
 <div style="text-align: center; margin-bottom: 40px;">
   <img 
     src="https://github.com/FarahIbrar/farahibrar.github.io/blob/main/portfolio/Farah%20Ibrar%20-%20Portfolio.gif" 
-    style="width: 700px; height: auto;" 
+    style="width: 900px; height: auto;" 
     alt="portfolio.gif" 
   />
 </div>
