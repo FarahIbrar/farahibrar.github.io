@@ -7,7 +7,7 @@
 
 <div style="text-align: center; margin-bottom: 40px;">
   <img 
-    src="https://github.com/FarahIbrar/farahibrar.github.io/blob/main/portfolio/Portfolio.gif" 
+    src="https://github.com/FarahIbrar/farahibrar.github.io/blob/main/portfolio/Farah%20Ibrar%20-%20Portfolio.gif" 
     style="width: 700px; height: auto;" 
     alt="portfolio.gif" 
   />
